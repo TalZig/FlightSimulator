@@ -24,9 +24,6 @@ namespace FlightSimulator
         {
 
             InitializeComponent();
-            View.Joystick joy = new View.Joystick();
-            joy.dist = 100;
-            Console.WriteLine(joy.center.X);
         }
     }
 }
