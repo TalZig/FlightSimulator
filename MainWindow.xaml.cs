@@ -22,12 +22,11 @@ namespace FlightSimulator
     {
         public MainWindow()
         {
+
             InitializeComponent();
-        }
-
-        private void btnPressMe_Click(object sender, RoutedEventArgs e)
-        {
-
+            View.Joystick joy = new View.Joystick();
+            joy.dist = 100;
+            Console.WriteLine(joy.center.X);
         }
     }
 }

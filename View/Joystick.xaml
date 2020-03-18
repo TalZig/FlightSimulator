@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" RenderTransformOrigin="1,0">
     <Grid>
         <Canvas  x:Name="Base" Margin="0" Width="340" Height="340">
             <Ellipse HorizontalAlignment="Left" Height="340" VerticalAlignment="Top" Width="340">
@@ -49,7 +49,7 @@
 
             <Canvas  x:Name="Knob" VerticalAlignment="Top" HorizontalAlignment="Left" Width="0" Height="0" RenderTransformOrigin="0.5,0.5" Canvas.Left="125" Canvas.Top="125">
                 <!--<Ellipse x:Name="Shadow" HorizontalAlignment="Left" Height="88" VerticalAlignment="Top" Width="86" Fill="#52131212" Canvas.Left="22" Canvas.Top="18" />-->
-                <Ellipse x:Name="KnobBase" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.5,0.5" Canvas.Top="1">
+                <Ellipse x:Name="KnobBase"  HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.5,0.5" Canvas.Top="1" MouseDown="KnobBase_MouseDown">
                     <Ellipse.Fill>
                         <RadialGradientBrush>
                             <GradientStop Color="#FF8A8A8A" />
@@ -72,7 +72,7 @@
                         </TransformGroup>
                     </Ellipse.RenderTransform>
                 </Ellipse>
-                <Ellipse HorizontalAlignment="Left" Height="75.491"  VerticalAlignment="Top" Width="70.887" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Canvas.Left="12.396" Canvas.Top="5.057">
+                <Ellipse HorizontalAlignment="Left" Height="75.491"  VerticalAlignment="Top" Width="70.887" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Canvas.Left="12.396" Canvas.Top="5.057" DragEnter="Ellipse_DragEnter" MouseUp="Ellipse_MouseUp" MouseDown="Ellipse_MouseDown" MouseMove="Ellipse_MouseMove">
                     <Ellipse.Fill>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#00858585" Offset="0" />
@@ -82,11 +82,14 @@
                     </Ellipse.Fill>
                     <Ellipse.RenderTransform>
                         <TransformGroup>
-                            <SkewTransform CenterX="3" CenterY="-4" />
-                            <RotateTransform Angle="-.7628" />
+                            <ScaleTransform ScaleY="0.99999999999999989" ScaleX="0.99999999999999989"/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.7628"/>
+                            <TranslateTransform/>
                         </TransformGroup>
                     </Ellipse.RenderTransform>
                 </Ellipse>
+                <Ellipse MouseEnter="Tap"></Ellipse>
                 <Ellipse HorizontalAlignment="Left" Height="72.722" VerticalAlignment="Top" Width="72.936" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Canvas.Left="0.631" Canvas.Top="4.896">
                     <Ellipse.Fill>
                         <RadialGradientBrush>
