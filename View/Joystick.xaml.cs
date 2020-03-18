@@ -29,7 +29,7 @@ namespace FlightSimulator.View
 
         private void KnobBase_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.)
+            if()
 
 
         }
