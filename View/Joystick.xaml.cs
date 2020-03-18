@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulator.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,9 @@ namespace FlightSimulator.View
         public Joystick()
         {
             InitializeComponent();
+            // make the view model the object being binded
+            ViewModel.JoystickViewModel vm = new JoystickViewModel();
+            DataContext = vm;
         }
         private Point center;
         private void centerKnob_Completed(Object sender, EventArgs e) { }
