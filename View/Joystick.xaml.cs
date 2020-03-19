@@ -28,14 +28,15 @@ namespace FlightSimulator.View
         }
         private Point center;
         private void centerKnob_Completed(Object sender, EventArgs e) {
-            center.X = 0;
-            center.Y = 0;
+            knobPosition.X = 0;
+            knobPosition.Y = 0;
         }
 
         private void Knob_MouseUp(object sender, MouseButtonEventArgs e)
         {
             knobPosition.X = 0;
             knobPosition.Y = 0;
+            isPressed = false;
         }
 
         private void Knob_MouseDown(object sender, MouseButtonEventArgs e)
@@ -50,6 +51,7 @@ namespace FlightSimulator.View
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
+                isPressed = true;
                 double x = e.GetPosition(this).X - center.X;
                 double y = e.GetPosition(this).Y - center.Y;
                 if (Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2)) +( KnobBase.Width / 2) < BlackCircle.Width / 2)
@@ -59,5 +61,17 @@ namespace FlightSimulator.View
                 }
             }
     }
+
+        private void KnobBase_MouseLeave(object sender, MouseEventArgs e)
+        {
+            knobPosition.X = 0;
+            knobPosition.Y = 0;
+        }
+
+        private void Knob_MouseLeave(object sender, MouseEventArgs e)
+        {
+            knobPosition.X = 0;
+            knobPosition.Y = 0;
+        }
     }
 }
