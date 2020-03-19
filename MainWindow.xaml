@@ -8,13 +8,61 @@
         mc:Ignorable="d"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         Title="MainWindow" Height="600" Width="1000">
-  
-    <Grid>
-        <m:Map CredentialsProvider="INSERT_YOUR_BING_MAPS_KEY" Mode="AerialWithLabels" Center="37.806029,-122.407007" ZoomLevel="12" Margin="10,10,482.333,-10.333">
+
+    <Grid Margin="0,-2,0.333,1.667" Background="WhiteSmoke">
+        <m:Map x:Name="Map" CredentialsProvider="INSERT_YOUR_BING_MAPS_KEY" Mode="AerialWithLabels" Center="37.806029,-122.407007" ZoomLevel="12" Margin="-44,-4,536,4" RenderTransformOrigin="0.5,0.5">
+            <m:Map.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </m:Map.RenderTransform>
             <m:MapPolygon Name="AirPlane" Fill="Blue" Stroke="Green" StrokeThickness="5"
                           Locations="47.6424,-122.3219 47.8424,-122.1747 47.5814,-122.1747" 
                           Opacity="0.7"/>
         </m:Map>
-        <View:Joystick x:Name="joystick1" Margin="308,96,-308.667,-96.333" ></View:Joystick>
+        <View:ControlBoard x:Name="Board" Margin="595,18,98,300" RenderTransformOrigin="0.5,0.5">
+            <View:ControlBoard.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </View:ControlBoard.RenderTransform>
+        </View:ControlBoard>
+        <View:Joystick x:Name="joystick1" Margin="417,244,-14,-24" RenderTransformOrigin="0.5,0.5">
+            <View:Joystick.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </View:Joystick.RenderTransform>
+        </View:Joystick>
+        <Slider x:Name="Aileron" HorizontalAlignment="Right" Margin="0,537,184,-31" Maximum="1" Minimum="0" RenderTransformOrigin="0.5,0.5" Width="202" TickPlacement="TopLeft">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+
+        <Slider x:Name="Throttle" HorizontalAlignment="Right" Margin="0,413,343,126" Maximum="1" Minimum="0" RenderTransformOrigin="0.5,0.5" Width="202" TickPlacement="TopLeft">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
     </Grid>
 </Window>

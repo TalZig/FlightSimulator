@@ -1,5 +1,4 @@
-﻿using FlightSimulator.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +26,9 @@ namespace FlightSimulator.View
             
         }
         private Point center;
-        private void centerKnob_Completed(Object sender, EventArgs e) {
+        //private double x1 = 0;
+        //private double y1 = 0;
+        private void CenterKnob_Completed(Object sender, EventArgs e) {
             knobPosition.X = 0;
             knobPosition.Y = 0;
         }
@@ -56,6 +57,8 @@ namespace FlightSimulator.View
                 {
                     knobPosition.X = x;
                     knobPosition.Y = y;
+                    //x1 = x;
+                    //y1 = y;
                 }
             }
     }
