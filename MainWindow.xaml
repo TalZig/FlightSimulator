@@ -6,9 +6,15 @@
         xmlns:local="clr-namespace:FlightSimulator"
         xmlns:View="clr-namespace:FlightSimulator.View"
         mc:Ignorable="d"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         Title="MainWindow" Height="600" Width="1000">
   
     <Grid>
-        <View:Joystick x:Name="joystick1" ></View:Joystick>
+        <m:Map CredentialsProvider="INSERT_YOUR_BING_MAPS_KEY" Mode="AerialWithLabels" Center="37.806029,-122.407007" ZoomLevel="12" Margin="10,10,482.333,-10.333">
+            <m:MapPolygon Name="AirPlane" Fill="Blue" Stroke="Green" StrokeThickness="5"
+                          Locations="47.6424,-122.3219 47.8424,-122.1747 47.5814,-122.1747" 
+                          Opacity="0.7"/>
+        </m:Map>
+        <View:Joystick x:Name="joystick1" Margin="308,96,-308.667,-96.333" ></View:Joystick>
     </Grid>
 </Window>
