@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,8 @@ namespace FlightSimulator
         public MainWindow()
         {
             Console.WriteLine("check");
-
+            ViewModel vm = new ViewModel(new Models.Model());
+            DataContext = vm;
             InitializeComponent();
         }
 
