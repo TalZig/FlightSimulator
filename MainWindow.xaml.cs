@@ -20,8 +20,10 @@ namespace FlightSimulator
     /// </summary>
     public partial class MainWindow : Window
     {
+        ViewModels.ViewModel vm;
         public MainWindow() {
             InitializeComponent();
+            DataContext = vm;
         }
 
         public double ThrottleValue

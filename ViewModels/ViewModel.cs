@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace FlightSimulator.ViewModel
+namespace FlightSimulator.ViewModels
 {
     class ViewModel : Notifier
     {
@@ -34,12 +34,12 @@ namespace FlightSimulator.ViewModel
                     _rudder = value;
                     this.NotifyPropertyChanged("rudder");
                     //send command to the model
-                    model.updateValue("rudder", value);
+                    //model.updateValue("rudder", value);
                 }
             }
         }
 
-        public double Elevator
+        public double VMElevator
         {
             get { return _elevator; }
             set
@@ -55,7 +55,7 @@ namespace FlightSimulator.ViewModel
             }
         }
 
-        public double Aileron
+        public double VMAileron
         {
             get { return _aileron; }
             set
@@ -70,7 +70,7 @@ namespace FlightSimulator.ViewModel
             }
         }
 
-        public double Throttle
+        public double VMThrottle
         {
             get { return _throttle; }
             set
