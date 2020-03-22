@@ -13,14 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FlightSimulator
+namespace FlightSimulator.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ControlBoard.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ControlBoard : UserControl
     {
-        public MainWindow() {
+        public ControlBoard()
+        {
             InitializeComponent();
         }
     }
