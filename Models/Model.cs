@@ -122,6 +122,7 @@ namespace FlightSimulator.Models
         public void Connect(string ip, int port)
         {
             myClient.Connect(ip, port);
+            this.Start();
         }
         public void Start()
         {
