@@ -16,7 +16,7 @@ namespace FlightSimulator.Models
     using System.Net.Sockets;
     using System.IO;
     using System.Text.RegularExpressions;
-        class MyTcpClien : ItelnetClient
+        class MyTcpClient : ItelnetClient
         {
             private TcpClient tcpClient;
             private Stream stream;
