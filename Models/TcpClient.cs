@@ -41,10 +41,10 @@ namespace FlightSimulator.Models
         }
         public void start()
         {
-            new Thread()
-            {
+            //new Thread()
+            //{
 
-            }
+            //}
         }
 
 
