@@ -43,7 +43,7 @@
                 </TransformGroup>
             </View:Joystick.RenderTransform>
         </View:Joystick>
-        <Slider x:Name="Aileron" HorizontalAlignment="Right" Margin="0,537,184,-31" Maximum="1" Minimum="-1" RenderTransformOrigin="0.5,0.5" Width="202" TickPlacement="TopLeft" >
+        <Slider x:Name="Aileron" HorizontalAlignment="Right" Margin="0,537,184,-31" Maximum="1" Minimum="-1" RenderTransformOrigin="0.5,0.5" Width="202" TickPlacement="TopLeft" IntermediateValueProperty="{Binding VMAileron, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}">
             
             <Slider.RenderTransform>
                 <TransformGroup>

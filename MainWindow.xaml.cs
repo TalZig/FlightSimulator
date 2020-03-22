@@ -23,6 +23,7 @@ namespace FlightSimulator
         ViewModels.ViewModel vm;
         public MainWindow() {
             InitializeComponent();
+            vm = new ViewModels.ViewModel();
             DataContext = vm;
         }
 
