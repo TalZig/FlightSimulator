@@ -23,5 +23,23 @@ namespace FlightSimulator
         public MainWindow() {
             InitializeComponent();
         }
+
+        public double ThrottleValue
+        {
+            get { return (double)GetValue(ThrottleValueProperty); }
+            set { SetValue(ThrottleValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty ThrottleValueProperty =
+            DependencyProperty.Register("ThrottleValue", typeof(double), typeof(Slider));
+
+        public double AileronValue
+        {
+            get { return (double)GetValue(AileronValueProperty); }
+            set { SetValue(AileronValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty AileronValueProperty =
+            DependencyProperty.Register("AileronValue", typeof(double), typeof(Slider));
     }
 }

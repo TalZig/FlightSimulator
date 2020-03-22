@@ -23,7 +23,7 @@ namespace FlightSimulator.ViewModel
         // bind
         // where to send messages via model to simulator?
 
-        public double Rudder
+        public double VMRudder
         {
             get { return _rudder; }
             set
@@ -32,8 +32,9 @@ namespace FlightSimulator.ViewModel
                 {
                     Console.WriteLine("changed rudder from" + _rudder.ToString() + "to" + value.ToString());
                     _rudder = value;
-                    NotifyPropertyChanged("rudder");
-                    //send command to simulator
+                    this.NotifyPropertyChanged("rudder");
+                    //send command to the model
+                    model.updateValue("rudder", value);
                 }
             }
         }
@@ -49,6 +50,7 @@ namespace FlightSimulator.ViewModel
                     _elevator = value;
                     NotifyPropertyChanged("elevator");
                     //send command to simulator
+
                 }
             }
         }
@@ -78,7 +80,7 @@ namespace FlightSimulator.ViewModel
                     Console.WriteLine("changed elevator from" + _throttle.ToString() + "to" + value.ToString());
                     _throttle = value;
                     NotifyPropertyChanged("throttle");
-                    //send command to simulator
+
                 }
             }
         }

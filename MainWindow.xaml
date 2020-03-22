@@ -33,7 +33,7 @@
                 </TransformGroup>
             </View:ControlBoard.RenderTransform>
         </View:ControlBoard>
-        <View:Joystick x:Name="joystick1" Margin="417,244,-14,-24" RenderTransformOrigin="0.5,0.5">
+        <View:Joystick x:Name="joystick1" Margin="417,244,-14,-24" RenderTransformOrigin="0.5,0.5" RudderValue ="{Binding VMRudder, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}">
             <View:Joystick.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
@@ -44,6 +44,7 @@
             </View:Joystick.RenderTransform>
         </View:Joystick>
         <Slider x:Name="Aileron" HorizontalAlignment="Right" Margin="0,537,184,-31" Maximum="1" Minimum="-1" RenderTransformOrigin="0.5,0.5" Width="202" TickPlacement="TopLeft">
+            
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -65,4 +66,5 @@
             </Slider.RenderTransform>
         </Slider>
     </Grid>
+    
 </Window>
