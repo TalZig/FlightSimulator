@@ -33,8 +33,7 @@ namespace FlightSimulator.ViewModels
                     Console.WriteLine("changed rudder from" + _rudder.ToString() + "to" + value.ToString());
                     _rudder = value;
                     this.NotifyPropertyChanged("rudder");
-                    //send command to the model
-                    //model.updateValue("rudder", value);
+                    model.UpdateValue("rudder", value);
                 }
             }
         }
@@ -49,7 +48,7 @@ namespace FlightSimulator.ViewModels
                     Console.WriteLine("changed elevator from" + _elevator.ToString() + "to" + value.ToString());
                     _elevator = value;
                     NotifyPropertyChanged("elevator");
-                    //send command to simulator
+                    model.UpdateValue("elevator", value);
 
                 }
             }
@@ -65,7 +64,7 @@ namespace FlightSimulator.ViewModels
                     Console.WriteLine("changed elevator from" + _aileron.ToString() + "to" + value.ToString());
                     _aileron = value;
                     NotifyPropertyChanged("aileron");
-                    //send command to simulator
+                    model.UpdateValue("aileron", value);
                 }
             }
         }
@@ -80,7 +79,7 @@ namespace FlightSimulator.ViewModels
                     Console.WriteLine("changed elevator from" + _throttle.ToString() + "to" + value.ToString());
                     _throttle = value;
                     NotifyPropertyChanged("throttle");
-
+                    model.UpdateValue("throttle", value);
                 }
             }
         }
