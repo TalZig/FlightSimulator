@@ -119,7 +119,7 @@ namespace FlightSimulator.Models
             }
         }
 
-        MyTcpClien myClient = new MyTcpClien();
+        MyTcpClient myClient = new MyTcpClient();
         public void Connect(string ip, int port)
         {
             myClient.Connect(ip, port);
