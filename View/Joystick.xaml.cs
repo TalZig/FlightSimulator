@@ -25,7 +25,7 @@ namespace FlightSimulator.View
         {
             InitializeComponent();
             // make the view model the object being binded
-            ViewModel.JoystickViewModel vm = new JoystickViewModel();
+            ViewModel.ViewModel vm = new ViewModel.ViewModel();
             DataContext = vm;
         }
         private Point center;

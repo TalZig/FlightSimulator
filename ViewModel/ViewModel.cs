@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace FlightSimulator.ViewModel
 {
-    class JoystickViewModel : Notifier
+    class ViewModel : Notifier
     {
 
         private Point joystickPosition;
@@ -17,33 +17,37 @@ namespace FlightSimulator.ViewModel
         SimulatorModel model;
         //Occurs when a property value changes.
 
-        private double _x;
-        private double _y;
+        private double _rudder;
+        private double _elevator;
         // insert both sliders and their property
         // create constructors
         // bind
         // where to send messages via model to simulator?
 
-        public double X
+        public double Rudder
         {
-            get { return _x; }
+            get { return _rudder; }
             set
             {
-                if (value != _x)
+                if (value != _rudder)
                 {
-                    _x = value;
+                    Console.WriteLine("changed rudder from" + _rudder.ToString() + "to" + value.ToString());
+                    _rudder = value;
+                    NotifyPropertyChanged("rudder");
                 }
             }
         }
 
-        public double Y
+        public double Elevator
         {
-            get { return _y; }
+            get { return _elevator; }
             set
             {
-                if (value != _y)
+                if (value != _elevator)
                 {
-                    _y = value;
+                    Console.WriteLine("changed elevator from" + _elevator.ToString() + "to" + value.ToString());
+                    _elevator = value;
+                    NotifyPropertyChanged("elevator");
                 }
             }
         }

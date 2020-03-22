@@ -57,10 +57,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Notifier.cs" />
-    <Compile Include="Models\Server.cs" />
     <Compile Include="Models\TcpClient.cs" />
     <Compile Include="Models\SimulatorModel.cs" />
-    <Compile Include="ViewModel\JoystickViewModel.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="View\Joystick.xaml.cs">
       <DependentUpon>Joystick.xaml</DependentUpon>
     </Compile>
