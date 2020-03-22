@@ -17,7 +17,15 @@ namespace FlightSimulator.ViewModels
         private double _elevator;
         private double _aileron;
         private double _throttle;
-
+        public event PropertyChangedEventHandler propertyChanged;
+        public ViewModel(Model model1)
+        {
+            this.model = model1;
+            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            {
+                NotifyPropertyChanged("VM" + e.PropertyName);
+            };
+        }
         // insert both sliders and their property
         // create constructors
         // bind
