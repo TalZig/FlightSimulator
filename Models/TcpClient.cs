@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using System.Configuration;
 
 
 namespace FlightSimulator.Models
@@ -14,11 +15,12 @@ namespace FlightSimulator.Models
     {
         volatile bool stop = false;
         System.Net.Sockets.TcpClient myClient;
-         void connect(string ip, int port)
+         void connect()
         {
             try
             {
-                myClient = new System.Net.Sockets.TcpClient(ip, port);
+                myClient = new System.Net.Sockets.TcpClient((ConfigurationManager.AppSettings["IP"]),
+                    Int32.Parse(ConfigurationManager.AppSettings["IP"]));
             }
             catch (Exception)
             {
@@ -40,6 +42,9 @@ namespace FlightSimulator.Models
         public void start()
         {
             new Thread()
+            {
+
+            }
         }
 
 
