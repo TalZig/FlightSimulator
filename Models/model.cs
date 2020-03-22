@@ -44,7 +44,7 @@ namespace FlightSimulator.Models
         public double GroundSpeedKt
         {
             get
-            {
+            { 
                 return groundSpeedKt;
             }
             set
