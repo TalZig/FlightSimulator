@@ -11,7 +11,7 @@ namespace FlightSimulator.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
         double[] values = new double[8];
-        Server server;
+        //Server server;
         TcpClient client;
     }
 }
