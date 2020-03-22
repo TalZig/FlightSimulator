@@ -61,6 +61,7 @@
     <Compile Include="Models\ItelnetClient.cs" />
     <Compile Include="Models\model.cs" />
     <Compile Include="Models\MyTcpClien.cs" />
+    <Compile Include="Models\Notifier.cs" />
     <Compile Include="View\ControlBoard.xaml.cs">
       <DependentUpon>ControlBoard.xaml</DependentUpon>
     </Compile>

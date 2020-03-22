@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Models
 {
-    class model
+    class model : Notifier
     {
         public double[] valuesFromServer = new double[8];
         public double[] valuesFromView = new double[4];
@@ -49,8 +49,85 @@ namespace FlightSimulator.Models
                 myClient.write("set /controls/flight/elevator" + valuesFromView[1].ToString());
                 myClient.write("set /controls/engines/current-engine/throttle" + valuesFromView[2].ToString());
                 myClient.write("set /controls/flight/aileron" + valuesFromView[3].ToString());
+                //location of the airplane
+            }
+        }
+        public void updateValue(String info, double newVal)
+        {
+            if(info == "rudder")
+            {
+                valuesFromView[0] = updateRudder(newVal);
+            }
+            if(info == "elevator")
+            {
+                valuesFromView[1] = updateElevator(newVal);
+            }
+            if(info == "throttle")
+            {
+                valuesFromView[2] = updateThrottle(newVal);
+            }
+            if(info == "aileron")
+            {
+                valuesFromView[3] = updateAileron(newVal);
             }
         }
 
+        private double updateRudder(double newVal)
+        {
+            if(newVal > 1)
+            {
+                return 1;
+            }
+            if(newVal < -1)
+            {
+                return -1;
+            }
+            return newVal;
+        }
+
+        private double updateElevator(double newVal)
+        {
+            {
+                if (newVal > 1)
+                {
+                    return 1;
+                }
+                if (newVal < -1)
+                {
+                    return -1;
+                }
+                return newVal;
+            }
+        }
+
+        private double updateThrottle(double newVal)
+        {
+            {
+                if (newVal > 1)
+                {
+                    return 1;
+                }
+                if (newVal < -1)
+                {
+                    return -1;
+                }
+                return newVal;
+            }
+        }
+
+        private double updateAileron(double newVal)
+        {
+            {
+                if (newVal > 1)
+                {
+                    return 1;
+                }
+                if (newVal < 0)
+                {
+                    return 0;
+                }
+                return newVal;
+            }
+        }
     }
 }
