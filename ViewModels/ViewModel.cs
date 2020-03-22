@@ -140,7 +140,7 @@ namespace FlightSimulator.ViewModels
                 return model.PitchDeg;
             }
         }
-        public double VMIndicatedValueFt
+        public double VMIndicatedAlitudeFt
         {
             get
             {
