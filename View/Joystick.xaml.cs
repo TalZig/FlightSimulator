@@ -74,5 +74,22 @@ namespace FlightSimulator.View
             knobPosition.X = 0;
             knobPosition.Y = 0;
         }
+
+        public double ElevatorValue
+        {
+            get { return (double)GetValue(ElevatorValueProperty); }
+            set { SetValue(ElevatorValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty ElevatorValueProperty =
+            DependencyProperty.Register("ElevatorValue", typeof(double), typeof(Joystick));
+        public double RudderValue
+        {
+            get { return (double)GetValue(RudderValueProperty); }
+            set { SetValue(RudderValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty RudderValueProperty =
+            DependencyProperty.Register("RudderValue", typeof(double), typeof(Joystick));
     }
 }
