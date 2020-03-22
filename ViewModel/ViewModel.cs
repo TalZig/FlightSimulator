@@ -12,13 +12,12 @@ namespace FlightSimulator.ViewModel
     class ViewModel : Notifier
     {
 
-        private Point joystickPosition;
-        double[] values = new double[10]; //first 8 values for the values from the simulator and two others from the joystick
         SimulatorModel model;
-        //Occurs when a property value changes.
-
         private double _rudder;
         private double _elevator;
+        private double _aileron;
+        private double _throttle;
+
         // insert both sliders and their property
         // create constructors
         // bind
@@ -34,6 +33,7 @@ namespace FlightSimulator.ViewModel
                     Console.WriteLine("changed rudder from" + _rudder.ToString() + "to" + value.ToString());
                     _rudder = value;
                     NotifyPropertyChanged("rudder");
+                    //send command to simulator
                 }
             }
         }
@@ -48,6 +48,37 @@ namespace FlightSimulator.ViewModel
                     Console.WriteLine("changed elevator from" + _elevator.ToString() + "to" + value.ToString());
                     _elevator = value;
                     NotifyPropertyChanged("elevator");
+                    //send command to simulator
+                }
+            }
+        }
+
+        public double Aileron
+        {
+            get { return _aileron; }
+            set
+            {
+                if (value != _aileron)
+                {
+                    Console.WriteLine("changed elevator from" + _aileron.ToString() + "to" + value.ToString());
+                    _aileron = value;
+                    NotifyPropertyChanged("aileron");
+                    //send command to simulator
+                }
+            }
+        }
+
+        public double Throttle
+        {
+            get { return _throttle; }
+            set
+            {
+                if (value != _throttle)
+                {
+                    Console.WriteLine("changed elevator from" + _throttle.ToString() + "to" + value.ToString());
+                    _throttle = value;
+                    NotifyPropertyChanged("throttle");
+                    //send command to simulator
                 }
             }
         }
