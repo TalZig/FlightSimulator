@@ -22,6 +22,7 @@ namespace FlightSimulator
     {
         public MainWindow()
         {
+            Console.WriteLine("check");
 
             InitializeComponent();
         }

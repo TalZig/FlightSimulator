@@ -8,7 +8,7 @@ namespace FlightSimulator.Models
 {
     interface ItelnetClient
     {
-        void connect(string ip, int port);
+        void Connect(string ip, int port);
         void disconnect();
         void write(string command);
         String read();

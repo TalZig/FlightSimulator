@@ -20,7 +20,7 @@ namespace FlightSimulator.Models
         {
             private TcpClient tcpClient;
             private Stream stream;
-            public void connect(string ip, int port)
+            public void Connect(string ip, int port)
             {
                 tcpClient = new TcpClient();
                 tcpClient.Connect(ip, port);
@@ -63,10 +63,6 @@ namespace FlightSimulator.Models
                 else return returnedValue;
             }
 
-            void ItelnetClient.connect(string ip, int port)
-            {
-                throw new NotImplementedException();
-            }
         }
     }
 

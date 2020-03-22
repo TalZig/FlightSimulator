@@ -7,42 +7,149 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Models
 {
-    class model : Notifier
+    class Model : Notifier
     {
+        public double XairPlaneLocation;
+        public double YairPlaneLocation;
         public double[] valuesFromServer = new double[8];
         public double[] valuesFromView = new double[4];
         public volatile bool stop = false;
-        MyTcpClien myClient = new MyTcpClien();
-        public void connect(string ip, int port)
+        private double verticalSpeed;
+        public double VerticalSpeed
         {
-            myClient.connect(ip, port);
+            get
+            {
+                return verticalSpeed;
+            }
+            set
+            {
+                verticalSpeed = value;
+                this.NotifyPropertyChanged("VerticalSpeed");
+            }
         }
-        public void start()
+        private double headingDeg;
+        public double HeadingDeg
         {
-            Thread thread = new Thread(startReadAndWrite);
+            get
+            {
+                return headingDeg;
+            }
+            set
+            {
+                headingDeg = value;
+                this.NotifyPropertyChanged("HeadingDeg");
+            }
+        }
+        private double groundSpeedKt;
+        public double GroundSpeedKt
+        {
+            get
+            {
+                return groundSpeedKt;
+            }
+            set
+            {
+                groundSpeedKt = value;
+                this.NotifyPropertyChanged("GroundSpeedKt");
+            }
+        }
+        private double indicatedSpeedKt;
+        public double IndicatedSpeedKt
+        {
+            get
+            {
+                return indicatedSpeedKt;
+            }
+            set
+            {
+                indicatedSpeedKt = value;
+                this.NotifyPropertyChanged("IndicatedSpeedKt");
+            }
+        }
+        private double altitudeFt;
+        public double AltitudeFt
+        {
+            get
+            {
+                return altitudeFt;
+            }
+            set
+            {
+                altitudeFt = value;
+                this.NotifyPropertyChanged("AltitudeFt");
+            }
+        }
+    private double rollDeg;
+    public double RollDeg
+    {
+        get
+        {
+            return rollDeg;
+        }
+        set
+        {
+            rollDeg = value;
+            this.NotifyPropertyChanged("RollDeg");
+        }
+    }
+        private double pitchDeg;
+        public double PitchDeg
+        {
+            get
+            {
+                return pitchDeg;
+            }
+            set
+            {
+                pitchDeg = value;
+                this.NotifyPropertyChanged("PitchDeg");
+            }
+        }
+        private double indicatedAltitudeFt;
+        public double IndicatedAlitudeFt
+        {
+            get
+            {
+                return indicatedAltitudeFt;
+            }
+            set
+            {
+                indicatedAltitudeFt = value;
+                this.NotifyPropertyChanged("IndicatedAltitudeFt");
+            }
+        }
+
+        MyTcpClien myClient = new MyTcpClien();
+        public void Connect(string ip, int port)
+        {
+            myClient.Connect(ip, port);
+        }
+        public void Start()
+        {
+            Thread thread = new Thread(StartReadAndWrite);
             thread.Start();
         }
-        private void startReadAndWrite()
+        private void StartReadAndWrite()
         {
             while (!stop)
             {
                 //values from the server
                 myClient.write("get /instrumentation/heading-indicator/indicated-heading-deg");
-                valuesFromServer[0] = Double.Parse(myClient.read());
+                HeadingDeg = Double.Parse(myClient.read());
                 myClient.write("get /instrumentation/gps/indicated-vertical-speed");
-                valuesFromServer[1] = Double.Parse(myClient.read());
+                VerticalSpeed = Double.Parse(myClient.read());
                 myClient.write("get /instrumentation/gps/indicated-ground-speed-kt");
-                valuesFromServer[2] = Double.Parse(myClient.read());
+                GroundSpeedKt = Double.Parse(myClient.read());
                 myClient.write("get /instrumentation/airspeed-indicator/indicated-speed-kt");
-                valuesFromServer[3] = Double.Parse(myClient.read());
+                IndicatedSpeedKt = Double.Parse(myClient.read());
                 myClient.write("get /instrumentation/gps/indicated-altitude-ft");
-                valuesFromServer[4] = Double.Parse(myClient.read());
+                AltitudeFt = Double.Parse(myClient.read());
                 myClient.write("get /instrumentation/attitude-indicator/indicated-roll-deg");
-                valuesFromServer[5] = Double.Parse(myClient.read());
+                RollDeg = Double.Parse(myClient.read());
                 myClient.write("get /instrumentation/attitude-indicator/indicated-pitch-deg");
-                valuesFromServer[6] = Double.Parse(myClient.read());
+                PitchDeg = Double.Parse(myClient.read());
                 myClient.write("get /instrumentation/altimeter/indicated-altitude-ft");
-                valuesFromServer[7] = Double.Parse(myClient.read());
+                IndicatedAlitudeFt = Double.Parse(myClient.read());
 
                 //values from the view that we need to update
                 myClient.write("set /controls/flight/rudder" + valuesFromView[0].ToString());
@@ -50,29 +157,31 @@ namespace FlightSimulator.Models
                 myClient.write("set /controls/engines/current-engine/throttle" + valuesFromView[2].ToString());
                 myClient.write("set /controls/flight/aileron" + valuesFromView[3].ToString());
                 //location of the airplane
+
+                
             }
         }
-        public void updateValue(String info, double newVal)
+        public void UpdateValue(String info, double newVal)
         {
             if(info == "rudder")
             {
-                valuesFromView[0] = updateRudder(newVal);
+                valuesFromView[0] = UpdateRudder(newVal);
             }
             if(info == "elevator")
             {
-                valuesFromView[1] = updateElevator(newVal);
+                valuesFromView[1] = UpdateElevator(newVal);
             }
             if(info == "throttle")
             {
-                valuesFromView[2] = updateThrottle(newVal);
+                valuesFromView[2] = UpdateThrottle(newVal);
             }
             if(info == "aileron")
             {
-                valuesFromView[3] = updateAileron(newVal);
+                valuesFromView[3] = UpdateAileron(newVal);
             }
         }
 
-        private double updateRudder(double newVal)
+        private double UpdateRudder(double newVal)
         {
             if(newVal > 1)
             {
@@ -85,7 +194,7 @@ namespace FlightSimulator.Models
             return newVal;
         }
 
-        private double updateElevator(double newVal)
+        private double UpdateElevator(double newVal)
         {
             {
                 if (newVal > 1)
@@ -100,7 +209,7 @@ namespace FlightSimulator.Models
             }
         }
 
-        private double updateThrottle(double newVal)
+        private double UpdateThrottle(double newVal)
         {
             {
                 if (newVal > 1)
@@ -115,7 +224,7 @@ namespace FlightSimulator.Models
             }
         }
 
-        private double updateAileron(double newVal)
+        private double UpdateAileron(double newVal)
         {
             {
                 if (newVal > 1)
