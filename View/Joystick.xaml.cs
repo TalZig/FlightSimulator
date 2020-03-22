@@ -20,14 +20,15 @@ namespace FlightSimulator.View
     /// </summary>
     public partial class Joystick : UserControl
     {
-        private bool isPressed;
         public Joystick()
         {
             InitializeComponent();
             
         }
         private Point center;
-        private void centerKnob_Completed(Object sender, EventArgs e) {
+        //private double x1 = 0;
+        //private double y1 = 0;
+        private void CenterKnob_Completed(Object sender, EventArgs e) {
             knobPosition.X = 0;
             knobPosition.Y = 0;
         }
@@ -36,7 +37,6 @@ namespace FlightSimulator.View
         {
             knobPosition.X = 0;
             knobPosition.Y = 0;
-            isPressed = false;
         }
 
         private void Knob_MouseDown(object sender, MouseButtonEventArgs e)
@@ -51,13 +51,14 @@ namespace FlightSimulator.View
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                isPressed = true;
                 double x = e.GetPosition(this).X - center.X;
                 double y = e.GetPosition(this).Y - center.Y;
                 if (Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2)) +( KnobBase.Width / 2) < BlackCircle.Width / 2)
                 {
                     knobPosition.X = x;
                     knobPosition.Y = y;
+                    //x1 = x;
+                    //y1 = y;
                 }
             }
     }
