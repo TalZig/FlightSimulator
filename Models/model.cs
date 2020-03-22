@@ -11,6 +11,7 @@ namespace FlightSimulator.Models
     {
         public double XairPlaneLocation;
         public double YairPlaneLocation;
+        public double [] valuesFromView = new double[4];
         public volatile bool stop = false;
         private double verticalSpeed;
         public double VerticalSpeed

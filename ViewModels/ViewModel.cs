@@ -12,7 +12,7 @@ namespace FlightSimulator.ViewModels
     class ViewModel : Notifier
     {
 
-        Models.Model model;
+        public Models.Model model;
         private double _rudder;
         private double _elevator;
         private double _aileron;

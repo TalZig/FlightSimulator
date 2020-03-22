@@ -26,6 +26,7 @@ namespace FlightSimulator
             Console.WriteLine("check");
             ViewModel vm = new ViewModel(new Models.Model());
             DataContext = vm;
+            vm.model.Connect("127.0.0.1", 5402);
             InitializeComponent();
         }
 
