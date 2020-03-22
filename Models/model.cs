@@ -17,7 +17,7 @@ namespace FlightSimulator.Models
         private double verticalSpeed;
         public double VerticalSpeed
         {
-            get
+            get 
             {
                 return verticalSpeed;
             }
