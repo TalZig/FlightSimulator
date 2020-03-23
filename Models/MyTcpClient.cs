@@ -43,18 +43,22 @@ namespace FlightSimulator.Models
                 stream.Write(data, 0, data.Length);
                 Console.WriteLine("Sent: {0}", command);
             }
-            public String read()
+            public string read()
             {
                 byte[] data = new byte[100];
                 int k = stream.Read(data, 0, 100);
                 StringBuilder builder = new StringBuilder();
+                Console.WriteLine(data);
                 foreach (char value in data)
                 {
                     builder.Append(value);
                 }
                 string returnedValue = builder.ToString();
+                Console.WriteLine(returnedValue);
                 //for floating point
                 returnedValue = Regex.Match(returnedValue, @"\d+.\d+").Value;
+                Console.WriteLine(returnedValue);
+
                 //for integer
                 string temp = Regex.Match(returnedValue, @"\d+").Value;
 
