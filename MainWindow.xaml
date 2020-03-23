@@ -10,7 +10,7 @@
         Title="MainWindow" Height="600" Width="1000">
 
     <Grid Margin="0,-2,0.333,1.667" Background="WhiteSmoke">
-        <m:Map x:Name="Map" CredentialsProvider="INSERT_YOUR_BING_MAPS_KEY" Mode="AerialWithLabels" Center="37.806029,-122.407007" ZoomLevel="12" Margin="-44,-4,536,4" RenderTransformOrigin="0.5,0.5">
+        <m:Map x:Name="Map" CredentialsProvider="AhgxD7rLpIhZkI6TfF9Jb2TBRr5IYDPx0RDU2gsdB6ohUsJOZlbxLnwApJh-s0FD" Mode="AerialWithLabels" Center="37.806029,-122.407007" ZoomLevel="12" Margin="-44,-4,536,4" RenderTransformOrigin="0.5,0.5">
             <m:Map.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
