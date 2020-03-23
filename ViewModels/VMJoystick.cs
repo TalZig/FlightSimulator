@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace FlightSimulator.ViewModels
 {
-    class ViewModel : Notifier
+    class VMJoystick : Notifier
     {
 
         public Models.Model model;
@@ -17,8 +17,7 @@ namespace FlightSimulator.ViewModels
         private double _elevator;
         private double _aileron;
         private double _throttle;
-        public event PropertyChangedEventHandler propertyChanged;
-        public ViewModel(Model model1)
+        public VMJoystick(Model model1)
         {
             this.model = model1;
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
@@ -91,62 +90,5 @@ namespace FlightSimulator.ViewModels
                 }
             }
         }
-        public double VMHeadingDeg
-        {
-            get
-            {
-                return model.HeadingDeg;
-            }
-        }
-        public double VMVerticalSpeed
-        {
-            get
-            {
-                return model.VerticalSpeed;
-            }
-        }
-        public double VMGroundSpeedKt
-        {
-            get
-            {
-                return model.GroundSpeedKt;
-            }
-        }
-        public double VMIndicatedSpeedKt
-        {
-            get
-            {
-                return model.IndicatedSpeedKt;
-            }
-        }
-        public double VMAltitudeFt
-        {
-            get
-            {
-                return model.AltitudeFt;
-            }
-        }
-        public double VMRollDeg
-        {
-            get
-            {
-                return model.RollDeg;
-            }
-        }
-        public double VMPitchDeg
-        {
-            get
-            {
-                return model.PitchDeg;
-            }
-        }
-        public double VMIndicatedAlitudeFt
-        {
-            get
-            {
-                return model.IndicatedAlitudeFt;
-            }
-        }
-
     }
 }

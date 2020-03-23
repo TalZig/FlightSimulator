@@ -13,38 +13,6 @@ namespace FlightSimulator.Models
         public double YairPlaneLocation;
         public double [] valuesFromView = new double[4];
         public volatile bool stop = false;
-        private double xPos;
-        public double XPos
-        {
-            get
-            {
-                return xPos;
-            }
-            set
-            {
-                if (xPos != value)
-                {
-                    xPos = value;
-                    this.NotifyPropertyChanged("XPos");
-                }
-            }
-        }
-        private double yPos;
-        public double YPos
-        {
-            get
-            {
-                return yPos;
-            }
-            set
-            {
-                if (yPos != value)
-                {
-                    yPos = value;
-                    this.NotifyPropertyChanged("YPos");
-                }
-            }
-        }
         private double verticalSpeed;
         public double VerticalSpeed
         {
@@ -54,11 +22,8 @@ namespace FlightSimulator.Models
             }
             set
             {
-                if (verticalSpeed != value)
-                {
-                    verticalSpeed = value;
-                    this.NotifyPropertyChanged("VerticalSpeed");
-                }
+                verticalSpeed = value;
+                this.NotifyPropertyChanged("VerticalSpeed");
             }
         }
         private double headingDeg;
@@ -70,11 +35,8 @@ namespace FlightSimulator.Models
             }
             set
             {
-                if (headingDeg != value)
-                {
-                    headingDeg = value;
-                    this.NotifyPropertyChanged("HeadingDeg");
-                }
+                headingDeg = value;
+                this.NotifyPropertyChanged("HeadingDeg");
             }
         }
         private double groundSpeedKt;
@@ -86,11 +48,8 @@ namespace FlightSimulator.Models
             }
             set
             {
-                if (groundSpeedKt != value)
-                {
-                    groundSpeedKt = value;
-                    this.NotifyPropertyChanged("GroundSpeedKt");
-                }
+                groundSpeedKt = value;
+                this.NotifyPropertyChanged("GroundSpeedKt");
             }
         }
         private double indicatedSpeedKt;
@@ -102,11 +61,8 @@ namespace FlightSimulator.Models
             }
             set
             {
-                if (indicatedSpeedKt != value)
-                {
-                    indicatedSpeedKt = value;
-                    this.NotifyPropertyChanged("IndicatedSpeedKt");
-                }
+                indicatedSpeedKt = value;
+                this.NotifyPropertyChanged("IndicatedSpeedKt");
             }
         }
         private double altitudeFt;
@@ -118,11 +74,8 @@ namespace FlightSimulator.Models
             }
             set
             {
-                if (altitudeFt != value)
-                {
-                    altitudeFt = value;
-                    this.NotifyPropertyChanged("AltitudeFt");
-                }
+                altitudeFt = value;
+                this.NotifyPropertyChanged("AltitudeFt");
             }
         }
     private double rollDeg;
@@ -134,11 +87,8 @@ namespace FlightSimulator.Models
         }
         set
         {
-                if (rollDeg != value)
-                {
-                    rollDeg = value;
-                    this.NotifyPropertyChanged("RollDeg");
-                }
+            rollDeg = value;
+            this.NotifyPropertyChanged("RollDeg");
         }
     }
         private double pitchDeg;
@@ -150,11 +100,8 @@ namespace FlightSimulator.Models
             }
             set
             {
-                if (pitchDeg != value)
-                {
-                    pitchDeg = value;
-                    this.NotifyPropertyChanged("PitchDeg");
-                }
+                pitchDeg = value;
+                this.NotifyPropertyChanged("PitchDeg");
             }
         }
         private double indicatedAltitudeFt;
@@ -166,11 +113,8 @@ namespace FlightSimulator.Models
             }
             set
             {
-                if (indicatedAltitudeFt != value)
-                {
-                    indicatedAltitudeFt = value;
-                    this.NotifyPropertyChanged("IndicatedAltitudeFt");
-                }
+                indicatedAltitudeFt = value;
+                this.NotifyPropertyChanged("IndicatedAltitudeFt");
             }
         }
 
@@ -178,7 +122,6 @@ namespace FlightSimulator.Models
         public void Connect(string ip, int port)
         {
             myClient.Connect(ip, port);
-            this.Start();
         }
         public void Start()
         {
@@ -206,10 +149,6 @@ namespace FlightSimulator.Models
                 PitchDeg = Double.Parse(myClient.read());
                 myClient.write("get /instrumentation/altimeter/indicated-altitude-ft");
                 IndicatedAlitudeFt = Double.Parse(myClient.read());
-                myClient.write("get /position/latitude-deg");
-                XPos = Double.Parse(myClient.read());
-                myClient.write("get /position/longitude-deg");
-                YPos = Double.Parse(myClient.read());
 
                 //values from the view that we need to update
                 myClient.write("set /controls/flight/rudder" + valuesFromView[0].ToString());

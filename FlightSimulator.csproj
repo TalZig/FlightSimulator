@@ -62,7 +62,9 @@
     <Compile Include="Models\model.cs" />
     <Compile Include="Models\MyTcpClient.cs" />
     <Compile Include="Models\Notifier.cs" />
-    <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="ViewModels\VMDashboard.cs" />
+    <Compile Include="ViewModels\VMJoystick.cs" />
+    <Compile Include="ViewModels\VMMap.cs" />
     <Compile Include="View\ControlBoard.xaml.cs">
       <DependentUpon>ControlBoard.xaml</DependentUpon>
     </Compile>
