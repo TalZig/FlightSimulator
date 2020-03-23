@@ -196,22 +196,36 @@ namespace FlightSimulator.Models
                 Console.WriteLine(HeadingDeg);
                 myClient.write("get /instrumentation/gps/indicated-vertical-speed\r\n");
                 VerticalSpeed = Double.Parse(myClient.read());
+                Console.WriteLine(VerticalSpeed);
                 myClient.write("get /instrumentation/gps/indicated-ground-speed-kt\r\n");
                 GroundSpeedKt = Double.Parse(myClient.read());
+                Console.WriteLine(GroundSpeedKt);
                 myClient.write("get /instrumentation/airspeed-indicator/indicated-speed-kt\r\n");
                 IndicatedSpeedKt = Double.Parse(myClient.read());
+                Console.WriteLine(IndicatedSpeedKt);
                 myClient.write("get /instrumentation/gps/indicated-altitude-ft\r\n");
                 AltitudeFt = Double.Parse(myClient.read());
-                myClient.write("get /instrumentation/attitude-indicator/indicated-roll-deg\r\n");
+                Console.WriteLine(AltitudeFt);
+                myClient.write("get /instrumentation/attitude-indicator/internal-roll-deg\r\n");
                 RollDeg = Double.Parse(myClient.read());
-                myClient.write("get /instrumentation/attitude-indicator/indicated-pitch-deg\r\n");
+                Console.WriteLine(RollDeg);
+
+                myClient.write("get /instrumentation/attitude-indicator/internal-pitch-deg\r\n");
                 PitchDeg = Double.Parse(myClient.read());
+                Console.WriteLine(PitchDeg);
+
                 myClient.write("get /instrumentation/altimeter/indicated-altitude-ft\r\n");
                 IndicatedAlitudeFt = Double.Parse(myClient.read());
+                Console.WriteLine(IndicatedAlitudeFt);
+
                 myClient.write("get /position/latitude-deg\r\n");
                 XPos = Double.Parse(myClient.read());
+                Console.WriteLine(XPos);
+
                 myClient.write("get /position/longitude-deg\r\n");
                 YPos = Double.Parse(myClient.read());
+                Console.WriteLine(YPos);
+
 
                 //values from the view that we need to update
                 myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
