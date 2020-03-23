@@ -48,7 +48,6 @@ namespace FlightSimulator.Models
                 byte[] data = new byte[100];
                 int k = stream.Read(data, 0, 100);
                 StringBuilder builder = new StringBuilder();
-                Console.WriteLine(data);
                 foreach (char value in data)
                 {
                     builder.Append(value);
@@ -62,9 +61,12 @@ namespace FlightSimulator.Models
                 //for integer
                 string temp = Regex.Match(returnedValue, @"\d+").Value;
 
-                if (returnedValue == "")
-                    return temp;
-                else return returnedValue;
+            if (returnedValue == "")
+            {
+                Console.WriteLine(temp + "check");
+                return temp;
+            }
+            else return returnedValue;
             }
 
         }

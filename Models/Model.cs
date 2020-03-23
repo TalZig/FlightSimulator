@@ -11,19 +11,54 @@ namespace FlightSimulator.Models
     {
         public double XairPlaneLocation;
         public double YairPlaneLocation;
-        public double [] valuesFromView = new double[4];
+        public double[] valuesFromView = new double[4];
         public volatile bool stop = false;
+        private double xPos;
+        public double XPos
+        {
+            get
+            {
+                return xPos;
+            }
+            set
+            {
+                if (xPos != value)
+                {
+                    xPos = value;
+                    this.NotifyPropertyChanged("XPos");
+                }
+            }
+        }
+        private double yPos;
+        public double YPos
+        {
+            get
+            {
+                return yPos;
+            }
+            set
+            {
+                if (yPos != value)
+                {
+                    yPos = value;
+                    this.NotifyPropertyChanged("YPos");
+                }
+            }
+        }
         private double verticalSpeed;
         public double VerticalSpeed
         {
-            get 
+            get
             {
                 return verticalSpeed;
             }
             set
             {
-                verticalSpeed = value;
-                this.NotifyPropertyChanged("VerticalSpeed");
+                if (verticalSpeed != value)
+                {
+                    verticalSpeed = value;
+                    this.NotifyPropertyChanged("VerticalSpeed");
+                }
             }
         }
         private double headingDeg;
@@ -35,21 +70,27 @@ namespace FlightSimulator.Models
             }
             set
             {
-                headingDeg = value;
-                this.NotifyPropertyChanged("HeadingDeg");
+                if (headingDeg != value)
+                {
+                    headingDeg = value;
+                    this.NotifyPropertyChanged("HeadingDeg");
+                }
             }
         }
         private double groundSpeedKt;
         public double GroundSpeedKt
         {
             get
-            { 
+            {
                 return groundSpeedKt;
             }
             set
             {
-                groundSpeedKt = value;
-                this.NotifyPropertyChanged("GroundSpeedKt");
+                if (groundSpeedKt != value)
+                {
+                    groundSpeedKt = value;
+                    this.NotifyPropertyChanged("GroundSpeedKt");
+                }
             }
         }
         private double indicatedSpeedKt;
@@ -61,8 +102,11 @@ namespace FlightSimulator.Models
             }
             set
             {
-                indicatedSpeedKt = value;
-                this.NotifyPropertyChanged("IndicatedSpeedKt");
+                if (indicatedSpeedKt != value)
+                {
+                    indicatedSpeedKt = value;
+                    this.NotifyPropertyChanged("IndicatedSpeedKt");
+                }
             }
         }
         private double altitudeFt;
@@ -74,23 +118,29 @@ namespace FlightSimulator.Models
             }
             set
             {
-                altitudeFt = value;
-                this.NotifyPropertyChanged("AltitudeFt");
+                if (altitudeFt != value)
+                {
+                    altitudeFt = value;
+                    this.NotifyPropertyChanged("AltitudeFt");
+                }
             }
         }
-    private double rollDeg;
-    public double RollDeg
-    {
-        get
+        private double rollDeg;
+        public double RollDeg
         {
-            return rollDeg;
+            get
+            {
+                return rollDeg;
+            }
+            set
+            {
+                if (rollDeg != value)
+                {
+                    rollDeg = value;
+                    this.NotifyPropertyChanged("RollDeg");
+                }
+            }
         }
-        set
-        {
-            rollDeg = value;
-            this.NotifyPropertyChanged("RollDeg");
-        }
-    }
         private double pitchDeg;
         public double PitchDeg
         {
@@ -100,8 +150,11 @@ namespace FlightSimulator.Models
             }
             set
             {
-                pitchDeg = value;
-                this.NotifyPropertyChanged("PitchDeg");
+                if (pitchDeg != value)
+                {
+                    pitchDeg = value;
+                    this.NotifyPropertyChanged("PitchDeg");
+                }
             }
         }
         private double indicatedAltitudeFt;
@@ -113,8 +166,11 @@ namespace FlightSimulator.Models
             }
             set
             {
-                indicatedAltitudeFt = value;
-                this.NotifyPropertyChanged("IndicatedAltitudeFt");
+                if (indicatedAltitudeFt != value)
+                {
+                    indicatedAltitudeFt = value;
+                    this.NotifyPropertyChanged("IndicatedAltitudeFt");
+                }
             }
         }
 
@@ -122,6 +178,7 @@ namespace FlightSimulator.Models
         public void Connect(string ip, int port)
         {
             myClient.Connect(ip, port);
+            this.Start();
         }
         public void Start()
         {
@@ -130,7 +187,7 @@ namespace FlightSimulator.Models
         }
         private void StartReadAndWrite()
         {
-            
+
             while (!stop)
             {
                 //values from the server
@@ -163,24 +220,24 @@ namespace FlightSimulator.Models
                 myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
                 //location of the airplane
 
-                
+
             }
         }
         public void UpdateValue(String info, double newVal)
         {
-            if(info == "rudder")
+            if (info == "rudder")
             {
                 valuesFromView[0] = UpdateRudder(newVal);
             }
-            if(info == "elevator")
+            if (info == "elevator")
             {
                 valuesFromView[1] = UpdateElevator(newVal);
             }
-            if(info == "throttle")
+            if (info == "throttle")
             {
                 valuesFromView[2] = UpdateThrottle(newVal);
             }
-            if(info == "aileron")
+            if (info == "aileron")
             {
                 valuesFromView[3] = UpdateAileron(newVal);
             }
@@ -188,11 +245,11 @@ namespace FlightSimulator.Models
 
         private double UpdateRudder(double newVal)
         {
-            if(newVal > 1)
+            if (newVal > 1)
             {
                 return 1;
             }
-            if(newVal < -1)
+            if (newVal < -1)
             {
                 return -1;
             }
