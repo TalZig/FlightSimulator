@@ -22,11 +22,15 @@ namespace FlightSimulator
     public partial class MainWindow : Window
     {
         public MainWindow()
-        {
-            Console.WriteLine("check");
-            VMJoystick vm = new VMJoystick(new Models.Model());
-            DataContext = vm;
-            vm.model.Connect("127.0.0.1", 5402);
+        {           
+            Models.Model model = new Models.Model();
+            model.Connect("127.0.0.1", 5402);
+            VMJoystick jvm = new VMJoystick(model);
+            Throttle.DataContext = jvm;
+            Aileron.DataContext = jvm;
+            joystick1.DataContext = jvm;
+            VMDashboard dvm = new VMDashboard(model);
+            Board.DataContext = dvm;
             //vm.model.Start();
             InitializeComponent();
         }
