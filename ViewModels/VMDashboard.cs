@@ -11,6 +11,7 @@ namespace FlightSimulator.ViewModels
     class VMDashboard : Notifier
     {
         Model model;
+
         public VMDashboard(Model model1)
         {
             this.model = model1;
