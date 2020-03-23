@@ -219,7 +219,7 @@ namespace FlightSimulator.Models
                 myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
                 myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
                 //location of the airplane
-
+                Thread.Sleep(20000);
 
             }
         }
