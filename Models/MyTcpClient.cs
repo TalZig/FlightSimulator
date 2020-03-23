@@ -54,16 +54,18 @@ namespace FlightSimulator.Models
                 }
                 string returnedValue = builder.ToString();
                 Console.WriteLine(returnedValue);
-                //for floating point
-                returnedValue = Regex.Match(returnedValue, @"\d+.\d+").Value;
-                Console.WriteLine(returnedValue);
 
                 //for integer
-                string temp = Regex.Match(returnedValue, @"\d+").Value;
+                string temp = Regex.Match(returnedValue, @"[+-]\d+").Value;
+                //for floating point
+                returnedValue = Regex.Match(returnedValue, @"[+-]?\d+.\d+").Value;
+                Console.WriteLine(returnedValue);
 
-            if (returnedValue == "")
+            if (returnedValue == "" && temp == "")
+                return "0";
+            if(returnedValue == "")
             {
-                Console.WriteLine(temp + "check");
+                Console.WriteLine(temp + "check2");
                 return temp;
             }
             else return returnedValue;
