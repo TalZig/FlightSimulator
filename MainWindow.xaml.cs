@@ -24,13 +24,15 @@ namespace FlightSimulator
         public MainWindow()
         {           
             Models.Model model = new Models.Model();
-            model.Connect("127.0.0.1", 5402);
+            //model.Connect("127.0.0.1", 5402);
             VMJoystick jvm = new VMJoystick(model);
-            Throttle.DataContext = jvm;
+            //Throttle.DataContext = jvm;
            // Aileron.DataContext = jvm;
            // joystick1.DataContext = jvm;
             VMDashboard dvm = new VMDashboard(model);
-          //  Board.DataContext = dvm;
+            //  Board.DataContext = dvm;
+            VMMap mapvm = new VMMap();
+            //Map.DataContext = mapvm;
             //vm.model.Start();
             InitializeComponent();
         }
