@@ -228,12 +228,8 @@ namespace FlightSimulator.Models
 
 
                 //values from the view that we need to update
-                myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
-                myClient.write("set /controls/flight/elevator\r\n" + valuesFromView[1].ToString());
-                myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
-                myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
                 //location of the airplane
-                Thread.Sleep(20000);
+                Thread.Sleep(2000);
 
             }
         }
@@ -242,18 +238,25 @@ namespace FlightSimulator.Models
             if (info == "rudder")
             {
                 valuesFromView[0] = UpdateRudder(newVal);
+                myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
             }
             if (info == "elevator")
             {
                 valuesFromView[1] = UpdateElevator(newVal);
+                myClient.write("set /controls/flight/elevator\r\n" + valuesFromView[1].ToString());
+
             }
             if (info == "throttle")
             {
                 valuesFromView[2] = UpdateThrottle(newVal);
+                myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
+
             }
             if (info == "aileron")
             {
                 valuesFromView[3] = UpdateAileron(newVal);
+                myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
+
             }
         }
 
@@ -305,13 +308,13 @@ namespace FlightSimulator.Models
             {
                 if (newVal > 1)
                 {
-                    return 1;
+                    return 0;
                 }
                 if (newVal < 0)
                 {
-                    return 0;
+                    return 1;
                 }
-                return newVal;
+                return 1 - newVal;
             }
         }
     }
