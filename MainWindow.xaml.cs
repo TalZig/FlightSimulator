@@ -21,9 +21,11 @@ namespace FlightSimulator
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string firstVal;
+        private string secondVal;
         public MainWindow()
-        {           
-            Models.Model model = new Models.Model();
+        {
+/*            Models.Model model = new Models.Model();
             //model.Connect("127.0.0.1", 5402);
             VMJoystick jvm = new VMJoystick(model);
           //  this.Throttle.DataContext = jvm;
@@ -33,9 +35,38 @@ namespace FlightSimulator
             //  Board.DataContext = dvm;
             VMMap mapvm = new VMMap();
             //Map.DataContext = mapvm;
-            //vm.model.Start();
+            //vm.model.Start();*/
             InitializeComponent();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            firstVal = MyTextBox.Text;
+            secondVal = MyTextBox2.Text;
+            var window = new FlightSimulator.SubMainWindow(this.firstVal,this.secondVal);
+            this.Hide();
+            window.ShowDialog();
+        }
+
+        private void MyTextBox2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MyTextBox2.Text = "";
+        }
+
+        private void MyTextBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MyTextBox.Text = "";
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            firstVal = "127.0.0.1";
+            secondVal = "5402";
+            var window = new FlightSimulator.SubMainWindow(this.firstVal, this.secondVal);
+            this.Hide();
+            window.ShowDialog();
+
+        }
     }
 }
