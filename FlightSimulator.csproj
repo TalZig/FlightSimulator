@@ -65,6 +65,9 @@
     <Compile Include="Models\model.cs" />
     <Compile Include="Models\MyTcpClient.cs" />
     <Compile Include="Models\Notifier.cs" />
+    <Compile Include="SubMainWindow.xaml.cs">
+      <DependentUpon>SubMainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\VMDashboard.cs" />
     <Compile Include="ViewModels\VMJoystick.cs" />
     <Compile Include="ViewModels\VMMap.cs" />
@@ -87,6 +90,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RunGame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SubMainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
