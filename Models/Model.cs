@@ -308,13 +308,13 @@ namespace FlightSimulator.Models
             {
                 if (newVal > 1)
                 {
-                    return 1;
+                    return 0;
                 }
                 if (newVal < 0)
                 {
-                    return 0;
+                    return 1;
                 }
-                return newVal;
+                return 1 - newVal;
             }
         }
     }

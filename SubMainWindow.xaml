@@ -42,7 +42,7 @@
                 </TransformGroup>
             </View:Joystick.RenderTransform>
         </View:Joystick>
-        <Slider x:Name="Aileron" HorizontalAlignment="Right" Margin="0,537,184,-31" Maximum="1" Minimum="-1" RenderTransformOrigin="0.5,0.5" Width="202" TickPlacement="TopLeft" Value="{Binding VMAileron}">
+        <Slider x:Name="Throttle" HorizontalAlignment="Right" Margin="0,537,184,-31" Maximum="1" Minimum="-1" TickFrequency="0.1" RenderTransformOrigin="0.5,0.5" Width="202" TickPlacement="TopLeft" Value="{Binding VMThrottle, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}">
 
             <Slider.RenderTransform>
                 <TransformGroup>
@@ -54,7 +54,7 @@
             </Slider.RenderTransform>
         </Slider>
 
-        <Slider x:Name="Throttle" HorizontalAlignment="Right" Margin="0,413,343,126" Maximum="1" Minimum="0" RenderTransformOrigin="0.5,0.5" Width="202" TickPlacement="TopLeft" Value="{Binding VMThrottle}">
+        <Slider x:Name="Aileron" HorizontalAlignment="Right" Margin="0,413,343,126" Maximum="1" Minimum="0" TickFrequency="0.1" RenderTransformOrigin="0.5,0.5" Width="202" TickPlacement="TopLeft" Value="{Binding VMAileron, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}">
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -64,6 +64,8 @@
                 </TransformGroup>
             </Slider.RenderTransform>
         </Slider>
-    </Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="530,303,0,0" TextWrapping="Wrap" Text="Aileron" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="814,545,0,0" TextWrapping="Wrap" Text="Throttle" VerticalAlignment="Top"/>
+    </Grid> 
 
 </Window>
