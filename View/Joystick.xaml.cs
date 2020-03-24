@@ -81,7 +81,6 @@ namespace FlightSimulator.View
             get { return (double)GetValue(ElevatorValueProperty); }
             set 
             {
-                Console.WriteLine("elevator changed in view to" + value);
                 SetValue(ElevatorValueProperty, value); 
             }
         }
@@ -93,7 +92,6 @@ namespace FlightSimulator.View
             get { return (double)GetValue(RudderValueProperty); }
             set
             {
-                Console.WriteLine("rudder changed in view to" + value);
                 SetValue(RudderValueProperty, value);
             }
         }

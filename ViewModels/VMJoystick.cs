@@ -37,7 +37,6 @@ namespace FlightSimulator.ViewModels
             {
                 if (value != _rudder)
                 {
-                    Console.WriteLine("changed rudder in view model from" + _rudder.ToString() + "to" + value.ToString());
                     _rudder = value;
                     this.NotifyPropertyChanged("rudder");
                     model.UpdateValue("rudder", value);
@@ -52,7 +51,6 @@ namespace FlightSimulator.ViewModels
             {
                 if (value != _elevator)
                 {
-                    Console.WriteLine("changed elevator in view model from" + _elevator.ToString() + "to" + value.ToString());
                     _elevator = value;
                     NotifyPropertyChanged("elevator");
                     model.UpdateValue("elevator", value);
