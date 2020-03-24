@@ -25,19 +25,7 @@ namespace FlightSimulator
         private string secondVal;
         public MainWindow()
         {
-            InitializeComponent();
-            Models.Model model = new Models.Model();
-           // model.Connect("127.0.0.1", 5402);
-            VMJoystick jvm = new VMJoystick(model);
-            Console.WriteLine(jvm.VMAileron);
-            Throttle.DataContext = jvm;
-            Aileron.DataContext = jvm;
-            joystick1.DataContext = jvm;
-            VMDashboard dvm = new VMDashboard(model);
-            Board.DataContext = dvm;
-            VMMap mapvm = new VMMap();
-            Map.DataContext = mapvm;
-            //model.Start();         
+            InitializeComponent();  
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

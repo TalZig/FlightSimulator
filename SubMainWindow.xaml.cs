@@ -23,6 +23,7 @@ namespace FlightSimulator
     {
         public SubMainWindow(string ip, string port)
         {
+            InitializeComponent();
             Models.Model model = new Models.Model();
             if (ip == "" || port == "")
             {
@@ -54,13 +55,12 @@ namespace FlightSimulator
                 }
 
             VMJoystick jvm = new VMJoystick(model);
-            //Throttle.DataContext = jvm;
-            // Aileron.DataContext = jvm;
-            // joystick1.DataContext = jvm;
+            Throttle.DataContext = jvm;
+            Aileron.DataContext = jvm;
+            joystick1.DataContext = jvm;
             VMDashboard dvm = new VMDashboard(model);
-            //  Board.DataContext = dvm;
-            //vm.model.Start();
-            InitializeComponent();
+            Board.DataContext = dvm;
+            //vm.model.Start();            
         }
 
     }
