@@ -33,7 +33,7 @@
                 </TransformGroup>
             </View:ControlBoard.RenderTransform>
         </View:ControlBoard>
-        <View:Joystick x:Name="joystick1" Margin="417,244,-14,-24" RenderTransformOrigin="0.5,0.5" RudderValue ="{Binding VMRudder, UpdateSourceTrigger=PropertyChanged, Mode = TwoWay}" ElevatorValue ="{Binding VMRudder, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}">
+        <View:Joystick x:Name="joystick1" Margin="417,244,-14,-24" RenderTransformOrigin="0.5,0.5" RudderValue ="{Binding VMRudder, UpdateSourceTrigger=PropertyChanged, Mode = TwoWay}" ElevatorValue ="{Binding VMElevator, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}">
             <View:Joystick.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>

@@ -241,12 +241,10 @@ namespace FlightSimulator.Models
         {
             if (info == "rudder")
             {
-                Console.WriteLine("new value of rudder" + newVal + "sent to simulator");
                 valuesFromView[0] = UpdateRudder(newVal);
             }
             if (info == "elevator")
             {
-                Console.WriteLine("new value of elevator" + newVal + "sent to simulator");
                 valuesFromView[1] = UpdateElevator(newVal);
             }
             if (info == "throttle")
