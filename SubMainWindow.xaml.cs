@@ -60,7 +60,7 @@ namespace FlightSimulator
             joystick1.DataContext = jvm;
             VMDashboard dvm = new VMDashboard(model);
             Board.DataContext = dvm;
-            //vm.model.Start();            
+            //vm.model.Start() ;            
         }
 
     }
