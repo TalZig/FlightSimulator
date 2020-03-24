@@ -20,12 +20,11 @@ namespace FlightSimulator.View
     /// </summary>
     public partial class Joystick : UserControl
     {
+        private Point center;
         public Joystick()
         {
             InitializeComponent();
-            
         }
-        private Point center;
         //private double x1 = 0;
         //private double y1 = 0;
         private void CenterKnob_Completed(Object sender, EventArgs e) {
