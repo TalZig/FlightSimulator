@@ -21,10 +21,38 @@ namespace FlightSimulator
     /// </summary>
     public partial class SubMainWindow : Window
     {
-        public SubMainWindow()
+        public SubMainWindow(string ip, string port)
         {
             Models.Model model = new Models.Model();
-            model.Connect("127.0.0.1", 5402);
+            if (ip == "" || port == "")
+            {
+                try
+                {
+                    model.Connect("127.0.0.1", 5402);
+                }catch(Exception e)
+                {
+                    Console.WriteLine("there is no server, good bye");
+                    return;
+                }
+            }
+            else
+                try
+                {
+                    model.Connect(ip, int.Parse(port));
+                }catch(Exception e)
+                {
+                    Console.WriteLine("ip or port aren't good, try the default ip and port");
+                    try
+                    {
+                        model.Connect("127.0.0.1", 5402);
+                    }
+                    catch (Exception e2)
+                    {
+                        Console.WriteLine("there is no server, good bye");
+                        return;
+                    }
+                }
+
             VMJoystick jvm = new VMJoystick(model);
             //Throttle.DataContext = jvm;
             // Aileron.DataContext = jvm;
