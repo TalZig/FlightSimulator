@@ -37,7 +37,7 @@ namespace FlightSimulator.ViewModels
             {
                 if (value != _rudder)
                 {
-                    Console.WriteLine("changed rudder from" + _rudder.ToString() + "to" + value.ToString());
+                    Console.WriteLine("changed rudder in view model from" + _rudder.ToString() + "to" + value.ToString());
                     _rudder = value;
                     this.NotifyPropertyChanged("rudder");
                     model.UpdateValue("rudder", value);
@@ -52,7 +52,7 @@ namespace FlightSimulator.ViewModels
             {
                 if (value != _elevator)
                 {
-                    Console.WriteLine("changed elevator from" + _elevator.ToString() + "to" + value.ToString());
+                    Console.WriteLine("changed elevator in view model from" + _elevator.ToString() + "to" + value.ToString());
                     _elevator = value;
                     NotifyPropertyChanged("elevator");
                     model.UpdateValue("elevator", value);
@@ -68,7 +68,7 @@ namespace FlightSimulator.ViewModels
             {
                 if (value != _aileron)
                 {
-                    Console.WriteLine("changed elevator from" + _aileron.ToString() + "to" + value.ToString());
+                    Console.WriteLine("changed elevator in view model from" + _aileron.ToString() + "to" + value.ToString());
                     _aileron = value;
                     NotifyPropertyChanged("aileron");
                     model.UpdateValue("aileron", value);
@@ -83,7 +83,7 @@ namespace FlightSimulator.ViewModels
             {
                 if (value != _throttle)
                 {
-                    Console.WriteLine("changed elevator from" + _throttle.ToString() + "to" + value.ToString());
+                    Console.WriteLine("changed elevator in view model from" + _throttle.ToString() + "to" + value.ToString());
                     _throttle = value;
                     NotifyPropertyChanged("throttle");
                     model.UpdateValue("throttle", value);

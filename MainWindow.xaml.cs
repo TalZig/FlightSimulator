@@ -25,7 +25,7 @@ namespace FlightSimulator
         {
             InitializeComponent();
             Models.Model model = new Models.Model();
-            model.Connect("127.0.0.1", 5402);
+           // model.Connect("127.0.0.1", 5402);
             VMJoystick jvm = new VMJoystick(model);
             Console.WriteLine(jvm.VMAileron);
             Throttle.DataContext = jvm;

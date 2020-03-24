@@ -78,7 +78,11 @@ namespace FlightSimulator.View
         public double ElevatorValue
         {
             get { return (double)GetValue(ElevatorValueProperty); }
-            set { SetValue(ElevatorValueProperty, value); }
+            set 
+            {
+                Console.WriteLine("elevator changed in view to" + value);
+                SetValue(ElevatorValueProperty, value); 
+            }
         }
 
         public static readonly DependencyProperty ElevatorValueProperty =
@@ -86,7 +90,11 @@ namespace FlightSimulator.View
         public double RudderValue
         {
             get { return (double)GetValue(RudderValueProperty); }
-            set { SetValue(RudderValueProperty, value); }
+            set
+            {
+                Console.WriteLine("rudder changed in view to" + value);
+                SetValue(RudderValueProperty, value);
+            }
         }
 
         public static readonly DependencyProperty RudderValueProperty =
