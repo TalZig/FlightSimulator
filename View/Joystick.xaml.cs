@@ -57,8 +57,9 @@ namespace FlightSimulator.View
                 {
                     knobPosition.X = x;
                     knobPosition.Y = y;
-                    //x1 = x;
-                    //y1 = y;
+                    //update on view model
+                    RudderValue = x;
+                    ElevatorValue = y;
                 }
             }
     }
