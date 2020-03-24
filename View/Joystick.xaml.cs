@@ -58,14 +58,9 @@ namespace FlightSimulator.View
                     knobPosition.X = x;
                     knobPosition.Y = y;
                     //update on view model (normalized)
-                    if(x<0)
-                        RudderValue = (x-(KnobBase.Width/2)) / (BlackCircle.Width / 2);
-                    else
-                        RudderValue = (x + (KnobBase.Width / 2)) / (BlackCircle.Width / 2);
-                    if(y<0)
-                        ElevatorValue = (y - (KnobBase.Height / 2)) / (BlackCircle.Height / 2);
-                    else
-                        ElevatorValue = (y + (KnobBase.Height / 2)) / (BlackCircle.Height / 2);
+                    RudderValue = (x+2) / ((BlackCircle.Width - KnobBase.Width)/2);
+                    ElevatorValue = (y / (KnobBase.Width / 2));
+                    
                 }
             }
     }
