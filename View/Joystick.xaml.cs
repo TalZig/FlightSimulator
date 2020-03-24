@@ -65,7 +65,7 @@ namespace FlightSimulator.View
                     if(y<0)
                         ElevatorValue = (y - (KnobBase.Height / 2)) / (BlackCircle.Height / 2);
                     else
-                        ElevatorValue = (y - (KnobBase.Height / 2)) / (BlackCircle.Height / 2);
+                        ElevatorValue = (y + (KnobBase.Height / 2)) / (BlackCircle.Height / 2);
                 }
             }
     }
