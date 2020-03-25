@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Maps.MapControl.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,42 +10,23 @@ namespace FlightSimulator.Models
 {
     class Model : Notifier
     {
-        public double XairPlaneLocation;
-        public double YairPlaneLocation;
         public double[] valuesFromView = new double[4];
         public volatile bool stop = false;
-        private double xPos;
-        public double XPos
+        private Location vmLocation;
+        public Location MLocation
         {
             get
             {
-                return xPos;
+                return vmLocation;
             }
             set
             {
-                if (xPos != value)
-                {
-                    xPos = value;
-                    this.NotifyPropertyChanged("XPos");
-                }
-            }
+                vmLocation = value;
+                Console.WriteLine("Location in M: " + MLocation);
+            } 
         }
-        private double yPos;
-        public double YPos
-        {
-            get
-            {
-                return yPos;
-            }
-            set
-            {
-                if (yPos != value)
-                {
-                    yPos = value;
-                    this.NotifyPropertyChanged("YPos");
-                }
-            }
-        }
+
+
         private double verticalSpeed;
         public double VerticalSpeed
         {
@@ -187,45 +169,42 @@ namespace FlightSimulator.Models
         }
         private void StartReadAndWrite()
         {
-
+            double tempX = 0;
+            double tempY = 0;
             while (!stop)
             {
                 //values from the server
                 myClient.write("get /instrumentation/heading-indicator/indicated-heading-deg\r\n");
                 HeadingDeg = Double.Parse(myClient.read());
-                Console.WriteLine(HeadingDeg);
+                
                 myClient.write("get /instrumentation/gps/indicated-vertical-speed\r\n");
                 VerticalSpeed = Double.Parse(myClient.read());
-                Console.WriteLine(VerticalSpeed);
+                
                 myClient.write("get /instrumentation/gps/indicated-ground-speed-kt\r\n");
                 GroundSpeedKt = Double.Parse(myClient.read());
-                Console.WriteLine(GroundSpeedKt);
+                
                 myClient.write("get /instrumentation/airspeed-indicator/indicated-speed-kt\r\n");
                 IndicatedSpeedKt = Double.Parse(myClient.read());
-                Console.WriteLine(IndicatedSpeedKt);
+                
                 myClient.write("get /instrumentation/gps/indicated-altitude-ft\r\n");
                 AltitudeFt = Double.Parse(myClient.read());
-                Console.WriteLine(AltitudeFt);
+
                 myClient.write("get /instrumentation/attitude-indicator/internal-roll-deg\r\n");
                 RollDeg = Double.Parse(myClient.read());
-                Console.WriteLine(RollDeg);
 
                 myClient.write("get /instrumentation/attitude-indicator/internal-pitch-deg\r\n");
                 PitchDeg = Double.Parse(myClient.read());
-                Console.WriteLine(PitchDeg);
 
                 myClient.write("get /instrumentation/altimeter/indicated-altitude-ft\r\n");
                 IndicatedAlitudeFt = Double.Parse(myClient.read());
-                Console.WriteLine(IndicatedAlitudeFt);
 
                 myClient.write("get /position/latitude-deg\r\n");
-                XPos = Double.Parse(myClient.read());
-                Console.WriteLine(XPos);
+                tempX = Double.Parse(myClient.read());
 
                 myClient.write("get /position/longitude-deg\r\n");
-                YPos = Double.Parse(myClient.read());
-                Console.WriteLine(YPos);
+                tempY = Double.Parse(myClient.read());
 
+                MLocation = new Location(tempX, tempY);
 
                 //values from the view that we need to update
                 //location of the airplane

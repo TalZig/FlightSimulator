@@ -21,7 +21,7 @@
             </m:Map.RenderTransform>
             <Canvas Width="50" Height="50" m:MapLayer.Position="32.0,34.888852"  m:MapLayer.PositionOrigin="BottomCenter" Opacity="34" Margin="218,507,232,11">
                 <m:Pushpin x:Name="plane" Location="32, 34.888852" Canvas.Left="8" Canvas.Top="20" IsEnabled="False" m:MapLayer.Position="{Binding VMLocation}">
-                    <!--<ImageBrush ImageSource="airplane.png"></ImageBrush>-->
+                   <!--<ImageBrush ImageSource="airplane.png"></ImageBrush>-->
                 </m:Pushpin>
                 <!--<Image Source="airplane.png" Height="80" Width="80" Canvas.Left="-36" Canvas.Top="-40"></Image>-->
             </Canvas>
