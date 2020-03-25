@@ -73,18 +73,22 @@ namespace FlightSimulator.View
                     {
                         knobPosition.X = (BlackCircle.Width / 2) - (KnobBase.Width / 2);
                     }
-                    if (x - (KnobBase.Width / 2) < -(BlackCircle.Width / 2))
+                    else if (x - (KnobBase.Width / 2) < -(BlackCircle.Width / 2))
                     {
                         knobPosition.X = -((BlackCircle.Width / 2) - (KnobBase.Width / 2));
                     }
+                    else
+                        knobPosition.X = x;
                     if (y + (KnobBase.Width / 2) > BlackCircle.Width / 2)
                     {
                         knobPosition.Y = (BlackCircle.Width / 2) - (KnobBase.Width / 2);
                     }
-                    if (y - (KnobBase.Width / 2) < -(BlackCircle.Width / 2))
+                    else if (y - (KnobBase.Width / 2) < -(BlackCircle.Width / 2))
                     {
                         knobPosition.Y = -((BlackCircle.Width / 2) - (KnobBase.Width / 2));
                     }
+                    else
+                        knobPosition.Y = y;
                 }
             }
         }
