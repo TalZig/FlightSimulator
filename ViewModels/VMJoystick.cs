@@ -66,7 +66,6 @@ namespace FlightSimulator.ViewModels
             {
                 if (value != _aileron)
                 {
-                    Console.WriteLine("changed elevator in view model from" + _aileron.ToString() + "to" + value.ToString());
                     _aileron = value;
                     NotifyPropertyChanged("aileron");
                     model.UpdateValue("aileron", value);
@@ -81,7 +80,6 @@ namespace FlightSimulator.ViewModels
             {
                 if (value != _throttle)
                 {
-                    Console.WriteLine("changed elevator in view model from" + _throttle.ToString() + "to" + value.ToString());
                     _throttle = value;
                     NotifyPropertyChanged("throttle");
                     model.UpdateValue("throttle", value);

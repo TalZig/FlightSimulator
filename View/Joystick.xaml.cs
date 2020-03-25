@@ -24,10 +24,13 @@ namespace FlightSimulator.View
         public Joystick()
         {
             InitializeComponent();
+
         }
+        private Point center;
         //private double x1 = 0;
         //private double y1 = 0;
-        private void CenterKnob_Completed(Object sender, EventArgs e) {
+        private void CenterKnob_Completed(Object sender, EventArgs e)
+        {
             knobPosition.X = 0;
             knobPosition.Y = 0;
         }
@@ -38,12 +41,12 @@ namespace FlightSimulator.View
             knobPosition.X = 0;
             knobPosition.Y = 0;
             UIElement element = (UIElement)Knob;
-            element.ReleaseMouseCapture();  
+            element.ReleaseMouseCapture();
         }
 
         private void Knob_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.ChangedButton == MouseButton.Left)
+            if (e.ChangedButton == MouseButton.Left)
             {
                 center = e.GetPosition(this);
                 (Knob).CaptureMouse();
@@ -56,21 +59,21 @@ namespace FlightSimulator.View
             {
                 double x = (e.GetPosition(this).X - center.X);
                 double y = (e.GetPosition(this).Y - center.Y);
-                if (Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2)) +( KnobBase.Width / 2) <= BlackCircle.Width / 2)
+                if (Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2)) + (KnobBase.Width / 2) < BlackCircle.Width / 2)
                 {
                     knobPosition.X = x;
                     knobPosition.Y = y;
                     //update on view model (normalized)
-                    RudderValue = (x+2) / ((BlackCircle.Width - KnobBase.Width)/2);
+                    RudderValue = (x + 2) / ((BlackCircle.Width - KnobBase.Width) / 2);
                     ElevatorValue = (y / (KnobBase.Width / 2));
                 }
                 else
                 {
-                    if(x + (KnobBase.Width / 2) > BlackCircle.Width / 2)
+                    if (x + (KnobBase.Width / 2) > BlackCircle.Width / 2)
                     {
                         knobPosition.X = (BlackCircle.Width / 2) - (KnobBase.Width / 2);
                     }
-                    if ( x - (KnobBase.Width / 2) < - (BlackCircle.Width / 2))
+                    if (x - (KnobBase.Width / 2) < -(BlackCircle.Width / 2))
                     {
                         knobPosition.X = -((BlackCircle.Width / 2) - (KnobBase.Width / 2));
                     }
@@ -84,13 +87,13 @@ namespace FlightSimulator.View
                     }
                 }
             }
-    }
+        }
 
-/*        private void KnobBase_MouseLeave(object sender, MouseEventArgs e)
-        {
-            knobPosition.X = 0;
-            knobPosition.Y = 0;
-        }*/
+        /*        private void KnobBase_MouseLeave(object sender, MouseEventArgs e)
+                {
+                    knobPosition.X = 0;
+                    knobPosition.Y = 0;
+                }*/
 
         private void Knob_MouseLeave(object sender, MouseEventArgs e)
         {
@@ -101,9 +104,9 @@ namespace FlightSimulator.View
         public double ElevatorValue
         {
             get { return (double)GetValue(ElevatorValueProperty); }
-            set 
+            set
             {
-                SetValue(ElevatorValueProperty, value); 
+                SetValue(ElevatorValueProperty, value);
             }
         }
 

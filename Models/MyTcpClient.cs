@@ -43,7 +43,6 @@ namespace FlightSimulator.Models
             try
             {
                 stream.Write(data, 0, data.Length);
-                Console.WriteLine("Sent: {0}", command);
             }
             catch (Exception)
             {

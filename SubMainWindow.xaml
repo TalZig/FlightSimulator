@@ -10,8 +10,7 @@
         Title="MainWindow" Height="600" Width="1000">
 
     <Grid Margin="0,-2,0.333,1.667" Background="WhiteSmoke">
-        <m:Map x:Name="Map" CredentialsProvider="AhgxD7rLpIhZkI6TfF9Jb2TBRr5IYDPx0RDU2gsdB6ohUsJOZlbxLnwApJh-s0FD" Mode="AerialWithLabels" Center="37.806029,-122.407007" ZoomLevel="12" Margin="-44,-4,536,4" RenderTransformOrigin="0.5,0.5">
-            <Image Source="plane.jpg" " />
+        <m:Map x:Name="Map" ZoomLevel="11" CredentialsProvider="AhgxD7rLpIhZkI6TfF9Jb2TBRr5IYDPx0RDU2gsdB6ohUsJOZlbxLnwApJh-s0FD" Mode="AerialWithLabels" Center="32.0 ,34.888852"  Margin="-43,15,534.667,-14.667" RenderTransformOrigin="0.5,0.5">
             <m:Map.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
@@ -20,7 +19,12 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </m:Map.RenderTransform>
-            <!--<m:MapPolygon Name="AirPlane" Fill="Blue" Stroke="Green" StrokeThickness="5" Locations="47.6424,-122.3219 47.8424,-122.1747 47.5814,-122.1747" Opacity="0.7"/>-->
+            <Canvas Width="50" Height="50" m:MapLayer.Position="32.0,34.888852"  m:MapLayer.PositionOrigin="BottomCenter" Opacity="34" Margin="218,507,232,11">
+                <m:Pushpin x:Name="plane" Location="32, 34.888852" Canvas.Left="8" Canvas.Top="20" IsEnabled="False" m:MapLayer.Position="{Binding VMLocation}">
+                    <!--<ImageBrush ImageSource="airplane.png"></ImageBrush>-->
+                </m:Pushpin>
+                <!--<Image Source="airplane.png" Height="80" Width="80" Canvas.Left="-36" Canvas.Top="-40"></Image>-->
+            </Canvas>
         </m:Map>
         <View:ControlBoard x:Name="Board" Margin="595,18,98,300" RenderTransformOrigin="0.5,0.5">
             <View:ControlBoard.RenderTransform>

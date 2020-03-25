@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Maps.MapControl.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,20 +9,27 @@ namespace FlightSimulator.ViewModels
 {
     class VMMap
     {
-		private double lat;
-
-		public double Lat
+		Models.Model model;
+		public VMMap(Models.Model model1)
 		{
-			get { return lat; }
-			set { lat = value; }
+			model = model1;
+
+			//vmLocation = new Location(32.0, 34.888852);
 		}
 
-		private double lon;
+		//private Location vmLocation;
 
-		public double Lon
+		public Location VMLocation
 		{
-			get { return lon; }
-			set { lon = value; }
+			get 
+			{
+				return model.MLocation;
+			}
+			set
+			{
+				Console.WriteLine("Location in VM: " + model.MLocation);
+				model.MLocation = value;
+			}
 		}
 
 

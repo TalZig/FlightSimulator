@@ -1,4 +1,5 @@
 ﻿using FlightSimulator.ViewModels;
+using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,8 @@ namespace FlightSimulator
                 try
                 {
                     model.Connect("127.0.0.1", 5402);
-                }catch(Exception e)
+                }
+                catch (Exception e)
                 {
                     Console.WriteLine("there is no server, good bye");
                     return;
@@ -40,7 +42,8 @@ namespace FlightSimulator
                 try
                 {
                     model.Connect(ip, int.Parse(port));
-                }catch(Exception e)
+                }
+                catch (Exception e)
                 {
                     Console.WriteLine("ip or port aren't good, try the default ip and port");
                     try
@@ -60,8 +63,10 @@ namespace FlightSimulator
             joystick1.DataContext = jvm;
             VMDashboard dvm = new VMDashboard(model);
             Board.DataContext = dvm;
+            VMMap mapvm = new VMMap(model);
+            Map.DataContext = mapvm;
+
             //vm.model.Start() ;            
         }
-
     }
 }
