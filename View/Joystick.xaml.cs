@@ -20,6 +20,7 @@ namespace FlightSimulator.View
     /// </summary>
     public partial class Joystick : UserControl
     {
+        Boolean stop = false;
         public Joystick()
         {
             InitializeComponent();
@@ -35,8 +36,11 @@ namespace FlightSimulator.View
 
         private void Knob_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            stop = true;
             knobPosition.X = 0;
             knobPosition.Y = 0;
+            UIElement element = (UIElement)Knob;
+            element.ReleaseMouseCapture();  
         }
 
         private void Knob_MouseDown(object sender, MouseButtonEventArgs e)
@@ -44,6 +48,7 @@ namespace FlightSimulator.View
             if(e.ChangedButton == MouseButton.Left)
             {
                 center = e.GetPosition(this);
+                (Knob).CaptureMouse();
             }
         }
 
@@ -60,16 +65,34 @@ namespace FlightSimulator.View
                     //update on view model (normalized)
                     RudderValue = (x+2) / ((BlackCircle.Width - KnobBase.Width)/2);
                     ElevatorValue = (y / (KnobBase.Width / 2));
-                    
+                }
+                else
+                {
+                    if(x + (KnobBase.Width / 2) > BlackCircle.Width / 2)
+                    {
+                        knobPosition.X = (BlackCircle.Width / 2) - (KnobBase.Width / 2);
+                    }
+                    if ( x - (KnobBase.Width / 2) < - (BlackCircle.Width / 2))
+                    {
+                        knobPosition.X = -((BlackCircle.Width / 2) - (KnobBase.Width / 2));
+                    }
+                    if (y + (KnobBase.Width / 2) > BlackCircle.Width / 2)
+                    {
+                        knobPosition.Y = (BlackCircle.Width / 2) - (KnobBase.Width / 2);
+                    }
+                    if (y - (KnobBase.Width / 2) < -(BlackCircle.Width / 2))
+                    {
+                        knobPosition.Y = -((BlackCircle.Width / 2) - (KnobBase.Width / 2));
+                    }
                 }
             }
     }
 
-        private void KnobBase_MouseLeave(object sender, MouseEventArgs e)
+/*        private void KnobBase_MouseLeave(object sender, MouseEventArgs e)
         {
             knobPosition.X = 0;
             knobPosition.Y = 0;
-        }
+        }*/
 
         private void Knob_MouseLeave(object sender, MouseEventArgs e)
         {
@@ -99,5 +122,10 @@ namespace FlightSimulator.View
 
         public static readonly DependencyProperty RudderValueProperty =
             DependencyProperty.Register("RudderValue", typeof(double), typeof(Joystick));
+
+        private void Knob_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

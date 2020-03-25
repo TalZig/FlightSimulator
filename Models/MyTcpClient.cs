@@ -40,8 +40,16 @@ namespace FlightSimulator.Models
             public void write(string command)
             {
                 Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
+            try
+            {
                 stream.Write(data, 0, data.Length);
                 Console.WriteLine("Sent: {0}", command);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("server disconnected");
+                this.disconnect();
+            }
             }
             public string read()
             {
