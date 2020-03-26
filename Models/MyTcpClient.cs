@@ -16,30 +16,30 @@ namespace FlightSimulator.Models
     using System.Net.Sockets;
     using System.IO;
     using System.Text.RegularExpressions;
-        class MyTcpClient : ItelnetClient
+    class MyTcpClient : ItelnetClient
+    {
+        private TcpClient tcpClient;
+        private Stream stream;
+        public void Connect(string ip, int port)
         {
-            private TcpClient tcpClient;
-            private Stream stream;
-            public void Connect(string ip, int port)
-            {
-                tcpClient = new TcpClient();
-                tcpClient.Connect(ip, port);
-                this.stream = tcpClient.GetStream();
-            }
-            /*        void write(string command)
-                    {
-                        Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
-                        NetworkStream stream = myClient.GetStream();
-                        stream.Write(data, 0, data.Length);
-                        Console.WriteLine("Sent: {0}", command);
-                    }*/
-            public void disconnect()
-            {
-                tcpClient.Close();
-            }
-            public void write(string command)
-            {
-                Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
+            tcpClient = new TcpClient();
+            tcpClient.Connect(ip, port);
+            this.stream = tcpClient.GetStream();
+        }
+        /*        void write(string command)
+                {
+                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
+                    NetworkStream stream = myClient.GetStream();
+                    stream.Write(data, 0, data.Length);
+                    Console.WriteLine("Sent: {0}", command);
+                }*/
+        public void disconnect()
+        {
+            tcpClient.Close();
+        }
+        public void write(string command)
+        {
+            Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
             try
             {
                 stream.Write(data, 0, data.Length);
@@ -49,35 +49,42 @@ namespace FlightSimulator.Models
                 Console.WriteLine("server disconnected");
                 this.disconnect();
             }
-            }
-            public string read()
+        }
+        public string read()
+        {
+            byte[] data = new byte[100];
+            try
             {
-                byte[] data = new byte[100];
                 int k = stream.Read(data, 0, 100);
-                StringBuilder builder = new StringBuilder();
-                foreach (char value in data)
-                {
-                    builder.Append(value);
-                }
-                string returnedValue = builder.ToString();
-                //Console.WriteLine(returnedValue);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("there is no connection");
+                return "00";
+            }
+            StringBuilder builder = new StringBuilder();
+            foreach (char value in data)
+            {
+                builder.Append(value);
+            }
+            string returnedValue = builder.ToString();
+            //Console.WriteLine(returnedValue);
 
-                //for integer
-                string temp = Regex.Match(returnedValue, @"[+-]\d+").Value;
-                //for floating point
-                returnedValue = Regex.Match(returnedValue, @"[+-]?\d+.\d+").Value;
-                //Console.WriteLine(returnedValue);
+            //for integer
+            string temp = Regex.Match(returnedValue, @"[+-]\d+").Value;
+            //for floating point
+            returnedValue = Regex.Match(returnedValue, @"[+-]?\d+.\d+").Value;
+            //Console.WriteLine(returnedValue);
 
             if (returnedValue == "" && temp == "")
                 return "0";
-            if(returnedValue == "")
+            if (returnedValue == "")
             {
                 //Console.WriteLine(temp + "check2");
                 return temp;
             }
             else return returnedValue;
-            }
-
         }
-    }
 
+    }
+}

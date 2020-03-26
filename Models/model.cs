@@ -1,6 +1,7 @@
 ﻿using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -8,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Models
 {
-    class Model : Notifier
+    public class Model : Notifier
     {
+        public Model() {}
         public double[] valuesFromView = new double[4];
         public volatile bool stop = false;
         private Location vmLocation;
@@ -22,6 +24,7 @@ namespace FlightSimulator.Models
             set
             {
                 vmLocation = value;
+                this.NotifyPropertyChanged("MLocation");
                 Console.WriteLine("Location in M: " + MLocation);
             } 
         }
