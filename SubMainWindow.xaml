@@ -21,7 +21,7 @@
             </m:Map.RenderTransform>
             <Canvas Width="50" Height="50" m:MapLayer.Position="32.0,34.888852"  m:MapLayer.PositionOrigin="BottomCenter" Opacity="34" Margin="218,507,232,11">
                 <m:Pushpin x:Name="plane" Location="32, 34.888852" Canvas.Left="8" Canvas.Top="20" IsEnabled="False" m:MapLayer.Position="{Binding VMLocation}">
-                   <!--<ImageBrush ImageSource="airplane.png"></ImageBrush>-->
+                    <!--<ImageBrush ImageSource="airplane.png"></ImageBrush>-->
                 </m:Pushpin>
                 <!--<Image Source="airplane.png" Height="80" Width="80" Canvas.Left="-36" Canvas.Top="-40"></Image>-->
             </Canvas>
@@ -70,6 +70,7 @@
         </Slider>
         <TextBlock HorizontalAlignment="Left" Margin="530,303,0,0" TextWrapping="Wrap" Text="Aileron" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="814,545,0,0" TextWrapping="Wrap" Text="Throttle" VerticalAlignment="Top"/>
-    </Grid> 
+        <Button Content="stop fly" HorizontalAlignment="Left" Margin="34,27,0,0" VerticalAlignment="Top" Width="88" MouseDoubleClick="Button_MouseDoubleClick"/>
+    </Grid>
 
 </Window>

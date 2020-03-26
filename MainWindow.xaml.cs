@@ -25,16 +25,28 @@ namespace FlightSimulator
         private string secondVal;
         public MainWindow()
         {
-            InitializeComponent();  
+            InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             firstVal = MyTextBox.Text;
             secondVal = MyTextBox2.Text;
-            var window = new FlightSimulator.SubMainWindow(this.firstVal,this.secondVal);
-            this.Hide();
-            window.ShowDialog();
+            SubMainWindow sub;
+            Models.Model model = new Models.Model();
+            try
+            {
+                model.Connect(firstVal, int.Parse(secondVal));
+                sub = new SubMainWindow(model);
+                this.Close();
+                sub.ShowDialog();
+            }
+            catch (Exception)
+            {
+                string message = String.Format("The server or ip are not good, please try again.\n If you want, you can try the default ip and port");
+                MessageBox.Show(message, "", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
         }
 
         private void MyTextBox2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -50,12 +62,23 @@ namespace FlightSimulator
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            firstVal = "127.0.0.1";
-            secondVal = "5402";
-            var window = new FlightSimulator.SubMainWindow(this.firstVal, this.secondVal);
-            this.Hide();
-            window.ShowDialog();
+            Models.Model model = new Models.Model();
+            SubMainWindow sub;
+            try
+            {
+                model.Connect("127.0.0.1", 5402);
+                sub = new SubMainWindow(model);
+                this.Close();
+                sub.ShowDialog();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("there is no server, good bye");
+                string message = String.Format("The port or ip are not good, please try again.\n");
+                MessageBox.Show(message, "", MessageBoxButton.OK, MessageBoxImage.Error);
 
+
+            }
         }
     }
 }

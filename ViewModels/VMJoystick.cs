@@ -17,6 +17,7 @@ namespace FlightSimulator.ViewModels
         private double _elevator;
         private double _aileron;
         private double _throttle;
+        public bool stop;
         public VMJoystick(Model model1)
         {
             this.model = model1;

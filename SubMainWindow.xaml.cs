@@ -22,40 +22,10 @@ namespace FlightSimulator
     /// </summary>
     public partial class SubMainWindow : Window
     {
-        public SubMainWindow(string ip, string port)
+        bool stop = false;
+        public SubMainWindow(Models.Model model)
         {
             InitializeComponent();
-            Models.Model model = new Models.Model();
-            if (ip == "" || port == "")
-            {
-                try
-                {
-                    model.Connect("127.0.0.1", 5402);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("there is no server, good bye");
-                    return;
-                }
-            }
-            else
-                try
-                {
-                    model.Connect(ip, int.Parse(port));
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("ip or port aren't good, try the default ip and port");
-                    try
-                    {
-                        model.Connect("127.0.0.1", 5402);
-                    }
-                    catch (Exception e2)
-                    {
-                        Console.WriteLine("there is no server, good bye");
-                        return;
-                    }
-                }
 
             VMJoystick jvm = new VMJoystick(model);
             Throttle.DataContext = jvm;
@@ -67,6 +37,14 @@ namespace FlightSimulator
             Map.DataContext = mapvm;
 
             //vm.model.Start() ;            
+        }
+
+        private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var mai = new FlightSimulator.MainWindow();
+            this.Close();
+            mai.ShowDialog();
+
         }
     }
 }
