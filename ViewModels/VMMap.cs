@@ -1,4 +1,5 @@
-﻿using Microsoft.Maps.MapControl.WPF;
+﻿using FlightSimulator.Models;
+using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,28 +8,27 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.ViewModels
 {
-    class VMMap
+    class VMMap : Notifier
     {
 		Models.Model model;
 		public VMMap(Models.Model model1)
 		{
 			model = model1;
-
-			//vmLocation = new Location(32.0, 34.888852);
+			VMLocation = model.MLocation;
 		}
-
-		//private Location vmLocation;
 
 		public Location VMLocation
 		{
 			get 
 			{
+				Console.WriteLine("get Location in VM: " + model.MLocation);
 				return model.MLocation;
 			}
 			set
 			{
-				Console.WriteLine("Location in VM: " + model.MLocation);
+				Console.WriteLine("set Location in VM: " + value);
 				model.MLocation = value;
+				this.NotifyPropertyChanged("VMLOcation");
 			}
 		}
 
