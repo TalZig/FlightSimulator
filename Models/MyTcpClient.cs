@@ -18,6 +18,8 @@ namespace FlightSimulator.Models
     using System.Text.RegularExpressions;
     class MyTcpClient : ItelnetClient
     {
+        private static Mutex mutex1 = new Mutex();
+        private static Mutex mutex2 = new Mutex();
         private TcpClient tcpClient;
         private Stream stream;
         public void Connect(string ip, int port)
@@ -47,7 +49,7 @@ namespace FlightSimulator.Models
             catch (Exception)
             {
                 Console.WriteLine("server disconnected");
-                this.disconnect();
+                //this.disconnect();
             }
         }
         public string read()
@@ -77,7 +79,7 @@ namespace FlightSimulator.Models
             //Console.WriteLine(returnedValue);
 
             if (returnedValue == "" && temp == "")
-                return "0";
+                return "-999";
             if (returnedValue == "")
             {
                 //Console.WriteLine(temp + "check2");
