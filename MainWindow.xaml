@@ -12,6 +12,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Label Content="Insert ip" Margin="5"/>
@@ -20,6 +21,7 @@
         <TextBox Grid.Row="3" Name="MyTextBox2" Margin="1" />
         <Button Grid.Row="4" Content="OK" Margin="5" Click="Button_Click"/>
         <Button Grid.Row="5" Content="Default Ip and Port" Margin="5" Click="Button_Click_1"/>
+        <Button Grid.Row="6" Content="Exit" Margin="5" Click="Button_Click_2"/>
 
     </Grid>
 </Window>
