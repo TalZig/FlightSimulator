@@ -214,6 +214,7 @@ namespace FlightSimulator.Models
                 Thread.Sleep(2000);
 
             }
+            this.myClient.disconnect();
         }
         public void UpdateValue(String info, double newVal)
         {

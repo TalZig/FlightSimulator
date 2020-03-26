@@ -26,12 +26,13 @@ namespace FlightSimulator
         private bool firstTime;
         double x, y;
         bool stop = false;
+        VMJoystick jvm;
         public SubMainWindow(Models.Model model)
         {
             InitializeComponent();
             
 
-            VMJoystick jvm = new VMJoystick(model);
+            jvm = new VMJoystick(model);
             Throttle.DataContext = jvm;
             Aileron.DataContext = jvm;
             joystick1.DataContext = jvm;
@@ -43,7 +44,14 @@ namespace FlightSimulator
             //vm.model.Start() ;            
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            jvm.stop = true;
+            var mai = new FlightSimulator.MainWindow();
+            this.Close();
+            mai.ShowDialog();
+        }
+
         private void pin_LayoutUpdated(object sender, EventArgs e)
         {
             if (airplane.Location != null)
@@ -154,11 +162,6 @@ namespace FlightSimulator
 
         }
 
-        private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var mai = new FlightSimulator.MainWindow();
-            this.Close();
-            mai.ShowDialog();
-        }
+
     }
 }

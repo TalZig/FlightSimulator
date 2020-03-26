@@ -56,13 +56,19 @@ namespace FlightSimulator.Models
             try
             {
                 int k = stream.Read(data, 0, 100);
-                StringBuilder builder = new StringBuilder();
-                foreach (char value in data)
-                {
-                    builder.Append(value);
-                }
-                string returnedValue = builder.ToString();
-                //Console.WriteLine(returnedValue);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("there is no connection");
+                return "00";
+            }
+            StringBuilder builder = new StringBuilder();
+            foreach (char value in data)
+            {
+                builder.Append(value);
+            }
+            string returnedValue = builder.ToString();
+            //Console.WriteLine(returnedValue);
 
             //for integer
             string temp = Regex.Match(returnedValue, @"[+-]\d+").Value;
