@@ -236,6 +236,7 @@ namespace FlightSimulator.Models
             if (info == "throttle")
             {
                 valuesFromView[2] = UpdateThrottle(newVal);
+
                 //myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
 
             }
