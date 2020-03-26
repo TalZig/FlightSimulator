@@ -207,10 +207,6 @@ namespace FlightSimulator.Models
                 myClient.write("get /position/longitude-deg\r\n");
                 tempY = Double.Parse(myClient.read());
 
-                myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
-                myClient.write("set /controls/flight/elevator\r\n" + valuesFromView[1].ToString());
-                myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
-                myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
                 MLocation = new Location(tempX, tempY);
 
                 //values from the view that we need to update
@@ -225,24 +221,24 @@ namespace FlightSimulator.Models
             if (info == "rudder")
             {
                 valuesFromView[0] = UpdateRudder(newVal);
-                //myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
+                myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
             }
             if (info == "elevator")
             {
                 valuesFromView[1] = UpdateElevator(newVal);
-                //myClient.write("set /controls/flight/elevator\r\n" + valuesFromView[1].ToString());
+                myClient.write("set /controls/flight/elevator\r\n" + valuesFromView[1].ToString());
 
             }
             if (info == "throttle")
             {
                 valuesFromView[2] = UpdateThrottle(newVal);
-                //myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
+                myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
 
             }
             if (info == "aileron")
             {
                 valuesFromView[3] = UpdateAileron(newVal);
-                //myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
+                myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
 
             }
         }
