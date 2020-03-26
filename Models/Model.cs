@@ -9,15 +9,9 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Models
 {
-    class Model : Notifier
+    public class Model : Notifier
     {
-        public Model()
-        {
-            this.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
-            {
-
-            };
-        }
+        public Model() {}
         public double[] valuesFromView = new double[4];
         public volatile bool stop = false;
         private Location vmLocation;

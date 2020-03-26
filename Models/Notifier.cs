@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace FlightSimulator.Models
 {
-    class Notifier : INotifyPropertyChanged
+    public class Notifier : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

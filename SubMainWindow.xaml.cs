@@ -25,10 +25,10 @@ namespace FlightSimulator
         private LocationRect bounds;
         private bool firstTime;
         double x, y;
-        public SubMainWindow(string ip, string port)
+        bool stop = false;
+        public SubMainWindow(Models.Model model)
         {
             InitializeComponent();
-            firstTime = true;
             Models.Model model = new Models.Model();
             if (ip == "" || port == "")
             {
@@ -181,6 +181,14 @@ namespace FlightSimulator
                 x = latitude;
                 y = longtitude;
             }
+
+        }
+
+        private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var mai = new FlightSimulator.MainWindow();
+            this.Close();
+            mai.ShowDialog();
 
         }
     }
