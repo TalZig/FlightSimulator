@@ -2,33 +2,46 @@
 using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FlightSimulator.ViewModels
 {
-    class VMMap : Notifier
+    public class VMMap : INotifyPropertyChanged
     {
 		Models.Model model;
+		public event PropertyChangedEventHandler PropertyChanged;
 		public VMMap(Models.Model model1)
 		{
 			model = model1;
-			VMLocation = model.MLocation;
+			model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+			{
+				NotifyPropertyChanged("VM"+e.PropertyName);
+			};
+			VMLocation = model.Location;
+		}
+
+		public void NotifyPropertyChanged(string name)
+		{
+			if (PropertyChanged != null)
+				this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+			if (name.Equals("VMLocation"))
+				VMLocation = model.Location;
 		}
 
 		public Location VMLocation
 		{
 			get 
 			{
-				Console.WriteLine("get Location in VM: " + model.MLocation);
-				return model.MLocation;
+				Console.WriteLine("get Location in VM: " + model.Location);
+				return model.Location;
 			}
 			set
 			{
-				Console.WriteLine("set Location in VM: " + value);
-				model.MLocation = value;
-				this.NotifyPropertyChanged("VMLOcation");
+				model.Location = value;
+				//this.NotifyPropertyChanged("VML0cation");
 			}
 		}
 

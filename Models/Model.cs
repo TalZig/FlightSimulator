@@ -9,26 +9,38 @@ using System.Threading.Tasks;
 
 namespace FlightSimulator.Models
 {
-    public class Model : Notifier
+    public class Model : INotifyPropertyChanged
     {
-        public Model() {}
+        public Model()
+        {
+            location = new Location(32.0, 34.888852);
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
         public double[] valuesFromView = new double[4];
         public volatile bool stop = false;
-        private Location vmLocation;
-        public Location MLocation
+        private Location location;
+        public Location Location
         {
             get
             {
-                return vmLocation;
+                return location;
             }
             set
             {
-                vmLocation = value;
-                this.NotifyPropertyChanged("MLocation");
-                Console.WriteLine("Location in M: " + MLocation);
-            } 
+                if (!Location.Equals(value))
+                {
+                    location = value;
+                    this.NotifyPropertyChanged("Location");
+                }
+                //Console.WriteLine("Location in M: " + Location);
+            }
         }
 
+        public void NotifyPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
 
         private double verticalSpeed;
         public double VerticalSpeed
@@ -42,7 +54,7 @@ namespace FlightSimulator.Models
                 if (verticalSpeed != value)
                 {
                     verticalSpeed = value;
-                    this.NotifyPropertyChanged("VerticalSpeed");
+                    //this.NotifyPropertyChanged("VerticalSpeed");
                 }
             }
         }
@@ -58,7 +70,7 @@ namespace FlightSimulator.Models
                 if (headingDeg != value)
                 {
                     headingDeg = value;
-                    this.NotifyPropertyChanged("HeadingDeg");
+                    //this.NotifyPropertyChanged("HeadingDeg");
                 }
             }
         }
@@ -74,7 +86,7 @@ namespace FlightSimulator.Models
                 if (groundSpeedKt != value)
                 {
                     groundSpeedKt = value;
-                    this.NotifyPropertyChanged("GroundSpeedKt");
+                    //this.NotifyPropertyChanged("GroundSpeedKt");
                 }
             }
         }
@@ -90,7 +102,7 @@ namespace FlightSimulator.Models
                 if (indicatedSpeedKt != value)
                 {
                     indicatedSpeedKt = value;
-                    this.NotifyPropertyChanged("IndicatedSpeedKt");
+                    //this.NotifyPropertyChanged("IndicatedSpeedKt");
                 }
             }
         }
@@ -106,7 +118,7 @@ namespace FlightSimulator.Models
                 if (altitudeFt != value)
                 {
                     altitudeFt = value;
-                    this.NotifyPropertyChanged("AltitudeFt");
+                    //this.NotifyPropertyChanged("AltitudeFt");
                 }
             }
         }
@@ -122,7 +134,7 @@ namespace FlightSimulator.Models
                 if (rollDeg != value)
                 {
                     rollDeg = value;
-                    this.NotifyPropertyChanged("RollDeg");
+                    //this.NotifyPropertyChanged("RollDeg");
                 }
             }
         }
@@ -138,7 +150,7 @@ namespace FlightSimulator.Models
                 if (pitchDeg != value)
                 {
                     pitchDeg = value;
-                    this.NotifyPropertyChanged("PitchDeg");
+                    //this.NotifyPropertyChanged("PitchDeg");
                 }
             }
         }
@@ -154,7 +166,7 @@ namespace FlightSimulator.Models
                 if (indicatedAltitudeFt != value)
                 {
                     indicatedAltitudeFt = value;
-                    this.NotifyPropertyChanged("IndicatedAltitudeFt");
+                    //this.NotifyPropertyChanged("IndicatedAltitudeFt");
                 }
             }
         }
@@ -179,16 +191,16 @@ namespace FlightSimulator.Models
                 //values from the server
                 myClient.write("get /instrumentation/heading-indicator/indicated-heading-deg\r\n");
                 HeadingDeg = Double.Parse(myClient.read());
-                
+
                 myClient.write("get /instrumentation/gps/indicated-vertical-speed\r\n");
                 VerticalSpeed = Double.Parse(myClient.read());
-                
+
                 myClient.write("get /instrumentation/gps/indicated-ground-speed-kt\r\n");
                 GroundSpeedKt = Double.Parse(myClient.read());
-                
+
                 myClient.write("get /instrumentation/airspeed-indicator/indicated-speed-kt\r\n");
                 IndicatedSpeedKt = Double.Parse(myClient.read());
-                
+
                 myClient.write("get /instrumentation/gps/indicated-altitude-ft\r\n");
                 AltitudeFt = Double.Parse(myClient.read());
 
@@ -206,9 +218,12 @@ namespace FlightSimulator.Models
 
                 myClient.write("get /position/longitude-deg\r\n");
                 tempY = Double.Parse(myClient.read());
+                Location = new Location(tempX, tempY);
 
-                MLocation = new Location(tempX, tempY);
-
+                myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
+                myClient.write("set /controls/flight/elevator\r\n" + valuesFromView[1].ToString());
+                myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
+                myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
                 //values from the view that we need to update
                 //location of the airplane
                 Thread.Sleep(2000);
@@ -221,24 +236,25 @@ namespace FlightSimulator.Models
             if (info == "rudder")
             {
                 valuesFromView[0] = UpdateRudder(newVal);
-                myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
+                //myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
             }
             if (info == "elevator")
             {
                 valuesFromView[1] = UpdateElevator(newVal);
-                myClient.write("set /controls/flight/elevator\r\n" + valuesFromView[1].ToString());
+                //myClient.write("set /controls/flight/elevator\r\n" + valuesFromView[1].ToString());
 
             }
             if (info == "throttle")
             {
                 valuesFromView[2] = UpdateThrottle(newVal);
-                myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
+
+                //myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
 
             }
             if (info == "aileron")
             {
                 valuesFromView[3] = UpdateAileron(newVal);
-                myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
+                //myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
 
             }
         }

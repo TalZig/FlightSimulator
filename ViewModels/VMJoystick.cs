@@ -32,10 +32,6 @@ namespace FlightSimulator.ViewModels
         public VMJoystick(Model model1)
         {
             this.model = model1;
-            model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
-            {
-                NotifyPropertyChanged("VM" + e.PropertyName);
-            };
         }
         // insert both sliders and their property
         // create constructors
@@ -50,7 +46,7 @@ namespace FlightSimulator.ViewModels
                 if (value != _rudder)
                 {
                     _rudder = value;
-                    this.NotifyPropertyChanged("rudder");
+                   // this.NotifyPropertyChanged("rudder");
                     model.UpdateValue("rudder", value);
                 }
             }
@@ -64,7 +60,7 @@ namespace FlightSimulator.ViewModels
                 if (value != _elevator)
                 {
                     _elevator = value;
-                    NotifyPropertyChanged("elevator");
+                    //NotifyPropertyChanged("elevator");
                     model.UpdateValue("elevator", value);
 
                 }
@@ -79,7 +75,7 @@ namespace FlightSimulator.ViewModels
                 if (value != _aileron)
                 {
                     _aileron = value;
-                    NotifyPropertyChanged("aileron");
+                    //NotifyPropertyChanged("aileron");
                     model.UpdateValue("aileron", value);
                 }
             }
@@ -93,7 +89,7 @@ namespace FlightSimulator.ViewModels
                 if (value != _throttle)
                 {
                     _throttle = value;
-                    NotifyPropertyChanged("throttle");
+                    //NotifyPropertyChanged("throttle");
                     model.UpdateValue("throttle", value);
                 }
             }
