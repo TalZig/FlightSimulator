@@ -43,7 +43,7 @@ namespace FlightSimulator
             }
             catch (Exception)
             {
-                string message = String.Format("The server or ip are not good, please try again.\n If you want, you can try the default ip and port");
+                string message = String.Format("The port or ip are not good, please try again.\n");
                 MessageBox.Show(message, "", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }

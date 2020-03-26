@@ -53,7 +53,15 @@ namespace FlightSimulator.Models
             public string read()
             {
                 byte[] data = new byte[100];
+            try
+            {
                 int k = stream.Read(data, 0, 100);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("there is no connection");
+                return "0";
+            }
                 StringBuilder builder = new StringBuilder();
                 foreach (char value in data)
                 {

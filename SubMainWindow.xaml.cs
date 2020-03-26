@@ -39,12 +39,11 @@ namespace FlightSimulator
             //vm.model.Start() ;            
         }
 
-        private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             var mai = new FlightSimulator.MainWindow();
             this.Close();
             mai.ShowDialog();
-
         }
     }
 }
