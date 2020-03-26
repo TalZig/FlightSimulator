@@ -22,9 +22,13 @@ namespace FlightSimulator
     /// </summary>
     public partial class SubMainWindow : Window
     {
+        private LocationRect bounds;
+        private bool firstTime;
+        double x, y;
         public SubMainWindow(string ip, string port)
         {
             InitializeComponent();
+            firstTime = true;
             Models.Model model = new Models.Model();
             if (ip == "" || port == "")
             {
@@ -67,6 +71,117 @@ namespace FlightSimulator
             Map.DataContext = mapvm;
 
             //vm.model.Start() ;            
+        }
+
+        
+        private void pin_LayoutUpdated(object sender, EventArgs e)
+        {
+            if (airplane.Location != null)
+            {
+                this.bounds = Map.BoundingRectangle;
+                double centerLat = bounds.Center.Latitude;
+                double centerLon = bounds.Center.Longitude;
+                // Console.WriteLine("x: " + PlainPosition.X);
+                //Console.WriteLine("y: " + PlainPosition.Y);
+                //Update the current latitude and longitude
+                double latitude = airplane.Location.Latitude;
+                double longtitude = airplane.Location.Longitude;
+                if (firstTime)
+                {
+                    Map.SetView(new Location(latitude, longtitude), 4);
+                    PlainPosition.X = 0;
+                    PlainPosition.Y = 0;
+                    firstTime = false;
+                    x = latitude;
+                    y = longtitude;
+                    return;
+                }
+
+                //
+                if ((longtitude - y) == 0)
+                {
+
+                }
+                else
+                {
+                    double m = (latitude - x) / (longtitude - y);
+
+                    if (m > 0 && latitude + 0.5 >= bounds.North)
+                    {
+                        if (longtitude >= centerLon)
+                        {
+                            Map.SetView(new Location(2 * latitude - centerLat - 2.5, 2 * longtitude - centerLon), 4);
+                        }
+                        else
+                        {
+                            Map.SetView(new Location(2 * latitude - centerLat - 2.5, centerLon), 4);
+                        }
+                    }
+
+                    else if (m < 0 && latitude - 2.5 <= bounds.South)
+                    {
+                        if (longtitude >= centerLon)
+                        {
+                            Map.SetView(new Location(2 * latitude - centerLat + 2.5, 2 * longtitude - centerLon), 4);
+                        }
+                        else
+                        {
+                            Map.SetView(new Location(2 * latitude - centerLat + 2.5, centerLon), 4);
+                        }
+                    }
+
+                    else if (m > 0 && longtitude + 0.5 >= bounds.East)
+                    {
+                        if (latitude >= centerLat)
+                        {
+                            Map.SetView(new Location(2 * latitude - centerLat + (bounds.North - centerLat), 2 * longtitude - centerLon - 2.5), 4);
+                        }
+                        else
+                        {
+                            Map.SetView(new Location(centerLat, 2 * longtitude - centerLon - 2.5), 4);
+                        }
+                    }
+
+                    else if (m < 0 && longtitude + 0.5 >= bounds.East)
+                    {
+                        if (latitude <= centerLat)
+                        {
+                            Map.SetView(new Location(2 * latitude - centerLat + (bounds.North - centerLat), 2 * longtitude - centerLon - 2.5), 4);
+                        }
+                        else
+                        {
+                            Map.SetView(new Location(centerLat, 2 * longtitude - centerLon - 2.5), 4);
+                        }
+                    }
+
+                    else if (m < 0 && longtitude - 2.5 <= bounds.West)
+                    {
+                        if (latitude >= centerLat)
+                        {
+                            Map.SetView(new Location(2 * latitude - centerLat + (bounds.North - centerLat), 2 * longtitude - centerLon + 2.5), 4);
+                        }
+                        else
+                        {
+                            Map.SetView(new Location(centerLat, 2 * longtitude - centerLon + 2.5), 4);
+                        }
+                    }
+
+                    else if (m > 0 && longtitude - 2.5 <= bounds.West)
+                    {
+                        if (latitude <= centerLat)
+                        {
+                            Map.SetView(new Location(2 * latitude - centerLat + (bounds.North - centerLat), 2 * longtitude - centerLon + 2.5), 4);
+                        }
+                        else
+                        {
+                            Map.SetView(new Location(centerLat, 2 * longtitude - centerLon + 2.5), 4);
+                        }
+                    }
+                }
+                x = latitude;
+                y = longtitude;
+            }
+
         }
     }
 }
