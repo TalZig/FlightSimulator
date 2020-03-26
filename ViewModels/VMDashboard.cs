@@ -15,6 +15,11 @@ namespace FlightSimulator.ViewModels
         public VMDashboard(Model model1)
         {
             this.model = model1;
+            this.model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+            {
+                NotifyPropertyChanged("VM" + e.PropertyName);
+            };
+
         }
         public double VMHeadingDeg
         {

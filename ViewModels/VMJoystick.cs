@@ -32,6 +32,10 @@ namespace FlightSimulator.ViewModels
         public VMJoystick(Model model1)
         {
             this.model = model1;
+            model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+            {
+                NotifyPropertyChanged(e.PropertyName);
+            };
         }
         // insert both sliders and their property
         // create constructors

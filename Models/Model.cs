@@ -54,7 +54,7 @@ namespace FlightSimulator.Models
                 if (verticalSpeed != value)
                 {
                     verticalSpeed = value;
-                    //this.NotifyPropertyChanged("VerticalSpeed");
+                    this.NotifyPropertyChanged("VerticalSpeed");
                 }
             }
         }
@@ -70,7 +70,7 @@ namespace FlightSimulator.Models
                 if (headingDeg != value)
                 {
                     headingDeg = value;
-                    //this.NotifyPropertyChanged("HeadingDeg");
+                    this.NotifyPropertyChanged("HeadingDeg");
                 }
             }
         }
@@ -86,7 +86,7 @@ namespace FlightSimulator.Models
                 if (groundSpeedKt != value)
                 {
                     groundSpeedKt = value;
-                    //this.NotifyPropertyChanged("GroundSpeedKt");
+                    this.NotifyPropertyChanged("GroundSpeedKt");
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace FlightSimulator.Models
                 if (indicatedSpeedKt != value)
                 {
                     indicatedSpeedKt = value;
-                    //this.NotifyPropertyChanged("IndicatedSpeedKt");
+                    this.NotifyPropertyChanged("IndicatedSpeedKt");
                 }
             }
         }
@@ -118,7 +118,7 @@ namespace FlightSimulator.Models
                 if (altitudeFt != value)
                 {
                     altitudeFt = value;
-                    //this.NotifyPropertyChanged("AltitudeFt");
+                    this.NotifyPropertyChanged("AltitudeFt");
                 }
             }
         }
@@ -134,7 +134,7 @@ namespace FlightSimulator.Models
                 if (rollDeg != value)
                 {
                     rollDeg = value;
-                    //this.NotifyPropertyChanged("RollDeg");
+                    this.NotifyPropertyChanged("RollDeg");
                 }
             }
         }
@@ -150,7 +150,7 @@ namespace FlightSimulator.Models
                 if (pitchDeg != value)
                 {
                     pitchDeg = value;
-                    //this.NotifyPropertyChanged("PitchDeg");
+                    this.NotifyPropertyChanged("PitchDeg");
                 }
             }
         }
@@ -166,7 +166,7 @@ namespace FlightSimulator.Models
                 if (indicatedAltitudeFt != value)
                 {
                     indicatedAltitudeFt = value;
-                    //this.NotifyPropertyChanged("IndicatedAltitudeFt");
+                    this.NotifyPropertyChanged("IndicatedAltitudeFt");
                 }
             }
         }
