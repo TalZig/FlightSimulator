@@ -60,7 +60,7 @@ namespace FlightSimulator.Models
                 int k = stream.Read(data, 0, 100);
             }
             catch (Exception)
-            {
+            { 
                 Console.WriteLine("there is no connection");
                 return "00";
             }
