@@ -60,9 +60,9 @@ namespace FlightSimulator.Models
                 int k = stream.Read(data, 0, 100);
             }
             catch (Exception)
-            { 
-                Console.WriteLine("there is no connection");
-                return "00";
+            {
+                Console.WriteLine("-99999");
+                return "-99999";
             }
             StringBuilder builder = new StringBuilder();
             foreach (char value in data)

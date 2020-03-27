@@ -34,7 +34,7 @@ namespace FlightSimulator.ViewModels
             this.model = model1;
             model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
             {
-                NotifyPropertyChanged(e.PropertyName);
+                NotifyPropertyChanged("VM"+e.PropertyName);
             };
         }
         // insert both sliders and their property
@@ -42,6 +42,8 @@ namespace FlightSimulator.ViewModels
         // bind
         // where to send messages via model to simulator?
 
+
+        
         public double VMRudder
         {
             get { return _rudder; }

@@ -28,6 +28,23 @@ namespace FlightSimulator
         double x, y;
         bool stop = false;
         VMJoystick jvm;
+        VMMap mapvm;
+        public Boolean Stop
+        {
+            get
+            {
+                return mapvm.VMStop;
+            }
+            set
+            {
+                if (value == true)
+                {
+                    MessageBox.Show("Server disconnected.\n", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    this.Button_Click(this, new RoutedEventArgs());
+                }
+            }
+
+        }
         public SubMainWindow(Models.Model model)
         {
             InitializeComponent();
@@ -38,9 +55,10 @@ namespace FlightSimulator
             joystick1.DataContext = jvm;
             VMDashboard dvm = new VMDashboard(model);
             Board.DataContext = dvm;
-            VMMap mapvm = new VMMap(model);
+            mapvm = new VMMap(model);
             Map.DataContext = mapvm;
-
+            this.DataContext = mapvm;
+            
            /*mapvm.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
            {
                NotifyPropertyChanged(e.PropertyName);

@@ -194,7 +194,12 @@ namespace FlightSimulator.Models
 
                 myClient.write("get /instrumentation/gps/indicated-vertical-speed\r\n");
                 VerticalSpeed = Double.Parse(myClient.read());
-
+                if (VerticalSpeed == -99999)
+                {
+                    stop = true;
+                    this.NotifyPropertyChanged("Stop");
+                    break;
+                }
                 myClient.write("get /instrumentation/gps/indicated-ground-speed-kt\r\n");
                 GroundSpeedKt = Double.Parse(myClient.read());
 
@@ -203,7 +208,12 @@ namespace FlightSimulator.Models
 
                 myClient.write("get /instrumentation/gps/indicated-altitude-ft\r\n");
                 AltitudeFt = Double.Parse(myClient.read());
-
+                if (AltitudeFt == -99999)
+                {
+                    stop = true;
+                    this.NotifyPropertyChanged("Stop");
+                    break;
+                }
                 myClient.write("get /instrumentation/attitude-indicator/internal-roll-deg\r\n");
                 RollDeg = Double.Parse(myClient.read());
 
@@ -212,21 +222,33 @@ namespace FlightSimulator.Models
 
                 myClient.write("get /instrumentation/altimeter/indicated-altitude-ft\r\n");
                 IndicatedAlitudeFt = Double.Parse(myClient.read());
-
+                if (IndicatedAlitudeFt == -99999)
+                {
+                    stop = true;
+                    this.NotifyPropertyChanged("Stop");
+                    break;
+                }
                 myClient.write("get /position/latitude-deg\r\n");
                 tempX = Double.Parse(myClient.read());
 
                 myClient.write("get /position/longitude-deg\r\n");
                 tempY = Double.Parse(myClient.read());
+                //Location.Latitude = tempX;
+                //Location.Longitude = tempY;
                 Location = new Location(tempX, tempY);
-
+                if (tempX == -99999)
+                {
+                    stop = true;
+                    this.NotifyPropertyChanged("Stop");
+                    break;
+                }
                 myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
                 myClient.write("set /controls/flight/elevator\r\n" + valuesFromView[1].ToString());
                 myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
                 myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
                 //values from the view that we need to update
                 //location of the airplane
-                Thread.Sleep(2000);
+                Thread.Sleep(400);
 
             }
             this.myClient.disconnect();
