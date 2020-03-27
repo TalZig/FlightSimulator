@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace FlightSimulator.ViewModels
 {
@@ -35,7 +36,6 @@ namespace FlightSimulator.ViewModels
 		{
 			get 
 			{
-				Console.WriteLine("get Location in VM: " + model.Location);
 				return model.Location;
 			}
 			set
