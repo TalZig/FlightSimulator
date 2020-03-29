@@ -239,9 +239,7 @@ namespace FlightSimulator.Models
 
                 myClient.write("get /position/longitude-deg\r\n");
                 tempY = Double.Parse(myClient.read());
-                Location.Latitude = tempX;
-                Location.Longitude = tempY;
-                //Location = new Location(tempX, tempY);
+                Location = new Location(tempX, tempY);
                 if (tempX == -99999)
                 {
                     stop = true;
