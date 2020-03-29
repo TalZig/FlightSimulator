@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         Title="MainWindow" Height="600" Width="1000">
     <Grid Margin="0,-2,0.333,1.667" Background="WhiteSmoke">
-        <m:Map x:Name="Map" ZoomLevel="11" CredentialsProvider="AhgxD7rLpIhZkI6TfF9Jb2TBRr5IYDPx0RDU2gsdB6ohUsJOZlbxLnwApJh-s0FD" Mode="AerialWithLabels" Center="32.0 ,34.888852"  Margin="-48,-48,493.667,-21.667" RenderTransformOrigin="0.5,0.5" >
+        <m:Map x:Name="Map" ZoomLevel="8" CredentialsProvider="AhgxD7rLpIhZkI6TfF9Jb2TBRr5IYDPx0RDU2gsdB6ohUsJOZlbxLnwApJh-s0FD" Mode="AerialWithLabels" Center="32.0 ,34.888852"  Margin="-48,-48,493.667,-21.667" RenderTransformOrigin="0.5,0.5" >
             <m:Map.RenderTransform>
 
                 <TransformGroup>

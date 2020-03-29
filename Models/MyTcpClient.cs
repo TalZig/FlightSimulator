@@ -41,6 +41,7 @@ namespace FlightSimulator.Models
         }
         public void write(string command)
         {
+            //Console.WriteLine(command);
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
             try
             {

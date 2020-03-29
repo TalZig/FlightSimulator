@@ -8,9 +8,10 @@ using System.ComponentModel;
 
 namespace FlightSimulator.ViewModels
 {
-    class VMDashboard : Notifier
+    class VMDashboard : INotifyPropertyChanged
     {
         Model model;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public VMDashboard(Model model1)
         {
@@ -20,6 +21,11 @@ namespace FlightSimulator.ViewModels
                 NotifyPropertyChanged("VM" + e.PropertyName);
             };
 
+        }
+        public void NotifyPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
         public double VMHeadingDeg
         {
