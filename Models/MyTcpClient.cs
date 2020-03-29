@@ -41,6 +41,7 @@ namespace FlightSimulator.Models
         }
         public void write(string command)
         {
+            //Console.WriteLine(command);
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
             try
             {
@@ -62,8 +63,8 @@ namespace FlightSimulator.Models
             }
             catch (Exception)
             {
-                Console.WriteLine("there is no connection");
-                return "00";
+                Console.WriteLine("-99999");
+                return "-99999";
             }
             StringBuilder builder = new StringBuilder();
             foreach (char value in data)

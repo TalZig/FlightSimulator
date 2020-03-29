@@ -13,6 +13,7 @@ namespace FlightSimulator.ViewModels
     public class VMMap : INotifyPropertyChanged
     {
 		Models.Model model;
+		bool stop = false;
 		public event PropertyChangedEventHandler PropertyChanged;
 		public VMMap(Models.Model model1)
 		{
@@ -30,6 +31,38 @@ namespace FlightSimulator.ViewModels
 				this.PropertyChanged(this, new PropertyChangedEventArgs(name));
 			if (name.Equals("VMLocation"))
 				VMLocation = model.Location;
+			if (name.Equals("VMStop"))
+				VMStop = model.stop;
+		}
+
+		public Boolean VMStop
+		{
+			get
+			{
+				return model.stop;
+			}
+			set
+			{
+				stop = value;
+				Console.WriteLine("check!!");
+				VMStatusOfServer = "Server disconnected";
+			}
+		}
+		private string vmStatusOfServer;
+		public string VMStatusOfServer
+		{
+			get
+			{
+				if (VMStop == true)
+					return "Server disconnected";
+				else
+					return "Server is connect";
+			}
+			set
+			{
+				vmStatusOfServer = value;
+				NotifyPropertyChanged("VMStatusOfServer");
+			}
 		}
 
 		public Location VMLocation
