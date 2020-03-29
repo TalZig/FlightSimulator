@@ -215,10 +215,12 @@ namespace FlightSimulator.Models
 
                 myClient.write("get /position/latitude-deg\r\n");
                 tempX = Double.Parse(myClient.read());
+                Console.WriteLine("Lat in model: " + tempX);
 
                 myClient.write("get /position/longitude-deg\r\n");
                 tempY = Double.Parse(myClient.read());
                 Location = new Location(tempX, tempY);
+
 
                 myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
                 myClient.write("set /controls/flight/elevator\r\n" + valuesFromView[1].ToString());
