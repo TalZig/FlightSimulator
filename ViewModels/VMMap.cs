@@ -10,8 +10,8 @@ using System.Configuration;
 
 namespace FlightSimulator.ViewModels
 {
-    public class VMMap : INotifyPropertyChanged
-    {
+	public class VMMap : INotifyPropertyChanged
+	{
 		Models.Model model;
 		bool stop = false;
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -20,7 +20,7 @@ namespace FlightSimulator.ViewModels
 			model = model1;
 			model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
 			{
-				NotifyPropertyChanged("VM"+e.PropertyName);
+				NotifyPropertyChanged("VM" + e.PropertyName);
 			};
 			VMLocation = model.Location;
 		}
@@ -67,14 +67,14 @@ namespace FlightSimulator.ViewModels
 
 		public Location VMLocation
 		{
-			get 
+			get
 			{
 				return model.Location;
 			}
 			set
 			{
 				model.Location = value;
-				//this.NotifyPropertyChanged("VML0cation");
+				//this.NotifyPropertyChanged("VMLocation");
 			}
 		}
 

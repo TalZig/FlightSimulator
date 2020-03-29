@@ -59,6 +59,7 @@ namespace FlightSimulator.Models
             try
             {
                 int k = stream.Read(data, 0, 100);
+                Console.WriteLine(k);
             }
             catch (Exception)
             {

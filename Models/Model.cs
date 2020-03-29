@@ -13,7 +13,8 @@ namespace FlightSimulator.Models
     {
         public Model()
         {
-            location = new Location(32.0, 34.888852);
+            location = new Location(89.0, 34.888852);
+            //location = new Location(32.0, 34.888852);
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public double[] valuesFromView = new double[4];
@@ -192,8 +193,8 @@ namespace FlightSimulator.Models
                 //values from the server
                 myClient.write("get /instrumentation/heading-indicator/indicated-heading-deg\r\n");
                 temp = myClient.read();
-                if(temp != "-999")
-                HeadingDeg = Double.Parse(temp);
+                if (temp != "-999")
+                    HeadingDeg = Double.Parse(temp);
 
                 myClient.write("get /instrumentation/gps/indicated-vertical-speed\r\n");
                 VerticalSpeed = Double.Parse(myClient.read());
@@ -239,7 +240,24 @@ namespace FlightSimulator.Models
 
                 myClient.write("get /position/longitude-deg\r\n");
                 tempY = Double.Parse(myClient.read());
-                Location = new Location(tempX, tempY);
+                
+                if (tempX>=90 || tempX <= -90)
+                {
+                    if (tempX >= 90)
+                        Location = new Location(90, Location.Longitude);
+                    else
+                        Location = new Location(-90, Location.Longitude);
+                } else if(tempY >= 90 || tempY <= -90)
+                {
+                    if (tempY >= 90)
+                        Location = new Location(Location.Latitude, 90);
+                    else
+                        Location = new Location(Location.Latitude, -90);
+                } else
+                {
+                    Location = new Location(tempX, tempY);
+                }
+                
                 if (tempX == -99999)
                 {
                     stop = true;
