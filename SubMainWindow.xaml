@@ -26,7 +26,7 @@
                         <TranslateTransform x:Name="PlanePosition"></TranslateTransform>
                     </TransformGroup>
                 </m:Pushpin.RenderTransform>
-                <Image x:Name="airplane" Width="20" VerticalAlignment="Center" Height="20" HorizontalAlignment="Center"></Image>
+                <Image x:Name="airplane" Source ="airplane.png" Width="20" VerticalAlignment="Center" Height="20" HorizontalAlignment="Center"></Image>
             </m:Pushpin>
             <TextBox x:Name="currentLocation" Text="{Binding Path=VMLocation, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="186,-37,2,645"></TextBox>
             <!--<Canvas Width="50" Height="50" m:MapLayer.Position="32.0,34.888852"  m:MapLayer.PositionOrigin="BottomCenter" Opacity="34" Margin="218,507,232,11">
