@@ -57,7 +57,6 @@ namespace FlightSimulator.ViewModels
 					return "Server disconnected";
 				else
 					return "Server is connect";
-
 			}
 			set
 			{
