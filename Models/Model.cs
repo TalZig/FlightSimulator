@@ -13,8 +13,7 @@ namespace FlightSimulator.Models
     {
         public Model()
         {
-            location = new Location(89.0, 34.888852);
-            //location = new Location(32.0, 34.888852);
+            location = new Location(32.0, 34.888852);
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public double[] valuesFromView = new double[4];
@@ -33,7 +32,6 @@ namespace FlightSimulator.Models
                     location = value;
                     this.NotifyPropertyChanged("Location");
                 }
-                //Console.WriteLine("Location in M: " + Location);
             }
         }
 

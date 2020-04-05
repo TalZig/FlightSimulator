@@ -70,6 +70,7 @@
       <DependentUpon>SubMainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\VMDashboard.cs" />
+    <Compile Include="ViewModels\VMError.cs" />
     <Compile Include="ViewModels\VMJoystick.cs" />
     <Compile Include="ViewModels\VMMap.cs" />
     <Compile Include="View\ControlBoard.xaml.cs">

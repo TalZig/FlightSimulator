@@ -41,14 +41,7 @@ namespace FlightSimulator
             myJoystick.DataContext = jvm;
             VMMap mapvm = new VMMap(model);
             map.DataContext = mapvm;
-            this.DataContext = mapvm;
-
-            /*mapvm.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
-            {
-                NotifyPropertyChanged(e.PropertyName);
-            };*/
-
-            //vm.model.Start() ;            
+            this.DataContext = mapvm;     
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

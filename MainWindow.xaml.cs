@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Configuration;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -66,7 +67,7 @@ namespace FlightSimulator
             SubMainWindow sub;
             try
             {
-                model.Connect("127.0.0.1", 5402);
+                model.Connect(ConfigurationManager.AppSettings["IP"].ToString(), Int32.Parse(ConfigurationManager.AppSettings["port"].ToString()));
                 sub = new SubMainWindow(model);
                 this.Close();
                 sub.ShowDialog();

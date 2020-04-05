@@ -21,7 +21,7 @@
             </View:ControlBoard.RenderTransform>
         </View:ControlBoard>
 
-        <View:Map x:Name="map" Margin="18,54,600.667,-26.667" RenderTransformOrigin="0.5,0.5"></View:Map>
+        <View:Map x:Name="map" Margin="18,54,600.667,33.333" RenderTransformOrigin="0.5,0.5"></View:Map>
         <!--
         <View:Joystick x:Name="joystick1" Margin="417,244,-14,-24" RenderTransformOrigin="0.5,0.5" RudderValue ="{Binding VMRudder, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}" ElevatorValue ="{Binding VMElevator, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}">
             <View:Joystick.RenderTransform>
