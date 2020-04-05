@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Interop;
+using System.Runtime.InteropServices;
 
 namespace FlightSimulator
 {
@@ -22,6 +24,13 @@ namespace FlightSimulator
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool closeApp = false;
+        private const int GWL_STYLE = -16;
+        private const int WS_SYSMENU = 0x80000;
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+        [DllImport("user32.dll")]
+        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
         private string firstVal;
         private string secondVal;
         public MainWindow()
@@ -39,6 +48,7 @@ namespace FlightSimulator
             {
                 model.Connect(firstVal, int.Parse(secondVal));
                 sub = new SubMainWindow(model);
+                closeApp = true;
                 this.Close();
                 sub.ShowDialog();
             }
@@ -48,6 +58,11 @@ namespace FlightSimulator
                 MessageBox.Show(message, "", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var hwnd = new WindowInteropHelper(this).Handle;
+            SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
         }
 
         private void MyTextBox2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -69,6 +84,7 @@ namespace FlightSimulator
             {
                 model.Connect(ConfigurationManager.AppSettings["IP"].ToString(), Int32.Parse(ConfigurationManager.AppSettings["port"].ToString()));
                 sub = new SubMainWindow(model);
+                closeApp = true;
                 this.Close();
                 sub.ShowDialog();
             }
@@ -84,7 +100,16 @@ namespace FlightSimulator
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            closeApp = true;
             System.Environment.Exit(1);
+        }
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            if (!closeApp)
+            {
+                e.Cancel = true;
+                base.OnClosing(e);
+            }
         }
     }
 }
