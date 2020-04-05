@@ -24,7 +24,6 @@ namespace FlightSimulator.View
         public Joystick()
         {
             InitializeComponent();
-
         }
         private Point center;
         //private double x1 = 0;
