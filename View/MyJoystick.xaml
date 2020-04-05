@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="330">
     <Grid>
-        <local:Joystick HorizontalAlignment="Left" Height="100" Margin="33,31,0,0" VerticalAlignment="Top" Width="100" Loaded="Joystick_Loaded" RenderTransformOrigin="0.458,-3.691">
+        <local:Joystick HorizontalAlignment="Left" Height="100" Margin="33,31,0,0" VerticalAlignment="Top" Width="100" Loaded="Joystick_Loaded" RenderTransformOrigin="0.458,-3.691" RudderValue ="{Binding VMRudder, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}" ElevatorValue ="{Binding VMElevator, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}">
             <local:Joystick.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
