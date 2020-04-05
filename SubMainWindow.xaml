@@ -36,7 +36,7 @@
                 <Image Source="airplane.png" Height="80" Width="80" Canvas.Left="-36" Canvas.Top="-40"></Image> m:MapLayer.Position="{Binding VMLocation}"
             </Canvas> -->
         </m:Map>
-        <View:ControlBoard x:Name="Board" Margin="595,18,98,300" RenderTransformOrigin="0.5,0.5">
+        <View:ControlBoard x:Name="Board" Margin="595,18,98,300" RenderTransformOrigin="0.5,0.5"> 
             <View:ControlBoard.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
