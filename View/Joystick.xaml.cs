@@ -89,6 +89,9 @@ namespace FlightSimulator.View
                     }
                     else
                         knobPosition.Y = y;
+
+                    RudderValue = (x + 2) / ((BlackCircle.Width - KnobBase.Width) / 2);
+                    ElevatorValue = (y / (KnobBase.Width / 2));
                 }
             }
         }
