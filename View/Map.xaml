@@ -8,10 +8,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <m:Map x:Name="map" ZoomLevel="8" CredentialsProvider="AhgxD7rLpIhZkI6TfF9Jb2TBRr5IYDPx0RDU2gsdB6ohUsJOZlbxLnwApJh-s0FD" Mode="AerialWithLabels" Center="32.0 ,34.888852"  Margin="14,8,-173,-110"  >
+        <m:Map x:Name="map" ZoomLevel="8" CredentialsProvider="AhgxD7rLpIhZkI6TfF9Jb2TBRr5IYDPx0RDU2gsdB6ohUsJOZlbxLnwApJh-s0FD" Mode="AerialWithLabels" Center="32.0 ,34.888852"  Margin="5,15,9,6"  >
             <m:Map.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
                     <SkewTransform/>
                     <RotateTransform/>
                     <TranslateTransform/>

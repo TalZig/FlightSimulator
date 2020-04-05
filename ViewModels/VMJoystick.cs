@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace FlightSimulator.ViewModels
 {
-    class VMJoystick : Notifier
+    public class VMJoystick : Notifier
     {
 
         public Models.Model model;

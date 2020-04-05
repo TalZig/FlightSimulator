@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace FlightSimulator.ViewModels
 {
-    class VMDashboard : INotifyPropertyChanged
+    public class VMDashboard : INotifyPropertyChanged
     {
         Model model;
         public event PropertyChangedEventHandler PropertyChanged;

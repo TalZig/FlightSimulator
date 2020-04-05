@@ -46,11 +46,11 @@ namespace FlightSimulator
             //Aileron.DataContext = jvm;
             //joystick1.DataContext = jvm;
             VMDashboard dvm = new VMDashboard(model);
-            Board.DataContext = dvm;
-            myJoystick.DataContext = jvm;
+            Board.DataContext = (Application.Current as App).vmd;
+            myJoystick.DataContext = (Application.Current as App).vmj;
             VMMap mapvm = new VMMap(model);
-            map.DataContext = mapvm;
-            this.DataContext = mapvm;     
+            map.DataContext = (Application.Current as App).vmm;
+            this.DataContext = (Application.Current as App).vmm;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -66,6 +66,12 @@ namespace FlightSimulator
             var hwnd = new WindowInteropHelper(this).Handle;
             SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
         }
+
+        private void map_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             if (!closeApp)

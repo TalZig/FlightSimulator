@@ -11,7 +11,20 @@ namespace FlightSimulator
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
+    
     public partial class App : Application
     {
+        public Models.Model model = new Models.Model();
+        public ViewModels.VMDashboard vmd { get; internal set; }
+        public ViewModels.VMJoystick vmj { get; internal set; }
+        public ViewModels.VMMap vmm { get; internal set; }
+
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            vmd = new ViewModels.VMDashboard(model);
+            vmj = new ViewModels.VMJoystick(model);
+            vmm = new ViewModels.VMMap(model);
+        }
     }
 }

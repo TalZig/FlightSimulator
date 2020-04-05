@@ -13,11 +13,13 @@ namespace FlightSimulator.ViewModels
 	public class VMMap : INotifyPropertyChanged
 	{
 		Models.Model model;
+		private string msg;
 		bool stop = false;
 		public event PropertyChangedEventHandler PropertyChanged;
 		public VMMap(Models.Model model1)
 		{
 			model = model1;
+			msg = "Plane is in bounds";
 			model.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
 			{
 				NotifyPropertyChanged("VM" + e.PropertyName);
@@ -33,7 +35,23 @@ namespace FlightSimulator.ViewModels
 				VMLocation = model.Location;
 			if (name.Equals("VMStop"))
 				VMStop = model.stop;
+			if (name.Equals("VMMsg"))
+				VMMsg = model.Msg;
 		}
+
+		public string VMMsg
+		{
+			get { return msg; }
+			set
+			{
+				if (value != msg)
+				{
+					msg = value;
+					NotifyPropertyChanged("VMMsg");
+				}
+			}
+		}
+
 
 		public Boolean VMStop
 		{

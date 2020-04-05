@@ -8,9 +8,13 @@
         mc:Ignorable="d"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="FlightGearController" Height="600" Width="1000">
     <Grid Margin="0,-2,0.333,1.667" Background="WhiteSmoke">
-        <View:ControlBoard x:Name="Board" Margin="595,18,98,300" RenderTransformOrigin="0.5,0.5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition Width="913*"/>
+        </Grid.ColumnDefinitions>
+        <View:ControlBoard x:Name="Board" Margin="514,18,97.667,300.333" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
             <View:ControlBoard.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
@@ -21,7 +25,7 @@
             </View:ControlBoard.RenderTransform>
         </View:ControlBoard>
 
-        <View:Map x:Name="map" Margin="18,54,600.667,33.333" RenderTransformOrigin="0.5,0.5"></View:Map>
+        <View:Map x:Name="map" Margin="20,50,552.667,37.333" RenderTransformOrigin="0.5,0.5" Loaded="map_Loaded" Grid.ColumnSpan="2"></View:Map>
         <!--
         <View:Joystick x:Name="joystick1" Margin="417,244,-14,-24" RenderTransformOrigin="0.5,0.5" RudderValue ="{Binding VMRudder, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}" ElevatorValue ="{Binding VMElevator, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}">
             <View:Joystick.RenderTransform>
@@ -56,9 +60,12 @@
             </Slider.RenderTransform>
         </Slider>
         -->
-        <Button Content="stop fly" HorizontalAlignment="Left" Margin="34,27,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click" />
-        <TextBlock HorizontalAlignment="Left" Background="OrangeRed" Margin="494,29,0,0" TextWrapping="Wrap" Text="{Binding Path= VMStatusOfServer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Height="34" Width="80"/>
-        <View:MyJoystick x:Name="myJoystick" HorizontalAlignment="Left" Height="300" Margin="530,246,0,0" VerticalAlignment="Top" Width="330"/>
+        <Button Content="stop fly" HorizontalAlignment="Left" Margin="34,27,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click" Grid.ColumnSpan="2" />
+        <TextBlock HorizontalAlignment="Left" Background="OrangeRed" Margin="377,105,0,0" TextWrapping="Wrap" Text="{Binding Path= VMStatusOfServer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Height="34" Width="80" Grid.Column="1"/>
+        <TextBlock x:Name="Boundaries" HorizontalAlignment="Left" Background="Gray" Margin="377,189,0,0" TextWrapping="Wrap" Text="{Binding Path= VMMsg, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Height="34" Width="80" Grid.Column="1"/>
+        <View:MyJoystick x:Name="myJoystick" HorizontalAlignment="Left" Height="300" Margin="449,246,0,0" VerticalAlignment="Top" Width="330" Grid.Column="1"/>
+        <Label Content="Plane's Status:" HorizontalAlignment="Left" Margin="372,163,0,0" VerticalAlignment="Top" Width="90" Height="28" Grid.Column="1"/>
+        <Label Content="Server's Status:" HorizontalAlignment="Left" Margin="373,80,0,0" VerticalAlignment="Top" Grid.Column="1"/>
     </Grid>
 
 </Window>
