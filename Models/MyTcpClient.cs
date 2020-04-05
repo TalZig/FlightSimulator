@@ -89,6 +89,5 @@ namespace FlightSimulator.Models
             }
             else return returnedValue;
         }
-
     }
 }
