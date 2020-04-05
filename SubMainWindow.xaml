@@ -56,7 +56,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="530,303,0,0" TextWrapping="Wrap" Text="Aileron" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="814,545,0,0" TextWrapping="Wrap" Text="Throttle" VerticalAlignment="Top"/>
         <Button Content="stop fly" HorizontalAlignment="Left" Margin="34,27,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click" />
-        <TextBlock HorizontalAlignment="Left" Background="OrangeRed" Margin="469,35,0,0" TextWrapping="Wrap" Text="{Binding Path= VMStatusOfServer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Height="34" Width="80"/>
+        <TextBlock HorizontalAlignment="Left" Background="OrangeRed" Margin="494,29,0,0" TextWrapping="Wrap" Text="{Binding Path= VMStatusOfServer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Height="34" Width="80"/>
     </Grid>
 
 </Window>
