@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="FlightSimulator.View.Map"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightSimulator.View"
+             xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <m:Map x:Name="map" ZoomLevel="8" CredentialsProvider="AhgxD7rLpIhZkI6TfF9Jb2TBRr5IYDPx0RDU2gsdB6ohUsJOZlbxLnwApJh-s0FD" Mode="AerialWithLabels" Center="32.0 ,34.888852"  Margin="14,8,-173,-110"  >
+            <m:Map.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </m:Map.RenderTransform>
+            <m:Pushpin Name="planePushpin" Location="{Binding Path=VMLocation,UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5, 0.5" LayoutUpdated="pin_LayoutUpdated">
+                <m:Pushpin.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform x:Name="PlanePosition"></TranslateTransform>
+                    </TransformGroup>
+                </m:Pushpin.RenderTransform>
+                <Image x:Name="airplane" Source ="airplane.png" Width="20" VerticalAlignment="Center" Height="20" HorizontalAlignment="Center"></Image>
+            </m:Pushpin>
+            <TextBox x:Name="currentLocation" Text="{Binding Path=VMLocation, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="186,-37,2,645"></TextBox>
+            <!--<Canvas Width="50" Height="50" m:MapLayer.Position="32.0,34.888852"  m:MapLayer.PositionOrigin="BottomCenter" Opacity="34" Margin="218,507,232,11">
+                <m:Pushpin x:Name="plane" Location="{Binding VMLocation, Mode=OneWay}"  Canvas.Left="8" Canvas.Top="20" IsEnabled="False">
+                   <ImageBrush ImageSource="airplane.png"></ImageBrush>
+                </m:Pushpin>
+                <Image Source="airplane.png" Height="80" Width="80" Canvas.Left="-36" Canvas.Top="-40"></Image> m:MapLayer.Position="{Binding VMLocation}"
+            </Canvas> -->
+        </m:Map>
+    </Grid>
+</UserControl>

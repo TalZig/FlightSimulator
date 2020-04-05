@@ -39,7 +39,7 @@ namespace FlightSimulator
             VMDashboard dvm = new VMDashboard(model);
             Board.DataContext = dvm;
             VMMap mapvm = new VMMap(model);
-            Map.DataContext = mapvm;
+            map.DataContext = mapvm;
             this.DataContext = mapvm;
 
             /*mapvm.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
@@ -56,23 +56,6 @@ namespace FlightSimulator
             var mai = new FlightSimulator.MainWindow();
             this.Close();
             mai.ShowDialog();
-        }
-
-        private void pin_LayoutUpdated(object sender, EventArgs e)
-        {
-            if (planePushpin.Location != null)
-            {
-                double latitude = planePushpin.Location.Latitude;
-                double longtitude = planePushpin.Location.Longitude;
-                if (firstTime)
-                {
-                    Map.SetView(new Location(latitude, longtitude), 10);
-                    PlanePosition.X = 0;
-                    PlanePosition.Y = 0;
-                    firstTime = false;
-                    return;
-                }
-            }
         }
 
 
