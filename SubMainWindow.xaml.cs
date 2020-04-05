@@ -40,11 +40,12 @@ namespace FlightSimulator
             Board.DataContext = dvm;
             VMMap mapvm = new VMMap(model);
             Map.DataContext = mapvm;
+            this.DataContext = mapvm;
 
-           /*mapvm.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
-           {
-               NotifyPropertyChanged(e.PropertyName);
-           };*/
+            /*mapvm.PropertyChanged += delegate (object sender, PropertyChangedEventArgs e)
+            {
+                NotifyPropertyChanged(e.PropertyName);
+            };*/
 
             //vm.model.Start() ;            
         }
