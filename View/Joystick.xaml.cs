@@ -32,6 +32,8 @@ namespace FlightSimulator.View
         {
             knobPosition.X = 0;
             knobPosition.Y = 0;
+            RudderValue = 0;
+            ElevatorValue = 0;
         }
 
         private void Knob_MouseUp(object sender, MouseButtonEventArgs e)
@@ -39,6 +41,8 @@ namespace FlightSimulator.View
             stop = true;
             knobPosition.X = 0;
             knobPosition.Y = 0;
+            RudderValue = 0;
+            ElevatorValue = 0;
             UIElement element = (UIElement)Knob;
             element.ReleaseMouseCapture();
         }
@@ -89,8 +93,10 @@ namespace FlightSimulator.View
                     else
                         knobPosition.Y = y;
 
-                    RudderValue = (x + 2) / ((BlackCircle.Width - KnobBase.Width) / 2);
-                    ElevatorValue = (y / (KnobBase.Width / 2));
+                    //RudderValue = (x + 2) / ((BlackCircle.Width - KnobBase.Width) / 2);
+                    //ElevatorValue = (y / (KnobBase.Width / 2));
+                    RudderValue = knobPosition.X;
+                    ElevatorValue = knobPosition.Y;
                 }
             }
         }

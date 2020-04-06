@@ -308,32 +308,37 @@ namespace FlightSimulator.Models
             }
             this.myClient.disconnect();
         }
-        public void UpdateValue(String info, double newVal)
+        public float UpdateValue(String info, double newVal)
         {
             if (info == "rudder")
             {
                 valuesFromView[0] = UpdateRudder(newVal);
+                return (float)valuesFromView[0];
                 //myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
             }
             if (info == "elevator")
             {
                 valuesFromView[1] = UpdateElevator(newVal);
+                return (float)valuesFromView[1];
                 //myClient.write("set /controls/flight/elevator\r\n" + valuesFromView[1].ToString());
 
             }
             if (info == "throttle")
             {
                 valuesFromView[2] = UpdateThrottle(newVal);
-
+                return (float)valuesFromView[2];
                 //myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
 
             }
             if (info == "aileron")
             {
                 valuesFromView[3] = UpdateAileron(newVal);
+                return (float)valuesFromView[3];
                 //myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
 
             }
+            else
+                return 0;
         }
 
         private double UpdateRudder(double newVal)
@@ -384,13 +389,13 @@ namespace FlightSimulator.Models
             {
                 if (newVal > 1)
                 {
-                    return 0;
+                    return 1;
                 }
                 if (newVal < 0)
                 {
-                    return 1;
+                    return 0;
                 }
-                return 1 - newVal;
+                return newVal;
             }
         }
     }
