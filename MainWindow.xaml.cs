@@ -43,11 +43,11 @@ namespace FlightSimulator
             firstVal = MyTextBox.Text;
             secondVal = MyTextBox2.Text;
             SubMainWindow sub;
-            Models.Model model = new Models.Model();
+            //Models.Model model = (Application.Current as App).model;
             try
             {
-                model.Connect(firstVal, int.Parse(secondVal));
-                sub = new SubMainWindow(model);
+                (Application.Current as App).model.Connect(firstVal, int.Parse(secondVal));
+                sub = new SubMainWindow((Application.Current as App).model);
                 closeApp = true;
                 this.Close();
                 sub.ShowDialog();
@@ -78,12 +78,12 @@ namespace FlightSimulator
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Models.Model model = new Models.Model();
+            //Models.Model model = new Models.Model();
             SubMainWindow sub;
             try
             {
-                model.Connect(ConfigurationManager.AppSettings["IP"].ToString(), Int32.Parse(ConfigurationManager.AppSettings["port"].ToString()));
-                sub = new SubMainWindow(model);
+                (Application.Current as App).model.Connect(ConfigurationManager.AppSettings["IP"].ToString(), Int32.Parse(ConfigurationManager.AppSettings["port"].ToString()));
+                sub = new SubMainWindow((Application.Current as App).model);
                 closeApp = true;
                 this.Close();
                 sub.ShowDialog();

@@ -41,14 +41,14 @@ namespace FlightSimulator
         {
             InitializeComponent();
 
-            jvm = new VMJoystick(model);
+            //jvm = new VMJoystick(model);
             //Throttle.DataContext = jvm;
             //Aileron.DataContext = jvm;
             //joystick1.DataContext = jvm;
-            VMDashboard dvm = new VMDashboard(model);
+           // VMDashboard dvm = new VMDashboard(model);
             Board.DataContext = (Application.Current as App).vmd;
             myJoystick.DataContext = (Application.Current as App).vmj;
-            VMMap mapvm = new VMMap(model);
+            //VMMap mapvm = new VMMap(model);
             map.DataContext = (Application.Current as App).vmm;
             this.DataContext = (Application.Current as App).vmm;
         }

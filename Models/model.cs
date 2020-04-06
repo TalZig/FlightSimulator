@@ -14,6 +14,7 @@ namespace FlightSimulator.Models
         public Model()
         {
             location = new Location(32.0, 34.888852);
+            msg = "Plane is in bounds";
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public double[] valuesFromView = new double[4];
@@ -170,6 +171,23 @@ namespace FlightSimulator.Models
             }
         }
 
+        private string msg;
+        public string Msg 
+        {
+            get
+            {
+                return msg;
+            }
+            set
+            {
+                if (value != msg)
+                {
+                    msg = value;
+                    this.NotifyPropertyChanged("Msg");
+                }
+            }
+        }
+
         MyTcpClient myClient = new MyTcpClient();
         public void Connect(string ip, int port)
         {
@@ -242,18 +260,31 @@ namespace FlightSimulator.Models
                 if (tempX>=90 || tempX <= -90)
                 {
                     if (tempX >= 90)
+                    {
                         Location = new Location(90, Location.Longitude);
+                        Msg = "Plane is out of bounds";
+                    }
                     else
+                    {
                         Location = new Location(-90, Location.Longitude);
+                        Msg = "Plane is out of bounds";
+                    }
                 } else if(tempY >= 90 || tempY <= -90)
                 {
                     if (tempY >= 90)
+                    {
                         Location = new Location(Location.Latitude, 90);
+                        Msg = "Plane is out of bounds";
+                    }
                     else
+                    {
                         Location = new Location(Location.Latitude, -90);
+                        Msg = "Plane is out of bounds";
+                    }
                 } else
                 {
                     Location = new Location(tempX, tempY);
+                    Msg = "Plane is in bounds";
                 }
                 
                 if (tempX == -99999)
