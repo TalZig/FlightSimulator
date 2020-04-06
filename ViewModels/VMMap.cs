@@ -52,7 +52,6 @@ namespace FlightSimulator.ViewModels
 			}
 		}
 
-
 		public Boolean VMStop
 		{
 			get
