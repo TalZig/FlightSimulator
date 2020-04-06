@@ -13,8 +13,8 @@ namespace FlightSimulator.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public Models.Model model;
-        private double _rudder;
-        private double _elevator;
+        private float _rudder;
+        private float _elevator;
         private double _aileron;
         private double _throttle;
         public bool stop
@@ -49,7 +49,7 @@ namespace FlightSimulator.ViewModels
 
 
 
-        public double VMRudder
+        public float VMRudder
         {
             get { return _rudder; }
             set
@@ -62,7 +62,7 @@ namespace FlightSimulator.ViewModels
             }
         }
 
-        public double VMElevator
+        public float VMElevator
         {
             get { return _elevator; }
             set
