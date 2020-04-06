@@ -56,7 +56,6 @@ namespace FlightSimulator
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             closeApp = true;
-            jvm.stop = true;
             var mai = new FlightSimulator.MainWindow();
             this.Close();
             mai.ShowDialog();

@@ -9,9 +9,9 @@ using System.Windows;
 
 namespace FlightSimulator.ViewModels
 {
-    public class VMJoystick : Notifier
+    public class VMJoystick : INotifyPropertyChanged
     {
-
+        public event PropertyChangedEventHandler PropertyChanged;
         public Models.Model model;
         private double _rudder;
         private double _elevator;
@@ -37,13 +37,18 @@ namespace FlightSimulator.ViewModels
                 NotifyPropertyChanged("VM"+e.PropertyName);
             };
         }
+        public void NotifyPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
         // insert both sliders and their property
         // create constructors
         // bind
         // where to send messages via model to simulator?
 
 
-        
+
         public double VMRudder
         {
             get { return _rudder; }
@@ -51,9 +56,8 @@ namespace FlightSimulator.ViewModels
             {
                 if (value != _rudder)
                 {
-                    _rudder = value;
-                   // this.NotifyPropertyChanged("rudder");
-                    model.UpdateValue("rudder", value);
+                    _rudder = model.UpdateValue("rudder", value);
+                    this.NotifyPropertyChanged("VMRudder");
                 }
             }
         }
@@ -65,9 +69,8 @@ namespace FlightSimulator.ViewModels
             {
                 if (value != _elevator)
                 {
-                    _elevator = value;
-                    //NotifyPropertyChanged("elevator");
-                    model.UpdateValue("elevator", value);
+                    _elevator = model.UpdateValue("elevator", value);
+                    NotifyPropertyChanged("VMElevator");
 
                 }
             }
@@ -80,9 +83,8 @@ namespace FlightSimulator.ViewModels
             {
                 if (value != _aileron)
                 {
-                    _aileron = value;
+                    _aileron = model.UpdateValue("aileron", value);
                     //NotifyPropertyChanged("aileron");
-                    model.UpdateValue("aileron", value);
                 }
             }
         }
@@ -94,9 +96,9 @@ namespace FlightSimulator.ViewModels
             {
                 if (value != _throttle)
                 {
-                    _throttle = value;
+                    _throttle = model.UpdateValue("throttle", value);
                     //NotifyPropertyChanged("throttle");
-                    model.UpdateValue("throttle", value);
+
                 }
             }
         }
