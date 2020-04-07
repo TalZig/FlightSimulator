@@ -78,6 +78,7 @@ namespace FlightSimulator.View
                     }
                     else if (x - (KnobBase.Width / 2) < -(BlackCircle.Width / 2))
                     {
+                        // knobPosition.X = -((BlackCircle.Width / 2) - (KnobBase.Width / 2));
                         knobPosition.X = -((BlackCircle.Width / 2) - (KnobBase.Width / 2));
                     }
                     else
@@ -93,10 +94,10 @@ namespace FlightSimulator.View
                     else
                         knobPosition.Y = y;
 
-                    //RudderValue = (x + 2) / ((BlackCircle.Width - KnobBase.Width) / 2);
-                    //ElevatorValue = (y / (KnobBase.Width / 2));
-                    RudderValue = knobPosition.X;
-                    ElevatorValue = knobPosition.Y;
+                    RudderValue = (x + 2) / ((BlackCircle.Width - KnobBase.Width) / 2);
+                    ElevatorValue = (y / (KnobBase.Width / 2));
+                    //RudderValue = knobPosition.X - 2;
+                    //ElevatorValue = knobPosition.Y ;
                 }
             }
         }
