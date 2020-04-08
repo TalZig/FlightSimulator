@@ -28,13 +28,7 @@ namespace FlightSimulator.Models
             tcpClient.Connect(ip, port);
             this.stream = tcpClient.GetStream();
         }
-        /*        void write(string command)
-                {
-                    Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
-                    NetworkStream stream = myClient.GetStream();
-                    stream.Write(data, 0, data.Length);
-                    Console.WriteLine("Sent: {0}", command);
-                }*/
+        
         public void disconnect()
         {
             tcpClient.Close();
@@ -56,14 +50,23 @@ namespace FlightSimulator.Models
         public string read()
         {
             byte[] data = new byte[100];
+            this.stream.ReadTimeout = 10000;
             try
             {
                 int k = stream.Read(data, 0, 100);
                 Console.WriteLine(k);
             }
-            catch (Exception)
+            /*catch(Exception)
             {
-                Console.WriteLine("-99999");
+                Console.WriteLine("Timeout error!");
+                return "Timeout";
+            }*/
+            catch (Exception e)
+            {
+//                Console.WriteLine(e.Message);
+                if (e.Message.Contains("time"))
+                    return "Timeout";
+                Console.WriteLine("regular error");
                 return "-99999";
             }
             StringBuilder builder = new StringBuilder();

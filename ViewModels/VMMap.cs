@@ -25,6 +25,7 @@ namespace FlightSimulator.ViewModels
 				NotifyPropertyChanged("VM" + e.PropertyName);
 			};
 			VMLocation = model.Location;
+			vmStatusOfServer = "server is connected";
 		}
 
 		public void NotifyPropertyChanged(string name)
@@ -37,6 +38,11 @@ namespace FlightSimulator.ViewModels
 				VMStop = model.stop;
 			if (name.Equals("VMMsg"))
 				VMMsg = model.Msg;
+			if (name.Equals("VMTimeout"))
+			{
+				Console.WriteLine("timeout in VMMap");
+				VMStatusOfServer = "10 sec w/out response";
+			}
 		}
 
 		public string VMMsg
@@ -61,7 +67,6 @@ namespace FlightSimulator.ViewModels
 			set
 			{
 				stop = value;
-				Console.WriteLine("check!!");
 				VMStatusOfServer = "Server disconnected";
 			}
 		}
@@ -70,15 +75,19 @@ namespace FlightSimulator.ViewModels
 		{
 			get
 			{
-				if (VMStop == true)
+				/*if (VMStop == true)
 					return "Server disconnected";
 				else
-					return "Server is connect";
+					return "Server is connected";*/
+				return vmStatusOfServer;
 			}
 			set
 			{
-				vmStatusOfServer = value;
-				NotifyPropertyChanged("VMStatusOfServer");
+				if (value != vmStatusOfServer)
+				{
+					vmStatusOfServer = value;
+					NotifyPropertyChanged("VMStatusOfServer");
+				}
 			}
 		}
 

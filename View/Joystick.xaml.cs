@@ -72,7 +72,7 @@ namespace FlightSimulator.View
             {
                 double x = (e.GetPosition(this).X - center.X);
                 double y = (e.GetPosition(this).Y - center.Y);
-                if (Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2)) + (KnobBase.Width / 2) < Base.Width / 2)
+                if (Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2)) + (KnobBase.Width / 2) <= Base.Width / 2)
                 {
                     knobPosition.X = x;
                     knobPosition.Y = y;
