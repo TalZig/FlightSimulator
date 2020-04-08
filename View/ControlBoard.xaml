@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:FlightSimulator.View"
              mc:Ignorable="d" 
              d:DesignHeight="247.647" d:DesignWidth="232.942">
-    <StackPanel Margin="0,-37,-79,5" Background="LightYellow">
+    <StackPanel Margin="0,-37,-79,5" Background="BlueViolet">
         <WrapPanel>
             <TextBlock Text="indicated-heading-deg: " Margin="0,0,266.667,0" Width="200"/>
             <TextBox Text="{Binding Path = VMHeadingDeg, Mode = OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="150,0,100,0" Width="50"/>

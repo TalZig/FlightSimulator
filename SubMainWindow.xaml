@@ -9,7 +9,7 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         ResizeMode="NoResize"
         Title="FlightGearController" Height="600" Width="1000">
-    <Grid Margin="0,-2,0.333,1.667" Background="WhiteSmoke">
+    <Grid Margin="0,-2,0.333,1.667" Background="BlueViolet">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="81*"/>
             <ColumnDefinition Width="913*"/>
