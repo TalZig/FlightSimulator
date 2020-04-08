@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -20,35 +21,44 @@ namespace FlightSimulator.View
     /// </summary>
     public partial class Joystick : UserControl
     {
-        Boolean stop = false;
         public Joystick()
         {
             InitializeComponent();
         }
+        private Storyboard sb;
         private Point center;
         //private double x1 = 0;
         //private double y1 = 0;
         private void CenterKnob_Completed(Object sender, EventArgs e)
         {
-            knobPosition.X = 0;
-            knobPosition.Y = 0;
+            //Storyboard sb = Knob.FindResource("CenterKnob") as Storyboard;
+            //Storyboard sb = FindResource("centerKnob") as Storyboard;
+            //sb.Begin();
+/*          knobPosition.X = 0;
+            knobPosition.Y = 0;*/
             RudderValue = 0;
             ElevatorValue = 0;
+            
         }
 
         private void Knob_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            stop = true;
-            knobPosition.X = 0;
-            knobPosition.Y = 0;
-            RudderValue = 0;
-            ElevatorValue = 0;
+            sb = Knob.FindResource("CenterKnob") as Storyboard;
+            //Storyboard sb = FindResource("centerKnob") as Storyboard;
+            sb.Begin();
+            
+            //knobPosition.X = 0;
+            //knobPosition.Y = 0;
+            //RudderValue = 0;
+            //ElevatorValue = 0;
             UIElement element = (UIElement)Knob;
             element.ReleaseMouseCapture();
         }
 
         private void Knob_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            sb = Knob.FindResource("CenterKnob") as Storyboard;
+            sb.Stop();
             if (e.ChangedButton == MouseButton.Left)
             {
                 center = e.GetPosition(this);
@@ -110,8 +120,8 @@ namespace FlightSimulator.View
 
         private void Knob_MouseLeave(object sender, MouseEventArgs e)
         {
-            knobPosition.X = 0;
-            knobPosition.Y = 0;
+        //    knobPosition.X = 0;
+        //    knobPosition.Y = 0;
         }
 
         public double ElevatorValue
