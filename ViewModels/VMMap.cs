@@ -66,7 +66,8 @@ namespace FlightSimulator.ViewModels
 			set
 			{
 				stop = value;
-				VMStatusOfServer = "Server disconnected";
+				if (VMStatusOfServer != "10 sec w/out response")
+					VMStatusOfServer = "Server disconnected";
 			}
 		}
 		private string vmStatusOfServer;
