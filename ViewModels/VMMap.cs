@@ -40,7 +40,6 @@ namespace FlightSimulator.ViewModels
 				VMMsg = model.Msg;
 			if (name.Equals("VMTimeout"))
 			{
-				Console.WriteLine("timeout in VMMap");
 				VMStatusOfServer = "10 sec w/out response";
 			}
 		}

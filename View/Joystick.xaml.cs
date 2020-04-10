@@ -24,6 +24,7 @@ namespace FlightSimulator.View
         public Joystick()
         {
             InitializeComponent();
+            center = new Point(Base.Width / 2, Base.Height / 2);
         }
         private Storyboard sb;
         private Point center;
@@ -61,7 +62,7 @@ namespace FlightSimulator.View
             sb.Stop();
             if (e.ChangedButton == MouseButton.Left)
             {
-                center = e.GetPosition(this);
+                //center = e.GetPosition(this);
                 (Knob).CaptureMouse();
             }
         }
@@ -70,18 +71,46 @@ namespace FlightSimulator.View
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                double x = (e.GetPosition(this).X - center.X);
-                double y = (e.GetPosition(this).Y - center.Y);
-                if (Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2)) + (KnobBase.Width / 2) <= Base.Width / 2)
+
+                Console.WriteLine("x: " + e.GetPosition(this).X.ToString());
+                Console.WriteLine("y: " + e.GetPosition(this).Y.ToString());
+                double deltaX = (e.GetPosition(this).X - center.X);
+                double deltaY = (e.GetPosition(this).Y - center.Y);
+                double distFromCenter = Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2))  /*+ (KnobBase.Width / 2)*/;
+                if (distFromCenter <= Base.Width / 2)
                 {
-                    knobPosition.X = x;
-                    knobPosition.Y = y;
+                    knobPosition.X = deltaX;
+                    knobPosition.Y = deltaY;
+                    //Console.WriteLine("x in circle: " + x.ToString());
+                    //Console.WriteLine("y in circle: " + y.ToString());
                     //update on view model (normalized)
-                    RudderValue = (x + 2) / ((Base.Width - KnobBase.Width) / 2);
-                    ElevatorValue = (y / (KnobBase.Width / 2));
+                    RudderValue = (deltaX + 2) / ((Base.Width - KnobBase.Width) / 2);
+                    ElevatorValue = (deltaY / (KnobBase.Width / 2));
                 }
                 else
                 {
+                    // find x, y on the end of the circle
+                    // find slope of linear equation
+                    // use slope to fine closest x,y on 
+                    
+                    double m = deltaY / deltaX;
+                    double tempX = Math.Sqrt(Math.Pow(Base.Width/2, 2) / (m*m + 1));
+                    double tempY = (tempX)* m;
+                    if (tempX > center.X)
+                        knobPosition.X = -tempX;
+                    else
+                        knobPosition.X = tempX;
+                    if (tempY > center.Y)
+                        knobPosition.Y = -tempY;
+                    else
+                        knobPosition.Y = tempY;
+                    /*knobPosition.X = tempX;
+                    knobPosition.Y = tempY;*/
+                    Console.WriteLine("X calculated: " + knobPosition.X.ToString());
+                    Console.WriteLine("Y calculated: " + knobPosition.Y.ToString());
+                    
+                    
+                    /*
                     if (x + (KnobBase.Width / 2) > Base.Width / 2)
                     {
                         knobPosition.X = (Base.Width / 2) - (KnobBase.Width / 2);
@@ -93,20 +122,20 @@ namespace FlightSimulator.View
                     }
                     else
                         knobPosition.X = x;
-                    if (y + (KnobBase.Width / 2) > Base.Width / 2)
+                    if (y + (KnobBase.Height / 2) > Base.Height / 2)
                     {
-                        knobPosition.Y = (Base.Width / 2) - (KnobBase.Width / 2);
+                        knobPosition.Y = (Base.Height / 2) - (KnobBase.Height / 2);
                     }
-                    else if (y - (KnobBase.Width / 2) < -(Base.Width / 2))
+                    else if (y - (KnobBase.Height / 2) < -(Base.Height / 2))
                     {
-                        knobPosition.Y = -((Base.Width / 2) - (KnobBase.Width / 2));
+                        knobPosition.Y = -((Base.Height / 2) - (KnobBase.Height / 2));
                     }
                     else
                         knobPosition.Y = y;
-
-                    RudderValue = (x + 2) / ((Base.Width - KnobBase.Width) / 2);
+                    */
+                    RudderValue = (knobPosition.X + 2) / ((Base.Width - KnobBase.Width) / 2);
                     //ElevatorValue = (y / (KnobBase.Width / 2));
-                    ElevatorValue = (y + 2) / ((Base.Width - KnobBase.Width) / 2);
+                    ElevatorValue = (knobPosition.X + 2) / ((Base.Height - KnobBase.Height) / 2);
                     //RudderValue = knobPosition.X - 2;
                     //ElevatorValue = knobPosition.Y ;
                 }

@@ -90,7 +90,7 @@ namespace FlightSimulator
             }
             catch (Exception)
             {
-                Console.WriteLine("there is no server, good bye");
+                //Console.WriteLine("there is no server, good bye");
                 string message = String.Format("The port or ip are not good, please try again.\n");
                 MessageBox.Show(message, "", MessageBoxButton.OK, MessageBoxImage.Error);
 

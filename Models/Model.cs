@@ -209,8 +209,10 @@ namespace FlightSimulator.Models
                 //values from the server
                 myClient.write("get /instrumentation/heading-indicator/indicated-heading-deg\r\n");
                 temp = myClient.read();
-                if (temp.Equals("Timeout"))
+                if (temp.Equals("Timeout")) { 
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 HeadingDeg = Double.Parse(temp);
                 if (HeadingDeg == -99999)
                 {
@@ -222,7 +224,10 @@ namespace FlightSimulator.Models
                 myClient.write("get /instrumentation/gps/indicated-vertical-speed\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 VerticalSpeed = Double.Parse(temp);
                 if (VerticalSpeed == -99999)
                 {
@@ -234,7 +239,10 @@ namespace FlightSimulator.Models
                 myClient.write("get /instrumentation/gps/indicated-ground-speed-kt\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 GroundSpeedKt = Double.Parse(temp);
                 if (GroundSpeedKt == -99999)
                 {
@@ -246,7 +254,10 @@ namespace FlightSimulator.Models
                 myClient.write("get /instrumentation/airspeed-indicator/indicated-speed-kt\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 IndicatedSpeedKt = Double.Parse(temp);
                 if (IndicatedSpeedKt == -99999)
                 {
@@ -258,7 +269,10 @@ namespace FlightSimulator.Models
                 myClient.write("get /instrumentation/gps/indicated-altitude-ft\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 AltitudeFt = Double.Parse(temp);
                 if (AltitudeFt == -99999)
                 {
@@ -270,7 +284,10 @@ namespace FlightSimulator.Models
                 myClient.write("get /instrumentation/attitude-indicator/internal-roll-deg\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 RollDeg = Double.Parse(temp);
                 if (RollDeg == -99999)
                 {
@@ -282,7 +299,10 @@ namespace FlightSimulator.Models
                 myClient.write("get /instrumentation/altimeter/indicated-altitude-ft\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 IndicatedAlitudeFt = Double.Parse(temp);
                 if (IndicatedAlitudeFt == -99999)
                 {
@@ -294,7 +314,10 @@ namespace FlightSimulator.Models
                 myClient.write("get /instrumentation/attitude-indicator/internal-pitch-deg\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 PitchDeg = Double.Parse(temp);
                 if (PitchDeg == -99999)
                 {
@@ -307,7 +330,10 @@ namespace FlightSimulator.Models
                 myClient.write("get /position/latitude-deg\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 tempX = Double.Parse(temp);
                 if (tempX == -99999)
                 {
@@ -319,7 +345,10 @@ namespace FlightSimulator.Models
                 myClient.write("get /position/longitude-deg\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 tempY = Double.Parse(temp);
                 if (tempY == -99999)
                 {
@@ -361,19 +390,31 @@ namespace FlightSimulator.Models
                 myClient.write("set /controls/flight/rudder " + valuesFromView[0].ToString() + "\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 myClient.write("set /controls/flight/elevator " + valuesFromView[1].ToString() + "\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 myClient.write("set /controls/engines/current-engine/throttle " + valuesFromView[2].ToString() + "\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 myClient.write("set /controls/flight/aileron " + valuesFromView[3].ToString() + "\r\n");
                 temp = myClient.read();
                 if (temp.Equals("Timeout"))
+                {
                     this.NotifyPropertyChanged("Timeout");
+                    this.NotifyPropertyChanged("Stop");
+                }
                 //values from the view that we need to update
                 //location of the airplane
                 Thread.Sleep(800);

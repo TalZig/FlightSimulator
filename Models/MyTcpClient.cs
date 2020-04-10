@@ -54,19 +54,11 @@ namespace FlightSimulator.Models
             try
             {
                 int k = stream.Read(data, 0, 100);
-                Console.WriteLine(k);
             }
-            /*catch(Exception)
-            {
-                Console.WriteLine("Timeout error!");
-                return "Timeout";
-            }*/
             catch (Exception e)
             {
-//                Console.WriteLine(e.Message);
                 if (e.Message.Contains("time"))
                     return "Timeout";
-                Console.WriteLine("regular error");
                 return "-99999";
             }
             StringBuilder builder = new StringBuilder();
@@ -75,7 +67,7 @@ namespace FlightSimulator.Models
                 builder.Append(value);
             }
             string returnedValue = builder.ToString();
-            //Console.WriteLine(returnedValue);
+
 
             //for integer
             string temp = Regex.Match(returnedValue, @"[+-]\d+").Value;
