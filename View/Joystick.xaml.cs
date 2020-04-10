@@ -71,9 +71,6 @@ namespace FlightSimulator.View
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-
-                Console.WriteLine("x: " + e.GetPosition(this).X.ToString());
-                Console.WriteLine("y: " + e.GetPosition(this).Y.ToString());
                 double deltaX = (e.GetPosition(this).X - center.X);
                 double deltaY = (e.GetPosition(this).Y - center.Y);
                 double distFromCenter = Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
@@ -82,8 +79,8 @@ namespace FlightSimulator.View
                     knobPosition.X = deltaX;
                     knobPosition.Y = deltaY;
                     //update on view model (normalized)
-                    RudderValue = (deltaX + 2) / ((Base.Width - KnobBase.Width) / 2);
-                    ElevatorValue = (deltaY / (KnobBase.Width / 2));
+                    RudderValue = deltaX / (Base.Width / 2);
+                    ElevatorValue = deltaY / (Base.Width / 2);
                 }
                 else
                 {
@@ -104,8 +101,8 @@ namespace FlightSimulator.View
 
 
 
-                    ElevatorValue = knobPosition.Y / ((Base.Height) / 2);
-                    RudderValue = knobPosition.X / ((Base.Width) / 2);
+                    ElevatorValue = knobPosition.Y / (Base.Height / 2);
+                    RudderValue = knobPosition.X / (Base.Width / 2);
                     //ElevatorValue = knobPosition.Y ;
                 }
             }
