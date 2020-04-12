@@ -17,7 +17,7 @@ namespace FlightSimulator.ViewModels
         private float _elevator;
         private double _aileron;
         private double _throttle;
-        public bool stop
+        public bool Stop
         {
             get
             {
@@ -49,6 +49,7 @@ namespace FlightSimulator.ViewModels
 
 
 
+        //VMRudder property:
         public float VMRudder
         {
             get { return _rudder; }
@@ -62,6 +63,7 @@ namespace FlightSimulator.ViewModels
             }
         }
 
+        //VMElevator property:
         public float VMElevator
         {
             get { return _elevator; }
@@ -71,11 +73,11 @@ namespace FlightSimulator.ViewModels
                 {
                     _elevator = model.UpdateValue("elevator", value);
                     NotifyPropertyChanged("VMElevator");
-
                 }
             }
         }
 
+        //VMAileron property:
         public double VMAileron
         {
             get { return _aileron; }
@@ -84,11 +86,11 @@ namespace FlightSimulator.ViewModels
                 if (value != _aileron)
                 {
                     _aileron = model.UpdateValue("aileron", value);
-                    //NotifyPropertyChanged("aileron");
                 }
             }
         }
 
+        //VMThrottle property:
         public double VMThrottle
         {
             get { return _throttle; }
@@ -97,7 +99,6 @@ namespace FlightSimulator.ViewModels
                 if (value != _throttle)
                 {
                     _throttle = model.UpdateValue("throttle", value);
-                    //NotifyPropertyChanged("throttle");
 
                 }
             }

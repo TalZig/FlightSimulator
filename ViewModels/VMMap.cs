@@ -12,9 +12,9 @@ namespace FlightSimulator.ViewModels
 {
 	public class VMMap : INotifyPropertyChanged
 	{
-		Models.Model model;
+		readonly Models.Model model;
 		private string msg;
-		bool stop = false;
+		private bool stop = false;
 		public event PropertyChangedEventHandler PropertyChanged;
 		public VMMap(Models.Model model1)
 		{
@@ -44,6 +44,8 @@ namespace FlightSimulator.ViewModels
 			}
 		}
 
+		//VM-massage property:
+		//Send to the view massage
 		public string VMMsg
 		{
 			get { return msg; }
@@ -57,6 +59,7 @@ namespace FlightSimulator.ViewModels
 			}
 		}
 
+		//VMStop property: 
 		public Boolean VMStop
 		{
 			get
@@ -71,14 +74,12 @@ namespace FlightSimulator.ViewModels
 			}
 		}
 		private string vmStatusOfServer;
+
+		//VMStatusOfServer property:
 		public string VMStatusOfServer
 		{
 			get
 			{
-				/*if (VMStop == true)
-					return "Server disconnected";
-				else
-					return "Server is connected";*/
 				return vmStatusOfServer;
 			}
 			set
@@ -91,6 +92,7 @@ namespace FlightSimulator.ViewModels
 			}
 		}
 
+		//VMLocation property:
 		public Location VMLocation
 		{
 			get
@@ -100,7 +102,6 @@ namespace FlightSimulator.ViewModels
 			set
 			{
 				model.Location = value;
-				//this.NotifyPropertyChanged("VMLocation");
 			}
 		}
 

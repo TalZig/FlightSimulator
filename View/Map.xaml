@@ -17,7 +17,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </m:Map.RenderTransform>
-            <m:Pushpin Name="planePushpin" Location="{Binding Path=VMLocation,UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5, 0.5" LayoutUpdated="pin_LayoutUpdated">
+            <m:Pushpin Name="planePushpin" Location="{Binding Path=VMLocation,UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5, 0.5" LayoutUpdated="Pin_LayoutUpdated">
                 <m:Pushpin.RenderTransform>
                     <TransformGroup>
                         <TranslateTransform x:Name="PlanePosition"></TranslateTransform>

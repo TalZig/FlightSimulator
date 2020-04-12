@@ -10,7 +10,7 @@ namespace FlightSimulator.ViewModels
 {
     public class VMDashboard : INotifyPropertyChanged
     {
-        Model model;
+        readonly Model model;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public VMDashboard(Model model1)
@@ -27,6 +27,7 @@ namespace FlightSimulator.ViewModels
             if (PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
+        //Variables for the view from the model:
         public double VMHeadingDeg
         {
             get

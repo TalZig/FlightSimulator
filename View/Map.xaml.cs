@@ -21,13 +21,12 @@ namespace FlightSimulator.View
     /// </summary>
     public partial class Map : UserControl
     {
-        private bool firstTime = true;
         public Map()
         {
             InitializeComponent();
         }
 
-        private void pin_LayoutUpdated(object sender, EventArgs e)
+        private void Pin_LayoutUpdated(object sender, EventArgs e)
         {
             /*if (planePushpin.Location != null)
             {

@@ -31,22 +31,23 @@ namespace FlightSimulator
         private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
         [DllImport("user32.dll")]
         private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
-        private string firstVal;
-        private string secondVal;
+        private string ipVal;
+        private string portVal;
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        //If the user press on the OK button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            firstVal = MyTextBox.Text;
-            secondVal = MyTextBox2.Text;
+            ipVal = MyTextBox.Text;
+            portVal = MyTextBox2.Text;
             SubMainWindow sub;
             //Models.Model model = (Application.Current as App).model;
             try
             {
-                (Application.Current as App).model.Connect(firstVal, int.Parse(secondVal));
+                (Application.Current as App).model.Connect(ipVal, int.Parse(portVal));
                 sub = new SubMainWindow((Application.Current as App).model);
                 closeApp = true;
                 this.Close();
@@ -65,17 +66,19 @@ namespace FlightSimulator
             SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
         }
 
+        //Function that delete the data from text box when the user press on the text box.
         private void MyTextBox2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MyTextBox2.Text = "";
         }
 
+        //Function that delete the data from text box when the user press on the text box.
         private void MyTextBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MyTextBox.Text = "";
 
         }
-
+        //If the user press on "default IP and Port" button.
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             //Models.Model model = new Models.Model();
@@ -98,6 +101,7 @@ namespace FlightSimulator
             }
         }
 
+        //If the user pressed on "EXIT" button.
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             closeApp = true;

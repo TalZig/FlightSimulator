@@ -13,17 +13,18 @@ namespace FlightSimulator
     /// </summary>
     
     public partial class App : Application
-    {        
-        public ViewModels.VMDashboard vmd { get; internal set; }
-        public ViewModels.VMJoystick vmj { get; internal set; }
-        public ViewModels.VMMap vmm { get; internal set; }
+    {
+        //initialize the view models and model:
+        public ViewModels.VMDashboard Vmd { get; internal set; }
+        public ViewModels.VMJoystick Vmj { get; internal set; }
+        public ViewModels.VMMap Vmm { get; internal set; }
         public Models.Model model = new Models.Model();
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            vmd = new ViewModels.VMDashboard(model);
-            vmj = new ViewModels.VMJoystick(model);
-            vmm = new ViewModels.VMMap(model);
+            Vmd = new ViewModels.VMDashboard(model);
+            Vmj = new ViewModels.VMJoystick(model);
+            Vmm = new ViewModels.VMMap(model);
         }
     }
 }
