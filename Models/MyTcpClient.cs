@@ -16,10 +16,8 @@ namespace FlightSimulator.Models
     using System.Net.Sockets;
     using System.IO;
     using System.Text.RegularExpressions;
-    class MyTcpClient : ItelnetClient
+    class MyTcpClient : ITelnetClient
     {
-        private static Mutex mutex1 = new Mutex();
-        private static Mutex mutex2 = new Mutex();
         private TcpClient tcpClient;
         private Stream stream;
         public void Connect(string ip, int port)
@@ -29,11 +27,13 @@ namespace FlightSimulator.Models
             this.stream = tcpClient.GetStream();
         }
         
-        public void disconnect()
+        //Function that disconnect from the server.
+        public void Disconnect()
         {
             tcpClient.Close();
         }
-        public void write(string command)
+        //Function to write to the server.
+        public void Write(string command)
         {
             //Console.WriteLine(command);
             Byte[] data = System.Text.Encoding.ASCII.GetBytes(command);
@@ -47,7 +47,8 @@ namespace FlightSimulator.Models
                 //this.disconnect();
             }
         }
-        public string read()
+        //Function that read from the server.
+        public string Read()
         {
             byte[] data = new byte[100];
             this.stream.ReadTimeout = 10000;
@@ -68,12 +69,12 @@ namespace FlightSimulator.Models
             }
             string returnedValue = builder.ToString();
 
+            //Taking the number from the string with regex:
 
-            //for integer
+            //For integer
             string temp = Regex.Match(returnedValue, @"[+-]\d+").Value;
-            //for floating point
+            //For floating point
             returnedValue = Regex.Match(returnedValue, @"[+-]?\d+.\d+").Value;
-            //Console.WriteLine(returnedValue);
 
             if (returnedValue == "" && temp == "")
                 return "-999";

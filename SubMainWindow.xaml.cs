@@ -35,19 +35,13 @@ namespace FlightSimulator
         public SubMainWindow(Models.Model model)
         {
             InitializeComponent();
-
-            //jvm = new VMJoystick(model);
-            //Throttle.DataContext = jvm;
-            //Aileron.DataContext = jvm;
-            //joystick1.DataContext = jvm;
-           // VMDashboard dvm = new VMDashboard(model);
-            Board.DataContext = (Application.Current as App).vmd;
-            myJoystick.DataContext = (Application.Current as App).vmj;
-            //VMMap mapvm = new VMMap(model);
-            map.DataContext = (Application.Current as App).vmm;
-            this.DataContext = (Application.Current as App).vmm;
+            Board.DataContext = (Application.Current as App).Vmd;
+            myJoystick.DataContext = (Application.Current as App).Vmj;
+            map.DataContext = (Application.Current as App).Vmm;
+            this.DataContext = (Application.Current as App).Vmm;
         }
 
+        //If the user pressed on "stop-fly" button.
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             closeApp = true;
@@ -61,7 +55,7 @@ namespace FlightSimulator
             SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
         }
 
-        private void map_Loaded(object sender, RoutedEventArgs e)
+        private void Map_Loaded(object sender, RoutedEventArgs e)
         {
 
         }

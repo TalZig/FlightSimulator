@@ -28,15 +28,8 @@ namespace FlightSimulator.View
         }
         private Storyboard sb;
         private Point center;
-        //private double x1 = 0;
-        //private double y1 = 0;
         private void CenterKnob_Completed(Object sender, EventArgs e)
         {
-            //Storyboard sb = Knob.FindResource("CenterKnob") as Storyboard;
-            //Storyboard sb = FindResource("centerKnob") as Storyboard;
-            //sb.Begin();
-/*          knobPosition.X = 0;
-            knobPosition.Y = 0;*/
             RudderValue = 0;
             ElevatorValue = 0;
             
@@ -47,11 +40,6 @@ namespace FlightSimulator.View
             sb = Knob.FindResource("CenterKnob") as Storyboard;
             //Storyboard sb = FindResource("centerKnob") as Storyboard;
             sb.Begin();
-            
-            //knobPosition.X = 0;
-            //knobPosition.Y = 0;
-            //RudderValue = 0;
-            //ElevatorValue = 0;
             UIElement element = (UIElement)Knob;
             element.ReleaseMouseCapture();
         }
@@ -62,7 +50,6 @@ namespace FlightSimulator.View
             sb.Stop();
             if (e.ChangedButton == MouseButton.Left)
             {
-                //center = e.GetPosition(this);
                 (Knob).CaptureMouse();
             }
         }
@@ -74,6 +61,7 @@ namespace FlightSimulator.View
                 double deltaX = (e.GetPosition(this).X - center.X);
                 double deltaY = (e.GetPosition(this).Y - center.Y);
                 double distFromCenter = Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
+                //Check if the mouse is in the base circle.
                 if (distFromCenter <= Base.Width / 2)
                 {
                     knobPosition.X = deltaX;
@@ -82,6 +70,7 @@ namespace FlightSimulator.View
                     RudderValue = deltaX / (Base.Width / 2);
                     ElevatorValue = deltaY / (Base.Width / 2);
                 }
+                //If the mouse is out of the base circle
                 else
                 {
                     double m = deltaY / deltaX;
@@ -95,12 +84,7 @@ namespace FlightSimulator.View
                     knobPosition.X = tempX*coEfX;
                     knobPosition.Y = tempY*coEfY;
                     
-                    //original
-                    //RudderValue = (knobPosition.X + 2) / ((Base.Width - KnobBase.Width) / 2);
-                    //ElevatorValue = (knobPosition.X + 2) / ((Base.Height - KnobBase.Height) / 2);
-
-
-
+                    //Update the proprties values that need to be transfer to the server.
                     ElevatorValue = knobPosition.Y / (Base.Height / 2);
                     RudderValue = knobPosition.X / (Base.Width / 2);
                     //ElevatorValue = knobPosition.Y ;
@@ -108,18 +92,13 @@ namespace FlightSimulator.View
             }
         }
 
-        /*        private void KnobBase_MouseLeave(object sender, MouseEventArgs e)
-                {
-                    knobPosition.X = 0;
-                    knobPosition.Y = 0;
-                }*/
-
         private void Knob_MouseLeave(object sender, MouseEventArgs e)
         {
         //    knobPosition.X = 0;
         //    knobPosition.Y = 0;
         }
 
+        //Elevator property:
         public double ElevatorValue
         {
             get { return (double)GetValue(ElevatorValueProperty); }
@@ -131,6 +110,8 @@ namespace FlightSimulator.View
 
         public static readonly DependencyProperty ElevatorValueProperty =
             DependencyProperty.Register("ElevatorValue", typeof(double), typeof(Joystick));
+
+        //Rudder property:
         public double RudderValue
         {
             get { return (double)GetValue(RudderValueProperty); }
@@ -142,10 +123,5 @@ namespace FlightSimulator.View
 
         public static readonly DependencyProperty RudderValueProperty =
             DependencyProperty.Register("RudderValue", typeof(double), typeof(Joystick));
-
-        private void Knob_GotMouseCapture(object sender, MouseEventArgs e)
-        {
-
-        }
     }
 }
