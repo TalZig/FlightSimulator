@@ -196,7 +196,7 @@ namespace FlightSimulator.Models
             myClient.Connect(ip, port);
             this.Start();
         }
-        //Start the thread and play the Start-Read-And-Write function
+        //Start the thread and play the Start-Read-And-Write function.
         public void Start()
         {
             Thread thread = new Thread(StartReadAndWrite);
@@ -210,7 +210,7 @@ namespace FlightSimulator.Models
             double tempY;
             while (!stop)
             {
-                //values from the server
+                //Values from the server.
                 myClient.Write("get /instrumentation/heading-indicator/indicated-heading-deg\r\n");
                 temp = myClient.Read();
                 if (temp.Equals("Timeout"))
@@ -422,7 +422,7 @@ namespace FlightSimulator.Models
                     this.NotifyPropertyChanged("Timeout");
                     this.NotifyPropertyChanged("Stop");
                 }
-                //values from the view that we need to update
+                //Values from the view that we need to update
                 //location of the airplane
                 Thread.Sleep(800);
             }
@@ -435,27 +435,23 @@ namespace FlightSimulator.Models
             {
                 valuesFromView[0] = UpdateRudder(newVal);
                 return (float)valuesFromView[0];
-                //myClient.write("set /controls/flight/rudder\r\n" + valuesFromView[0].ToString());
             }
             if (info == "elevator")
             {
                 valuesFromView[1] = UpdateElevator(newVal);
                 return (float)valuesFromView[1];
-                //myClient.write("set /controls/flight/elevator\r\n" + valuesFromView[1].ToString());
 
             }
             if (info == "throttle")
             {
                 valuesFromView[2] = UpdateThrottle(newVal);
                 return (float)valuesFromView[2];
-                //myClient.write("set /controls/engines/current-engine/throttle\r\n" + valuesFromView[2].ToString());
 
             }
             if (info == "aileron")
             {
                 valuesFromView[3] = UpdateAileron(newVal);
                 return (float)valuesFromView[3];
-                //myClient.write("set /controls/flight/aileron\r\n" + valuesFromView[3].ToString());
 
             }
             else
