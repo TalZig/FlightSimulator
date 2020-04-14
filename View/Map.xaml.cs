@@ -21,7 +21,6 @@ namespace FlightSimulator.View
     /// </summary>
     public partial class Map : UserControl
     {
-        private bool firstTime = true;
         public Map()
         {
             InitializeComponent();

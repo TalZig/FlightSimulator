@@ -32,11 +32,6 @@ namespace FlightSimulator
         private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
         [DllImport("user32.dll")]
         private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
-        private LocationRect bounds;
-        private bool firstTime = true;
-        double x, y;
-        bool stop = false;
-        VMJoystick jvm;
         public SubMainWindow(Models.Model model)
         {
             InitializeComponent();
