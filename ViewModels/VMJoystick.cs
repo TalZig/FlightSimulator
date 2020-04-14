@@ -42,14 +42,8 @@ namespace FlightSimulator.ViewModels
             if (PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
-        // insert both sliders and their property
-        // create constructors
-        // bind
-        // where to send messages via model to simulator?
 
-
-
-        //VMRudder property:
+        //VMRudder property.
         public float VMRudder
         {
             get { return _rudder; }
@@ -63,7 +57,7 @@ namespace FlightSimulator.ViewModels
             }
         }
 
-        //VMElevator property:
+        //VMElevator property.
         public float VMElevator
         {
             get { return _elevator; }
@@ -77,7 +71,7 @@ namespace FlightSimulator.ViewModels
             }
         }
 
-        //VMAileron property:
+        //VMAileron property.
         public double VMAileron
         {
             get { return _aileron; }
@@ -90,7 +84,7 @@ namespace FlightSimulator.ViewModels
             }
         }
 
-        //VMThrottle property:
+        //VMThrottle property.
         public double VMThrottle
         {
             get { return _throttle; }

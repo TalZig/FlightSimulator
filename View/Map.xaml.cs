@@ -28,19 +28,7 @@ namespace FlightSimulator.View
 
         private void Pin_LayoutUpdated(object sender, EventArgs e)
         {
-            /*if (planePushpin.Location != null)
-            {
-                double latitude = planePushpin.Location.Latitude;
-                double longtitude = planePushpin.Location.Longitude;
-                if (firstTime)
-                {
-                    Map.SetView(new Location(latitude, longtitude), 10);
-                    PlanePosition.X = 0;
-                    PlanePosition.Y = 0;
-                    firstTime = false;
-                    return;
-                }
-            }*/
+            
         }
     }
 }

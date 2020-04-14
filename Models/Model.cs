@@ -41,7 +41,7 @@ namespace FlightSimulator.Models
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
-        //Vairables properties:
+        //Vairables properties.
 
         private double verticalSpeed;
         public double VerticalSpeed
@@ -422,13 +422,11 @@ namespace FlightSimulator.Models
                     this.NotifyPropertyChanged("Timeout");
                     this.NotifyPropertyChanged("Stop");
                 }
-                //Values from the view that we need to update
-                //location of the airplane
                 Thread.Sleep(800);
             }
             this.myClient.Disconnect();
         }
-        //updating values from the view.
+        //Updating values from the view.
         public float UpdateValue(String info, double newVal)
         {
             if (info == "rudder")

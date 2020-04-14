@@ -44,7 +44,6 @@ namespace FlightSimulator.Models
             catch (Exception)
             {
                 Console.WriteLine("server disconnected");
-                //this.disconnect();
             }
         }
         //Function that read from the server.
@@ -69,18 +68,17 @@ namespace FlightSimulator.Models
             }
             string returnedValue = builder.ToString();
 
-            //Taking the number from the string with regex:
+            //Taking the number from the string with regex.
 
-            //For integer
+            //For integer.
             string temp = Regex.Match(returnedValue, @"[+-]\d+").Value;
-            //For floating point
+            //For floating point.
             returnedValue = Regex.Match(returnedValue, @"[+-]?\d+.\d+").Value;
 
             if (returnedValue == "" && temp == "")
                 return "-999";
             if (returnedValue == "")
             {
-                //Console.WriteLine(temp + "check2");
                 return temp;
             }
             else return returnedValue;

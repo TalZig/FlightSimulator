@@ -38,13 +38,12 @@ namespace FlightSimulator
             InitializeComponent();
         }
 
-        //If the user press on the OK button
+        //If the user press on the OK button.
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ipVal = MyTextBox.Text;
             portVal = MyTextBox2.Text;
             SubMainWindow sub;
-            //Models.Model model = (Application.Current as App).model;
             try
             {
                 (Application.Current as App).model.Connect(ipVal, int.Parse(portVal));
@@ -81,7 +80,6 @@ namespace FlightSimulator
         //If the user press on "default IP and Port" button.
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //Models.Model model = new Models.Model();
             SubMainWindow sub;
             try
             {
@@ -93,7 +91,6 @@ namespace FlightSimulator
             }
             catch (Exception)
             {
-                //Console.WriteLine("there is no server, good bye");
                 string message = String.Format("The port or ip are not good, please try again.\n");
                 MessageBox.Show(message, "", MessageBoxButton.OK, MessageBoxImage.Error);
 

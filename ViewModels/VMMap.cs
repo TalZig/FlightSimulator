@@ -45,7 +45,7 @@ namespace FlightSimulator.ViewModels
 		}
 
 		//VM-massage property:
-		//Send to the view massage
+		//Send to the view massage.
 		public string VMMsg
 		{
 			get { return msg; }
@@ -59,7 +59,7 @@ namespace FlightSimulator.ViewModels
 			}
 		}
 
-		//VMStop property: 
+		//VMStop property.
 		public Boolean VMStop
 		{
 			get
@@ -75,7 +75,7 @@ namespace FlightSimulator.ViewModels
 		}
 		private string vmStatusOfServer;
 
-		//VMStatusOfServer property:
+		//VMStatusOfServer property.
 		public string VMStatusOfServer
 		{
 			get
@@ -92,7 +92,7 @@ namespace FlightSimulator.ViewModels
 			}
 		}
 
-		//VMLocation property:
+		//VMLocation property.
 		public Location VMLocation
 		{
 			get
@@ -104,7 +104,5 @@ namespace FlightSimulator.ViewModels
 				model.Location = value;
 			}
 		}
-
-
 	}
 }

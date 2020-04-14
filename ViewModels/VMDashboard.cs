@@ -27,7 +27,7 @@ namespace FlightSimulator.ViewModels
             if (PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
-        //Variables for the view from the model:
+        //Variables for the view from the model.
         public double VMHeadingDeg
         {
             get

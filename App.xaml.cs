@@ -14,7 +14,7 @@ namespace FlightSimulator
     
     public partial class App : Application
     {
-        //initialize the view models and model:
+        //initialize the view models and model.
         public ViewModels.VMDashboard Vmd { get; internal set; }
         public ViewModels.VMJoystick Vmj { get; internal set; }
         public ViewModels.VMMap Vmm { get; internal set; }

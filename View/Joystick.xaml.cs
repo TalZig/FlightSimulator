@@ -38,7 +38,6 @@ namespace FlightSimulator.View
         private void Knob_MouseUp(object sender, MouseButtonEventArgs e)
         {
             sb = Knob.FindResource("CenterKnob") as Storyboard;
-            //Storyboard sb = FindResource("centerKnob") as Storyboard;
             sb.Begin();
             UIElement element = (UIElement)Knob;
             element.ReleaseMouseCapture();
@@ -66,11 +65,11 @@ namespace FlightSimulator.View
                 {
                     knobPosition.X = deltaX;
                     knobPosition.Y = deltaY;
-                    //update on view model (normalized)
+                    //Update on view model (normalized).
                     RudderValue = deltaX / (Base.Width / 2);
                     ElevatorValue = deltaY / (Base.Width / 2);
                 }
-                //If the mouse is out of the base circle
+                //If the mouse is out of the base circle.
                 else
                 {
                     double m = deltaY / deltaX;
@@ -87,7 +86,6 @@ namespace FlightSimulator.View
                     //Update the proprties values that need to be transfer to the server.
                     ElevatorValue = knobPosition.Y / (Base.Height / 2);
                     RudderValue = knobPosition.X / (Base.Width / 2);
-                    //ElevatorValue = knobPosition.Y ;
                 }
             }
         }

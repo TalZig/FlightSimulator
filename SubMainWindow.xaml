@@ -25,41 +25,7 @@
             </View:ControlBoard.RenderTransform>
         </View:ControlBoard>
 
-        <View:Map x:Name="map" Margin="20,50,552.667,37.333" RenderTransformOrigin="0.5,0.5" Loaded="map_Loaded" Grid.ColumnSpan="2"></View:Map>
-        <!--
-        <View:Joystick x:Name="joystick1" Margin="417,244,-14,-24" RenderTransformOrigin="0.5,0.5" RudderValue ="{Binding VMRudder, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}" ElevatorValue ="{Binding VMElevator, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}">
-            <View:Joystick.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </View:Joystick.RenderTransform>
-        </View:Joystick>
-        <Slider x:Name="Throttle" HorizontalAlignment="Right" Margin="0,537,184,-31" Maximum="1" Minimum="-1" TickFrequency="0.1" RenderTransformOrigin="0.5,0.5" Width="202" TickPlacement="TopLeft" Value="{Binding VMThrottle, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}">
-
-            <Slider.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Slider.RenderTransform>
-        </Slider>
-
-        <Slider x:Name="Aileron" HorizontalAlignment="Right" Margin="0,413,343,126" Maximum="1" Minimum="0" TickFrequency="0.1" RenderTransformOrigin="0.5,0.5" Width="202" TickPlacement="TopLeft" Value="{Binding VMAileron, UpdateSourceTrigger=PropertyChanged, Mode = OneWayToSource}">
-            <Slider.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Slider.RenderTransform>
-        </Slider>
-        -->
+        <View:Map x:Name="map" Margin="20,50,552.667,37.333" RenderTransformOrigin="0.5,0.5" Loaded="Map_Loaded" Grid.ColumnSpan="2"></View:Map>
         <Button Content="stop fly" HorizontalAlignment="Left" Margin="34,27,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click" Grid.ColumnSpan="2" />
         <TextBlock HorizontalAlignment="Left" Background="OrangeRed" Margin="369,105,0,0" TextWrapping="Wrap" Text="{Binding Path= VMStatusOfServer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Height="41" Width="86" Grid.Column="1"/>
         <TextBlock x:Name="Boundaries" HorizontalAlignment="Left" Background="Gray" Margin="369,189,0,0" TextWrapping="Wrap" Text="{Binding Path= VMMsg, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Height="45" Width="88" Grid.Column="1"/>
