@@ -386,6 +386,7 @@ namespace FlightSimulator.Models
                     {
                         Location = new Location(Location.Latitude, -180);
                         Msg = "Plane is out of bounds";
+
                     }
                 }
                 else
