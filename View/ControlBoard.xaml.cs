@@ -20,7 +20,7 @@ namespace FlightSimulator.View
     /// </summary>
     public partial class ControlBoard : UserControl
     {
-        public ControlBoard()
+       public ControlBoard()
         {
             InitializeComponent();
         }
