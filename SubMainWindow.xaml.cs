@@ -46,6 +46,9 @@ namespace FlightSimulator
         {
             closeApp = true;
             var mai = new FlightSimulator.MainWindow();
+            (Application.Current as App).model.myClient.Disconnect();
+            (Application.Current as App).model = new Models.Model();
+            (Application.Current as App).Application_Startup(this, null);
             this.Close();
             mai.ShowDialog();
         }

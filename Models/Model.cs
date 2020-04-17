@@ -190,7 +190,7 @@ namespace FlightSimulator.Models
         }
 
         //Declaration of tcp client.
-        readonly MyTcpClient myClient = new MyTcpClient();
+        public MyTcpClient myClient = new MyTcpClient();
         public void Connect(string ip, int port)
         {
             myClient.Connect(ip, port);

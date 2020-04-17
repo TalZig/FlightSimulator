@@ -46,6 +46,8 @@ namespace FlightSimulator
             SubMainWindow sub;
             try
             {
+                (Application.Current as App).model = new Models.Model();
+                (Application.Current as App).Application_Startup(this, null);
                 (Application.Current as App).model.Connect(ipVal, int.Parse(portVal));
                 sub = new SubMainWindow((Application.Current as App).model);
                 closeApp = true;
@@ -83,6 +85,8 @@ namespace FlightSimulator
             SubMainWindow sub;
             try
             {
+                (Application.Current as App).model = new Models.Model();
+                (Application.Current as App).Application_Startup(this, null);
                 (Application.Current as App).model.Connect(ConfigurationManager.AppSettings["IP"].ToString(), Int32.Parse(ConfigurationManager.AppSettings["port"].ToString()));
                 sub = new SubMainWindow((Application.Current as App).model);
                 closeApp = true;

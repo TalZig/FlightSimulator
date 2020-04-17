@@ -20,7 +20,7 @@ namespace FlightSimulator
         public ViewModels.VMMap Vmm { get; internal set; }
         public Models.Model model = new Models.Model();
 
-        private void Application_Startup(object sender, StartupEventArgs e)
+        public void Application_Startup(object sender, StartupEventArgs e)
         {
             Vmd = new ViewModels.VMDashboard(model);
             Vmj = new ViewModels.VMJoystick(model);
