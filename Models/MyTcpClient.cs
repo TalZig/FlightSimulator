@@ -76,7 +76,7 @@ namespace FlightSimulator.Models
             returnedValue = Regex.Match(returnedValue, @"[+-]?\d+.\d+").Value;
 
             if (returnedValue == "" && temp == "")
-                return "-999";
+                return "-99999";
             if (returnedValue == "")
             {
                 return temp;
