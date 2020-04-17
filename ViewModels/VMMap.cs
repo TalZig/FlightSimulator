@@ -41,8 +41,11 @@ namespace FlightSimulator.ViewModels
 			if (name.Equals("VMTimeout"))
 			{
 				VMStatusOfServer = "10 sec w/out response";
-				VMStop = model.stop;
 			}
+			if (name.Equals("VMError"))
+				VMStatusOfServer = "Error in Server";
+			if (name.Equals("VMServer"))
+				VMStatusOfServer = "server is connected";
 		}
 
 		//VM-massage property:

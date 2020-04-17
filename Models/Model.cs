@@ -229,7 +229,10 @@ namespace FlightSimulator.Models
                     if (tempVal != -99999)
                     {
                         HeadingDeg = tempVal;
+                        NotifyPropertyChanged("Server");
                     }
+                    else
+                        NotifyPropertyChanged("Error");
                 }
 
                 myClient.Write("get /instrumentation/gps/indicated-vertical-speed\r\n");
@@ -237,6 +240,7 @@ namespace FlightSimulator.Models
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
+                    NotifyPropertyChanged("Server");
                 }
                 else
                 {
@@ -244,7 +248,10 @@ namespace FlightSimulator.Models
                     if (tempVal != -99999)
                     {
                         VerticalSpeed = tempVal;
+                        NotifyPropertyChanged("Server");
                     }
+                    else
+                        NotifyPropertyChanged("Error");
                 }
 
                 myClient.Write("get /instrumentation/gps/indicated-ground-speed-kt\r\n");
@@ -252,6 +259,7 @@ namespace FlightSimulator.Models
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
+                    NotifyPropertyChanged("Server");
                 }
                 else
                 {
@@ -259,7 +267,10 @@ namespace FlightSimulator.Models
                     if (tempVal != -99999)
                     {
                         GroundSpeedKt = tempVal;
+                        NotifyPropertyChanged("Server");
                     }
+                    else
+                        NotifyPropertyChanged("Error");
                 }
 
                 myClient.Write("get /instrumentation/airspeed-indicator/indicated-speed-kt\r\n");
@@ -274,7 +285,10 @@ namespace FlightSimulator.Models
                     if (tempVal != -99999)
                     {
                         IndicatedSpeedKt = tempVal;
+                        NotifyPropertyChanged("Server");
                     }
+                    else
+                        NotifyPropertyChanged("Error");
                 }
 
                 myClient.Write("get /instrumentation/gps/indicated-altitude-ft\r\n");
@@ -288,6 +302,7 @@ namespace FlightSimulator.Models
                     tempVal = Double.Parse(temp);
                     if (tempVal != -99999)
                     {
+                        NotifyPropertyChanged("Server");
                         AltitudeFt = tempVal;
                     }
                 }
@@ -304,7 +319,10 @@ namespace FlightSimulator.Models
                     if (tempVal != -99999)
                     {
                         RollDeg = tempVal;
+                        NotifyPropertyChanged("Server");
                     }
+                    else
+                        NotifyPropertyChanged("Error");
                 }
 
                 myClient.Write("get /instrumentation/altimeter/indicated-altitude-ft\r\n");
@@ -319,7 +337,10 @@ namespace FlightSimulator.Models
                     if (tempVal != -99999)
                     {
                         IndicatedAlitudeFt = tempVal;
+                        NotifyPropertyChanged("Server");
                     }
+                    else
+                        NotifyPropertyChanged("Error");
                 }
 
                 myClient.Write("get /instrumentation/attitude-indicator/internal-pitch-deg\r\n");
@@ -334,7 +355,10 @@ namespace FlightSimulator.Models
                     if (tempVal != -99999)
                     {
                         PitchDeg = tempVal;
+                        NotifyPropertyChanged("Server");
                     }
+                    else
+                        NotifyPropertyChanged("Error");
                 }
 
 
@@ -350,8 +374,11 @@ namespace FlightSimulator.Models
                     if (tempVal != -99999)
                     {
                         tempX = tempVal;
+                        NotifyPropertyChanged("Server");
                         xReceived = true;
                     }
+                    else
+                        NotifyPropertyChanged("Error");
                 }
 
                 myClient.Write("get /position/longitude-deg\r\n");
@@ -366,8 +393,11 @@ namespace FlightSimulator.Models
                     if (tempVal != -99999)
                     {
                         tempY = tempVal;
+                        NotifyPropertyChanged("Server");
                         yReceived = true;
                     }
+                    else
+                        NotifyPropertyChanged("Error");
                 }
 
                 if (xReceived && yReceived)
@@ -429,7 +459,7 @@ namespace FlightSimulator.Models
                 {
                     this.NotifyPropertyChanged("Timeout");
                 }
-                Thread.Sleep(800);
+                Thread.Sleep(200);
             }
             this.myClient.Disconnect();
         }
