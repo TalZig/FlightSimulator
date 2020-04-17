@@ -44,6 +44,7 @@ namespace FlightSimulator
         //If the user pressed on "stop-fly" button.
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             closeApp = true;
             var mai = new FlightSimulator.MainWindow();
             (Application.Current as App).model.myClient.Disconnect();
