@@ -429,7 +429,7 @@ namespace FlightSimulator.Models
                 {
                     this.NotifyPropertyChanged("Timeout");
                 }
-                Thread.Sleep(800);
+                Thread.Sleep(200);
             }
             this.myClient.Disconnect();
         }
