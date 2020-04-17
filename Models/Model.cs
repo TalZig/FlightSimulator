@@ -202,6 +202,7 @@ namespace FlightSimulator.Models
             Thread thread = new Thread(StartReadAndWrite);
             thread.Start();
         }
+
         //Write and read data to and from the server with second thread.
         private void StartReadAndWrite()
         {
@@ -210,6 +211,7 @@ namespace FlightSimulator.Models
             double tempY = 0;
             bool xReceived;
             bool yReceived;
+            double tempVal;
             while (!stop)
             {
                 xReceived = false;
@@ -220,16 +222,13 @@ namespace FlightSimulator.Models
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
                 else
                 {
-                    HeadingDeg = Double.Parse(temp);
-                    if (HeadingDeg == -99999)
+                    tempVal = Double.Parse(temp);
+                    if (tempVal != -99999)
                     {
-                        stop = true;
-                        this.NotifyPropertyChanged("Stop");
-                        break;
+                        HeadingDeg = tempVal;
                     }
                 }
 
@@ -238,16 +237,13 @@ namespace FlightSimulator.Models
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
                 else
                 {
-                    VerticalSpeed = Double.Parse(temp);
-                    if (VerticalSpeed == -99999)
+                    tempVal = Double.Parse(temp);
+                    if (tempVal != -99999)
                     {
-                        stop = true;
-                        this.NotifyPropertyChanged("Stop");
-                        break;
+                        VerticalSpeed = tempVal;
                     }
                 }
 
@@ -256,16 +252,13 @@ namespace FlightSimulator.Models
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
                 else
                 {
-                    GroundSpeedKt = Double.Parse(temp);
-                    if (GroundSpeedKt == -99999)
+                    tempVal = Double.Parse(temp);
+                    if (tempVal != -99999)
                     {
-                        stop = true;
-                        this.NotifyPropertyChanged("Stop");
-                        break;
+                        GroundSpeedKt = tempVal;
                     }
                 }
 
@@ -274,16 +267,13 @@ namespace FlightSimulator.Models
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
                 else
                 {
-                    IndicatedSpeedKt = Double.Parse(temp);
-                    if (IndicatedSpeedKt == -99999)
+                    tempVal = Double.Parse(temp);
+                    if (tempVal != -99999)
                     {
-                        stop = true;
-                        this.NotifyPropertyChanged("Stop");
-                        break;
+                        indicatedSpeedKt = tempVal;
                     }
                 }
 
@@ -292,16 +282,13 @@ namespace FlightSimulator.Models
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
                 else
                 {
-                    AltitudeFt = Double.Parse(temp);
-                    if (AltitudeFt == -99999)
+                    tempVal = Double.Parse(temp);
+                    if (tempVal != -99999)
                     {
-                        stop = true;
-                        this.NotifyPropertyChanged("Stop");
-                        break;
+                        AltitudeFt = tempVal;
                     }
                 }
 
@@ -310,16 +297,13 @@ namespace FlightSimulator.Models
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
                 else
                 {
-                    RollDeg = Double.Parse(temp);
-                    if (RollDeg == -99999)
+                    tempVal = Double.Parse(temp);
+                    if (tempVal != -99999)
                     {
-                        stop = true;
-                        this.NotifyPropertyChanged("Stop");
-                        break;
+                        RollDeg = tempVal;
                     }
                 }
 
@@ -328,16 +312,13 @@ namespace FlightSimulator.Models
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
                 else
                 {
-                    IndicatedAlitudeFt = Double.Parse(temp);
-                    if (IndicatedAlitudeFt == -99999)
+                    tempVal = Double.Parse(temp);
+                    if (tempVal != -99999)
                     {
-                        stop = true;
-                        this.NotifyPropertyChanged("Stop");
-                        break;
+                        indicatedAltitudeFt = tempVal;
                     }
                 }
 
@@ -346,16 +327,13 @@ namespace FlightSimulator.Models
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
                 else
                 {
-                    PitchDeg = Double.Parse(temp);
-                    if (PitchDeg == -99999)
+                    tempVal = Double.Parse(temp);
+                    if (tempVal != -99999)
                     {
-                        stop = true;
-                        this.NotifyPropertyChanged("Stop");
-                        break;
+                        PitchDeg = tempVal;
                     }
                 }
 
@@ -365,18 +343,15 @@ namespace FlightSimulator.Models
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
                 else
                 {
-                    tempX = Double.Parse(temp);
-                    if (tempX == -99999)
+                    tempVal = Double.Parse(temp);
+                    if (tempVal != -99999)
                     {
-                        stop = true;
-                        this.NotifyPropertyChanged("Stop");
-                        break;
+                        tempX = tempVal;
+                        xReceived = true;
                     }
-                    else xReceived = true;
                 }
 
                 myClient.Write("get /position/longitude-deg\r\n");
@@ -384,18 +359,15 @@ namespace FlightSimulator.Models
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
                 else
                 {
-                    tempY = Double.Parse(temp);
-                    if (tempY == -99999)
+                    tempVal = Double.Parse(temp);
+                    if (tempVal != -99999)
                     {
-                        stop = true;
-                        this.NotifyPropertyChanged("Stop");
-                        break;
+                        tempY = tempVal;
+                        yReceived = true;
                     }
-                    else yReceived = true;
                 }
 
                 if (xReceived && yReceived)
@@ -437,37 +409,31 @@ namespace FlightSimulator.Models
                 temp = myClient.Read();
                 if (temp.Equals("Timeout"))
                 {
-                    this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
+                    this.NotifyPropertyChanged("Timeout");                   
                 }
                 myClient.Write("set /controls/flight/elevator " + valuesFromView[1].ToString() + "\r\n");
                 temp = myClient.Read();
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
                 myClient.Write("set /controls/engines/current-engine/throttle " + valuesFromView[2].ToString() + "\r\n");
                 temp = myClient.Read();
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
                 myClient.Write("set /controls/flight/aileron " + valuesFromView[3].ToString() + "\r\n");
                 temp = myClient.Read();
                 if (temp.Equals("Timeout"))
                 {
                     this.NotifyPropertyChanged("Timeout");
-                    this.NotifyPropertyChanged("Stop");
                 }
-                //Values from the view that we need to update
-                //location of the airplane
                 Thread.Sleep(800);
             }
             this.myClient.Disconnect();
         }
-        //updating values from the view.
+        //Updating values from the view.
         public float UpdateValue(String info, double newVal)
         {
             if (info == "rudder")
