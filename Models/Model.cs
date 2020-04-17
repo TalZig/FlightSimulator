@@ -273,7 +273,7 @@ namespace FlightSimulator.Models
                     tempVal = Double.Parse(temp);
                     if (tempVal != -99999)
                     {
-                        indicatedSpeedKt = tempVal;
+                        IndicatedSpeedKt = tempVal;
                     }
                 }
 
@@ -318,7 +318,7 @@ namespace FlightSimulator.Models
                     tempVal = Double.Parse(temp);
                     if (tempVal != -99999)
                     {
-                        indicatedAltitudeFt = tempVal;
+                        IndicatedAlitudeFt = tempVal;
                     }
                 }
 
